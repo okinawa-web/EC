@@ -1,3 +1,10 @@
+[参考サイト]https://www.villa-rikyu.jp/
+
+
+
+![2023-01-16 11 49のイメージ](https://user-images.githubusercontent.com/110378958/212603721-b9060ae8-2c7f-4361-b482-eaea85347ed5.jpg)
+
+
 # okinawa
 
 This template should help get you started developing with Vue 3 in Vite.
