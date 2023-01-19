@@ -4,6 +4,7 @@ import AboutRikyu from "../views/AboutRikyu.vue";
 import Rooms from "../views/Rooms.vue";
 import Activity from "../views/Activity.vue";
 import Acsess from "../views/Acsess.vue";
+import Reserve from "../views/resrve/reserve.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,6 +41,11 @@ const router = createRouter({
       path: "/acsess",
       name: "Acsess",
       component: Acsess,
+    },
+    {
+      path: "/reserve/reserve",
+      name: "Reserve",
+      component: Reserve,
     },
   ],
 });
