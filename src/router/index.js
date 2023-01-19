@@ -1,10 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import Reserve from "../views/resrve/reserve.vue";
 import AboutRikyu from "../views/AboutRikyu.vue";
 import Rooms from "../views/Rooms.vue";
+import GuestRoom from "../views/GuestRoom.vue";
+import Facility from "../views/Facility.vue";
 import Activity from "../views/Activity.vue";
 import Acsess from "../views/Acsess.vue";
-import Reserve from "../views/resrve/reserve.vue";
+import Question from "../views/Question.vue";
+import News from "../views/News.vue";
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,12 +20,9 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/test",
-      name: "test",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/test.vue"),
+      path: "/reserve/reserve",
+      name: "Reserve",
+      component: Reserve,
     },
     {
       path: "/aboutRikyu",
@@ -33,6 +35,16 @@ const router = createRouter({
       component: Rooms,
     },
     {
+      path: "/guestRoom",
+      name: "GuestRoom",
+      component: GuestRoom,
+    },
+    {
+      path: "/facility",
+      name: "Facility",
+      component: Facility,
+    },
+    {
       path: "/activity",
       name: "Activity",
       component: Activity,
@@ -43,9 +55,24 @@ const router = createRouter({
       component: Acsess,
     },
     {
-      path: "/reserve/reserve",
-      name: "Reserve",
-      component: Reserve,
+      path: "/question",
+      name: "Question",
+      component: Question,
+    },
+    {
+      path: "/news",
+      name: "News",
+      component: News,
+    },
+ 
+    //テスト用
+    {
+      path: "/test",
+      name: "test",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/test.vue"),
     },
   ],
 });
