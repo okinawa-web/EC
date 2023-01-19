@@ -11,19 +11,40 @@
       <!-- MENU -->
       <nav class="nav_content">
         <ul class="nav_list">
-          <li class="nav_item"><a href="">TOP</a></li>
-          <li class="nav_item"><a href="">ご予約</a></li>
-          <li class="nav_item"><a href="">●●について</a></li>
-          <li class="nav_item"><a href="">お部屋</a></li>
-          <li class="nav_item"><a href="">-101</a></li>
-          <li class="nav_item"><a href="">-102</a></li>
-          <li class="nav_item"><a href="">-103</a></li>
-          <li class="nav_item"><a href="">-客室設備・アメニティ</a></li>
-          <li class="nav_item"><a href="">アクティビティ</a></li>
-          <li class="nav_item"><a href="">アクセス</a></li>
-          <li class="nav_item"><a href="">よくあるご質問</a></li>
-          <li class="nav_item"><a href="">新着情報</a></li>
-          <li class="nav_item"><a href="">会社概要</a></li>
+          <li class="nav_item"><router-link to="/">TOP</router-link></li>
+          <li class="nav_item">
+            <router-link to="/reserve/reserve">ご予約</router-link>
+          </li>
+          <li class="nav_item">
+            <router-link to="/aboutRikyu">HAMAJIMAについて</router-link>
+          </li>
+          <li class="nav_item">
+            <router-link to="/rooms">お部屋</router-link>
+          </li>
+          <li class="nav_item">
+            <router-link to="/guestRoom">-101</router-link>
+          </li>
+          <li class="nav_item">
+            <router-link to="/guestRoom">-102</router-link>
+          </li>
+          <li class="nav_item">
+            <router-link to="/guestRoom">-103</router-link>
+          </li>
+          <li class="nav_item">
+            <router-link to="/facility">-客室設備・アメニティ</router-link>
+          </li>
+          <li class="nav_item">
+            <router-link to="/activity">アクティビティ</router-link>
+          </li>
+          <li class="nav_item">
+            <router-link to="/acsess">アクセス</router-link>
+          </li>
+          <li class="nav_item">
+            <router-link to="/question">よくあるご質問</router-link>
+          </li>
+          <li class="nav_item">
+            <router-link to="/news">新着情報</router-link>
+          </li>
         </ul>
       </nav>
     </div>
@@ -43,7 +64,7 @@
   font-size: 24px;
 }
 
-/* ここから下がハンバーガーメニューに関するCSS */
+/* ハンバーガーメニューに関するCSS */
 /* チェックボックスを非表示にする */
 .drawer_hidden {
   display: none;
@@ -103,8 +124,8 @@
 
 /* クリックされたらMENUがCLOSEになる */
 /* #drawer_text:checked ~ .drawer_open::after{
-        content: 'CLOSE';
-    } */
+          content: 'CLOSE';
+      } */
 
 /* メニューのデザイン*/
 .nav_content {
