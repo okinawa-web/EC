@@ -1,17 +1,29 @@
 <template>
-  <h1>TITLE</h1>
-  <p>SUB TITLE</p>
-  <div class="link">
-    <a href="#">LINK</a>
-    <span class="hyphen">-</span>
-    <span> SUB TITLE</span>
-  </div>
-  <div>
-    <img src="@/assets/umi.jpg" alt="海" />
+  <div class="all">
+    <h1 class="pagetitle">{{ props.pagetitle }}</h1>
+    <p>{{ props.subTitle }}</p>
+    <div class="link">
+      <a href="/top">TOP</a>
+      <span class="hyphen">-</span>
+      <span>{{ props.subTitle }}</span>
+    </div>
+    <div><img :src="`src/assets/${props.image}`" alt="海" /></div>
   </div>
 </template>
 
+<script setup>
+const props = defineProps({
+  pagetitle: String,
+  image: String,
+  subTitle: String,
+});
+</script>
+
 <style>
+.all {
+  color: darkgray;
+}
+
 h1 {
   font-size: 450%;
   width: 90%;
