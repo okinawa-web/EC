@@ -15,6 +15,7 @@ import { RouterLink, RouterView } from "vue-router";
   <RouterView />
 </template>
 
+<!-- 
 <style scoped>
 html {
   color: brown;
@@ -23,11 +24,6 @@ html {
 header {
   line-height: 1.5;
   max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
 }
 
 nav {
@@ -81,4 +77,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>
+</style> -->
