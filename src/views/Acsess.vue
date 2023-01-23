@@ -1,3 +1,1 @@
-<template>
-    acsessのページ
-</template>
+<template>acsessのページ</template>
