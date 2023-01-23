@@ -4,6 +4,7 @@
 
 <style>
 a {
+  display: block;
   color: white;
   font-size: 16px;
   background: #7d8384;
