@@ -58,6 +58,7 @@
   align-items: center;
   padding: 0 20px;
   background: #fff;
+  float: left;
 }
 
 .logo {
@@ -73,8 +74,8 @@
 /* ハンバーガーアイコンの設置スペース */
 .drawer_open {
   display: flex;
-  height: 60px;
-  width: 60px;
+  height: 90px;
+  width: 30px;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -89,8 +90,8 @@
   content: "";
   display: block;
   height: 3px;
-  width: 25px;
-  border-radius: 3px;
+  width: 30px;
+  border-radius: 10px;
   background: #333;
   transition: 0.5s;
   position: absolute;
@@ -98,12 +99,12 @@
 
 /* 三本線の一番上の棒の位置調整 */
 .drawer_open span:before {
-  bottom: 8px;
+  bottom: 12px;
 }
 
 /* 三本線の一番下の棒の位置調整 */
 .drawer_open span:after {
-  top: 8px;
+  top: 12px;
 }
 
 /* クリックされたら真ん中の線を透明にする */

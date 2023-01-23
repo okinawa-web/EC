@@ -2,7 +2,12 @@
   <footer id="footer">
     <div class="con_footer">
       <p class="box_img">
-        <img src="@/assets/umi.jpg" alt="umi" height="500" width="1300" />
+        <img
+          src="@/assets/HAMAJIMAlogo.jpg"
+          alt="umi"
+          height="500"
+          width="1300"
+        />
       </p>
       <p class="side_img">
         <img

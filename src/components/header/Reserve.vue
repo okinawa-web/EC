@@ -1,18 +1,22 @@
 <template>
   <p class="reserve">
-    <router-link to="/reserve/reserve" target="_blank">ご予約</router-link>
+    <router-link to="/reserve/reserve" target="_blank">ご予約 </router-link>
   </p>
 </template>
 
 <style>
-a {
+.reserve {
   color: white;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: bold;
   background: #7d8384;
-  padding: 18px 30px;
+  width: 6%;
+  padding: 12px 20px;
   transition: width 500ms ease;
+  float: left;
+  text-align: center;
 }
-a:hover {
-  background: #52d9f0;
+.reserve:hover {
+  background: #ef7306;
 }
 </style>
