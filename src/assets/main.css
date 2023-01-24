@@ -1,4 +1,4 @@
-@import './base.css';
+/* @import './base.css';
 
 #app {
   max-width: 1280px;
@@ -32,4 +32,16 @@ a,
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
+} */
+
+a,
+.green{
+  text-decoration: none;
+  color: rgb(55, 238, 219);
+  transition: 0.4s;
 }
+/* @media (hover: hover) {
+  a:hover {
+    background-color:#f5ab6b;
+  }
+} */
