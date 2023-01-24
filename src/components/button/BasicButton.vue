@@ -1,5 +1,5 @@
 <template>
-    <a href="#">SAMPLE</a>
+  <a href="#">SAMPLE</a>
 </template>
 
 <style>
