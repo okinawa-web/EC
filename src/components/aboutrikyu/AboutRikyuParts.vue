@@ -57,19 +57,16 @@ const props = defineProps({
 }
 .clear_box {
   width: 80%;
-  padding-left: 5%;
 }
 .about-title {
   margin: -120px 10px 0;
   padding: 20px;
 }
-
 h1 {
   font-size: 450%;
   width: 90%;
   margin: 50px auto auto auto;
 }
-
 p {
   font-size: 150%;
   width: 90%;
@@ -80,7 +77,6 @@ p {
   width: 90%;
   margin: auto;
 }
-
 .hyphen {
   display: flex;
   align-items: center; /*垂直中心 */
@@ -91,7 +87,6 @@ p {
   content: "";
   width: 3em;
 }
-
 .img-frame {
   /* position: relative; */
   position: absolute;
@@ -113,7 +108,6 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
 .img-01 {
   background-image: url("`src/assets/${props.img01}`");
   animation: slide-animation-01 24s infinite;
