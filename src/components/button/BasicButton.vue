@@ -1,17 +1,24 @@
 <template>
-    <a href="#">SAMPLE</a>
+  <router-link to="/activity" class="basicButton">{{
+    props.linkTitle
+  }}</router-link>
 </template>
 
+<script setup>
+const props = defineProps({
+  linkTitle: String,
+});
+</script>
 <style>
-a {
-  display: block;
+.basicButton {
+  /* display: block; */
   color: white;
   font-size: 16px;
   background: #7d8384;
-  padding: 18px 30px;
+  margin: 18px 30px;
   transition: width 500ms ease;
 }
-a:hover {
+basicButton:hover {
   background: #7d8384;
 }
 </style>

@@ -6,14 +6,17 @@
     <p>送迎バスにてお越しください。</p>
     <p>ご宿泊期間中、</p>
     <p>各部屋1台のカートをご利用いただけます。</p>
-    <Button />
+    <Button :linkTitle="buttonTitle" />
   </div>
 
   <img src="/src/assets/umigame.jpg" alt="うみの画像" />
 </template>
 
 <script setup>
+import { ref } from "vue";
 import Button from "@/components/button/BasicButton.vue";
+
+const buttonTitle = ref("Acces");
 </script>
 
 <style>
