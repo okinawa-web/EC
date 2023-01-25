@@ -42,22 +42,24 @@ const props = defineProps({
 <style>
 .about {
   color: darkgray;
-  display: flex;
+  /* display: flex; */
 }
-/* .title{
-    line-height: 150%
-} */
+.title{
+    padding-left: 5%;
+}
+
 .about-text {
   background-color: rgb(249, 246, 242);
   width: 50%;
   height: 60%;
   padding: 50px;
   margin: 4%;
+  left: 40%;
   position: absolute;
 }
 .clear_box {
   width: 80%;
-  padding-left: 5%;
+  padding-left: 10%;
 }
 .about-title {
   margin: -120px 10px 0;
@@ -94,12 +96,12 @@ p {
 
 .img-frame {
   /* position: relative; */
-  position: absolute;
-  left: 50%;
-  top: 25%;
+  /* position: absolute; */
+  left: 0%;
+  top: 35%;
   width: 50%;
   height: 300px;
-  overflow: hidden;
+  /* overflow: hidden; */
   margin: auto;
 }
 .img-01,
