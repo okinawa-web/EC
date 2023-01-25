@@ -42,10 +42,10 @@ const props = defineProps({
 <style>
 .about {
   color: darkgray;
-  /* display: flex; */
+  display: flex;
 }
-.title{
-    padding-left: 5%;
+.title {
+  padding-left: 5%;
 }
 
 .about-text {
@@ -96,12 +96,12 @@ p {
 
 .img-frame {
   /* position: relative; */
-  /* position: absolute; */
+  position: absolute;
   left: 0%;
   top: 35%;
   width: 50%;
   height: 300px;
-  /* overflow: hidden; */
+  overflow: hidden;
   margin: auto;
 }
 .img-01,
