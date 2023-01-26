@@ -30,7 +30,8 @@ h1 {
   margin: 50px auto auto auto;
 }
 
-p {
+p,
+h2 {
   font-size: 150%;
   width: 90%;
   margin: auto;
