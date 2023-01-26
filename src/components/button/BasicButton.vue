@@ -1,9 +1,10 @@
 <template>
-  <!-- <a href="#">SAMPLE</a> -->
-  <div class="basic">
-    <router-link :to="`/${props.link}`" class="basic_btn">
-      ➡︎ {{ props.linkName }}
-    </router-link>
+  <div class="button">
+    <div class="basic">
+      <router-link :to="`/${props.link}`" class="basic_btn">
+        ➡︎ {{ props.linkName }}
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -16,6 +17,8 @@ const props = defineProps({
 
 <style>
 .basic {
+  display: block;
+
   position: relative;
   /* margin-left: auto;
   margin-right: auto; */
@@ -29,6 +32,8 @@ const props = defineProps({
 }
 
 .basic_btn {
+  display: block;
+
   width: 100%;
   height: 100%;
   color: darkgray;
