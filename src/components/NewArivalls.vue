@@ -7,23 +7,23 @@
     <div class="fullList">
       <div class="titleBox">
         <p>2023.1.18</p>
-        <a href="#">ワイドーマラソン！</a>
+        <a href="#" class="newsTitle">ワイドーマラソン！</a>
       </div>
       <div class="titleBox">
         <p>2023.1.18</p>
-        <a href="#">全国旅行支援について</a>
+        <a href="#" class="newsTitle">全国旅行支援について</a>
       </div>
       <div class="titleBox">
         <p>2023.1.18</p>
-        <a href="#">もう年末だ〜！</a>
+        <a href="#" class="newsTitle">もう年末だ〜！</a>
       </div>
       <div class="titleBox">
         <p>2023.1.18</p>
-        <a href="#">冬の宮古島でドライブ観光！</a>
+        <a href="#" class="newsTitle">冬の宮古島でドライブ観光！</a>
       </div>
       <div class="titleBox">
         <p>2023.1.18</p>
-        <a href="#">サンセット！</a>
+        <a href="#" class="newsTitle">サンセット！</a>
       </div>
     </div>
   </div>
