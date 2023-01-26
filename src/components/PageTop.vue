@@ -1,13 +1,15 @@
 <template>
   <div class="all">
     <h1 class="pagetitle">{{ props.pagetitle }}</h1>
-    <p>{{ props.subTitle }}</p>
+    <p class="subTitle">{{ props.subTitle }}</p>
     <div class="link">
       <a href="/top">TOP</a>
       <span class="hyphen">-</span>
       <span>{{ props.subTitle }}</span>
     </div>
-    <div><img :src="`src/assets/${props.image}`" alt="海" /></div>
+    <div>
+      <img :src="`src/assets/${props.image}`" alt="海" class="topPhoto" />
+    </div>
   </div>
 </template>
 
@@ -24,14 +26,13 @@ const props = defineProps({
   color: darkgray;
 }
 
-h1 {
+.pagetitle {
   font-size: 450%;
   width: 90%;
   margin: 50px auto auto auto;
 }
 
-p,
-h2 {
+.subTitle {
   font-size: 150%;
   width: 90%;
   margin: auto;
@@ -48,7 +49,7 @@ h2 {
   margin: 12px;
 }
 
-img {
+.topPhoto {
   display: block;
   width: 90%;
   height: 350px;
@@ -58,4 +59,3 @@ img {
   object-position: 0% 70%;
 }
 </style>
-
