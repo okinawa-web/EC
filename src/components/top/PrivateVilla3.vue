@@ -1,56 +1,71 @@
 <template>
-  <h1>Private Villa</h1>
-  <p>1日3組様限定のオールプライベートヴィラ</p>
-
-  <div>
-    <h2>Rooms</h2>
-  </div>
-  <div class="box">
-    <div>
-      <p>オーシャンビューの開放的なお部屋</p>
-      <p>
-        ３棟のヴィラはオーシャンビューのオールプライベートな空間。セミオープンスタイルの広いリビングの向こうには、自分たちだけのテラスと宮古ブルーが広がります。
-      </p>
-      <Button />
-    </div>
-    <div>
-      <p>Private terrace & Pool</p>
-      <p>
-        リビングから広がる、自分たちだけの景色。
-        朝から日中には見渡す限りに広がる宮古ブルーを、
-        夕方には辺り一面が黄金色に包まれます。ときを忘れ、
-        赴くままに優雅なひとときを。
-      </p>
-      <Button />
-    </div>
-    <div>
-      <p>Ocean view bath</p>
-      <p>
-        大きな窓から宮古ブルーを望む開放的な空間。
-        何もしないという贅沢なときを是非。
-      </p>
-      <Button />
+  <div class="roomAll">
+    <div class="roomBox">
+      <div class="roomDescription">
+        <div class="roomSubDescription">
+          <p>オーシャンビューの開放的なお部屋</p>
+          <p>
+            ３棟のヴィラはオーシャンビューのオールプライベートな空間。セミオープンスタイルの広いリビングの向こうには、自分たちだけのテラスと宮古ブルーが広がります。
+          </p>
+          <Button :linkName="linkTitle" :link="destination" />
+        </div>
+      </div>
+      <div class="photo">
+        <img src="src/assets/umigame.jpg" alt="pic" class="photo5" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
-import BasicButton from "/src/components/button/BasicButton.vue";
+// import { ref } from "vue";
+// import Button from "/src/components/button/BasicButton.vue";
 
-const linkTitle = ref("aaaa");
+// const linkTitle = ref("Service");
+// const destination = ref("accses");
 </script>
 
 <style>
-.box {
-  display: flex;
-  width: 380px;
-  overflow-x: scroll;
+.roomAll {
+  width: auto;
+  height: 500px;
+  /* background-color: pink; */
+}
+.roomBox {
+  font-size: 12px;
+  margin: 10%;
 }
 
-.box div {
-  width: 80%;
-  margin: 30px;
-  flex-shrink: 0;
+.roomSubDescription {
+  float: left;
+  width: 350px;
+  font-size: 20px;
+  margin-top: 300px;
+}
+
+.photo {
+  float: left;
+  position: relative;
+}
+
+.photo5 {
+  right: -300px;
+  bottom: 100px;
+  width: 120%;
+  height: 150%;
+  margin-left: 50%;
+}
+
+.villaTopBox {
+  width: 90%;
+  margin: auto;
+}
+
+.villaTitle {
+  font-size: 80px;
+}
+
+.villaSubTitle {
+  font-size: 20px;
 }
 </style>
