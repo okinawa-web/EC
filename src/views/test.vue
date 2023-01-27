@@ -1,27 +1,20 @@
 <template>
-  <!-- <img :src="`src/assets/${props.image}`" alt="アメニティ" /> -->
-  <img
-    :src="`@/assets/${ptops.image}`"
-    alt="アメニティ"
-    class="AmenitiesPhoto"
-  />
-  <p class="AmenitiesTitle">{{ props.amenitieName }}</p>
+  <h1>Room Facilities & Equipment</h1>
+  <p>客室設備＆備品</p>
+  <!-- コンポーネント呼び出し↓ -->
+  <!-- <Item :image="itemImage" :amenitieName="itemName" /> -->
 </template>
 
-<script setup>
-const props = defineProps({
-  image: String,
-  amenitieName: String,
-});
-</script>
-<style>
-.AmenitiesPhoto {
-  width: 350px;
-  height: 250px;
-}
+<script>
+import { ref } from "vue";
+import Item from "@/components/roomFacility/AmenitesItem.vue";
 
-.AmenitiesTitle {
-  width: 400px;
-  font-size: 20px;
-}
-</style>
+// const itemImage = ref("toilet.jpg");
+// const itemName = ref("トイレ");
+
+export default {
+  components: {
+    Item,
+  },
+};
+</script>
