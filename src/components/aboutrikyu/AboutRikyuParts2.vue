@@ -64,6 +64,9 @@ const props = defineProps({
 .about-title {
   margin: -120px 10px 0;
   padding: 20px;
+  font-size: 450%;
+  width: 90%;
+  margin: 50px auto auto auto;
 }
 
 h1 {
