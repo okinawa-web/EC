@@ -64,6 +64,11 @@ const router = createRouter({
       name: "News",
       component: News,
     },
+    {
+      path: "/fasility",
+      name: "Facility",
+      component: News,
+    },
  
     //テスト用
     {
