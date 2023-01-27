@@ -11,7 +11,8 @@
           <p>
             ３棟のヴィラはオーシャンビューのオールプライベートな空間。セミオープンスタイルの広いリビングの向こうには、自分たちだけのテラスと宮古ブルーが広がります。
           </p>
-      <Button :linkName="linkTitle" :link="destination" />
+          <!-- <Button :linkName="linkTitle" :link="destination" /> -->
+          <BasicButton :linkName= "linkTitle" :link="destination" />
         </div>
       </div>
       <div class="photo">
@@ -24,18 +25,17 @@
 
 <script>
 import { ref } from "vue";
-import Button from "/src/components/button/BasicButton.vue";
+import BasicButton from "/src/components/button/BasicButton.vue";
 
 export default {
   components: {
-    Button,
+    BasicButton,
   },
 };
 // import Button from "@/components/button/BasicButton.vue";
 
 const linkTitle = ref("Service");
 const destination = ref("accses");
-
 </script>
 
 <style>
