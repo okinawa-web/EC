@@ -1,23 +1,25 @@
 <template>
-  <img
+  <!-- <img
     :src="`@/assets/${props.image}`"
     alt="アメニティ"
     class="AmenitiesPhoto"
-  />
-  <p class="AmenitiesTitle">{{ props.amenitieName }}</p>
+  /> -->
+  <!-- <p class="AmenitiesTitle">{{ props.amenitieName }}</p> -->
+  <img src="@/assets/toilet.jpg" alt="トイレ" class="AmenitiesPhoto" />
+  <p class="AmenitiesTitle"></p>
 </template>
 
-<script>
-const props = defineProps({
-  image: String,
-  amenitieName: String,
-});
+<script setup>
+// const props = defineProps({
+//   image: String,Ï
+//   amenitieName: String,
+// });
 
-export default {
-  components: {
-    Item,
-  },
-};
+// export default {
+//   components: {
+//     Item,
+//   },
+// };
 </script>
 <style>
 .AmenitiesPhoto {
