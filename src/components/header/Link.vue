@@ -14,13 +14,14 @@
 
 <style>
 .link {
-  float: left;
-  padding-top: 2.5%;
+  margin: 0;
+  /* float: left; */
+  /* padding-top: 2.5%; */
   /* margin-top: 0%;
   margin-bottom: 50%; */
   /* display: flex; */
-  /* position: absolute;
-  bottom: 0%; */
+  /* position: absolute; */
+  /* bottom: 0%; */
 }
 
 .mgr-10 {
