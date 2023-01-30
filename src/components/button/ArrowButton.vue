@@ -1,6 +1,13 @@
 <template>
-  <a href="#" class="arrow">喜島</a>
+  <a :href="`${props.Link}`" class="arrow">{{ props.Name }}</a>
 </template>
+
+<script setup>
+const props = defineProps({
+  Link: String,
+  Name: String,
+});
+</script>
 
 <style>
 .arrow {
@@ -9,6 +16,8 @@
   color: darkgray;
   text-decoration: none;
   transition: 1s;
+  text-align: center;
+  justify-content: center;
 }
 
 .arrow::before {
