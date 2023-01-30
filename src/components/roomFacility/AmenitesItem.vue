@@ -6,7 +6,7 @@
   /> -->
   <!-- <p class="AmenitiesTitle">{{ props.amenitieName }}</p> -->
   <img src="@/assets/toilet.jpg" alt="トイレ" class="AmenitiesPhoto" />
-  <p class="AmenitiesTitle">トイレ</p>
+  <p class="AmenitiesTitle"></p>
 </template>
 
 <script setup>
