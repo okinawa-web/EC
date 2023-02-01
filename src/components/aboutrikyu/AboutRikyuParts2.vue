@@ -4,11 +4,11 @@
       <div class="title">
         <h1 class="about-title">{{ props.aboutTitle }}</h1>
         <span class="hyphen">
-          <p>{{ props.subTitle }}</p></span
+          <p class="aboutText">{{ props.subTitle }}</p></span
         >
       </div>
       <div class="clear_box">
-        <p>{{ props.messages }}</p>
+        <p class="aboutText">{{ props.messages }}</p>
         <br />
         <p class="coments">{{ props.comments }}</p>
       </div>
@@ -69,13 +69,13 @@ const props = defineProps({
   margin: 50px auto auto auto;
 }
 
-h1 {
+.about-titl {
   font-size: 450%;
   width: 90%;
   margin: 50px auto auto auto;
 }
 
-p {
+.aboutText {
   font-size: 150%;
   width: 90%;
   margin: auto;
