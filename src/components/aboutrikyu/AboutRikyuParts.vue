@@ -67,11 +67,11 @@ h1 {
   width: 90%;
   margin: 50px auto auto auto;
 }
-p {
+/* p {
   font-size: 150%;
   width: 90%;
   margin: auto;
-}
+} */
 .coments {
   font-size: 100%;
   width: 90%;
