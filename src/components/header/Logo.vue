@@ -10,8 +10,8 @@
 .logo {
   margin: 0;
   margin-right: 0%;
-  width: 40%;
-  height: 40%;
+  width: auto;
+  height: 100%;
   /* display: flex; */
   /* float: left; */
 }

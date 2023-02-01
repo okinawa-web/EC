@@ -22,6 +22,7 @@ const props = defineProps({
 <style>
 .all {
   color: darkgray;
+  margin: 10% auto ;
 }
 
 h1 {
@@ -58,4 +59,3 @@ img {
   object-position: 0% 70%;
 }
 </style>
-

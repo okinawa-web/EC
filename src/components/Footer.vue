@@ -1,68 +1,44 @@
+<!-- eslint-disable prettier/prettier -->
 <template>
   <footer id="footer">
-    <div class="con_footer">
-      <p class="box_img">
-        <img
-          src="@/assets/HAMAJIMAlogo.jpg"
-          alt="umi"
-          height="500"
-          width="1300"
-        />
+    <p class="side_img">
+      <!-- <img src="@/assets/umigame.jpg" alt="footer" /> -->
+    <div class="footer_text">
+      <p class="logo">
+        <router-link to="/">
+          <img src="@/assets/logo.png" alt="logo" />
+        </router-link>
       </p>
-      <p class="side_img">
-        <img
-          src="@/assets/umigame.jpg"
-          alt="umigame"
-          height="350"
-          width="600"
-        />
-      </p>
-      <div class="footer_text">
-        <p class="logo">
-          <a href="#"></a>
-          <img
-            src="@/assets/logo.png"
-            alt="logo"
-            class="logo"
-            height="300"
-            width="300"
-          />
-        </p>
 
-        <div class="footer_info">
-          <p>~HAMAJIMA~</p>
-          <p>〒000-0000 <br />沖縄県浜島2207</p>
-          <p>予約専用ダイヤル</p>
-          <h3>Tel:0000-000-000</h3>
-          <p>受付時間 10:00~18:00</p>
-        </div>
+      <div class="footer_info">
+        <p>~HAMAJIMA~</p>
+        <p>〒000-0000 <br />沖縄県浜島2207</p>
+        <p>予約専用ダイヤル</p>
+        <h3>Tel:0000-000-000</h3>
+        <p>受付時間 10:00~18:00</p>
       </div>
-      <p id="copyright">©︎2023~ ALL RIGTHS RESERVED HAMAJIMA.</p>
+      <div class="copyright">©︎2023~ ALL RIGTHS RESERVED HAMAJIMA.</div>
     </div>
+    </p>
   </footer>
 </template>
 
 <style>
-.box_img {
+.footer_text {
   position: relative;
+  color: darkgray;
 }
-
-.side_img {
+.logo {
   position: absolute;
-  bottom: -300px;
-  left: 10px;
-}
-
-.logo img {
-  position: absolute;
-  bottom: 30px;
-  left: 40%;
 }
 
 .footer_info {
-  text-align: right;
+  position: absolute;
+  right: 0;
+  font-size: 16px;
 }
-#copyright {
+
+.copyright {
   text-align: center;
 }
 </style>
