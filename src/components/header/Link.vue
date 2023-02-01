@@ -14,7 +14,8 @@
 
 <style>
 .link {
-  margin: 0;
+  bottom: 10%;
+  /* margin: 0; */
   /* float: left; */
   /* padding-top: 2.5%; */
   /* margin-top: 0%;

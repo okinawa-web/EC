@@ -1,5 +1,5 @@
 <template>
-  <header id="header">
+  <header id="head">
     <HeaderLogo />
     <HeaderLink />
     <HeaderReserve />
@@ -24,8 +24,17 @@ export default {
 </script>
 
 <style>
-/* .header {
-    display: flex;
-    align-items: center;
-  } */
+#head {
+  display: flex;
+  /* align-items: center; */
+  background-color: white;
+  width: 100%;
+  /*固定*/
+  position: fixed;
+  top: 0%;
+}
+.elements {
+  /* width: 100%; */
+  /* flex: 1%; */
+}
 </style>
