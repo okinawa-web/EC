@@ -10,9 +10,9 @@
   font-size: 20px;
   font-weight: bold;
   background: #7d8384;
-  width: 6%;
-  padding: 12px 20px;
-  transition: width 500ms ease;
+  width: 12%;
+  padding: 10px 25px;
+  /* transition: width 500ms ease; */
   float: left;
   text-align: center;
 }

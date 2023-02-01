@@ -67,6 +67,7 @@ const props = defineProps({
   width: 90%;
   margin: 50px auto auto auto;
 } */
+
 /* p {
   font-size: 150%;
   width: 90%;

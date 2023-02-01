@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="ham">
     <!-- ハンバーガーメニュー部分 -->
     <div class="nav">
       <!-- 表示・非表示を切り替えるチェックボックス -->
@@ -52,7 +52,7 @@
 </template>
 
 <style>
-.header {
+.ham {
   display: flex;
   justify-content: space-between;
   align-items: center;
