@@ -24,6 +24,7 @@ const props = defineProps({
 <style>
 .all {
   color: darkgray;
+  margin: 10% auto ;
 }
 
 .pagetitle {

@@ -76,10 +76,11 @@ const props = defineProps({
 }
 
 .aboutText {
+/* p 
   font-size: 150%;
   width: 90%;
   margin: auto;
-}
+} */
 .coments {
   font-size: 100%;
   width: 90%;
