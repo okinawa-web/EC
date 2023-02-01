@@ -1,91 +1,51 @@
 <template>
-  <h1>Room Facilities & Equipment</h1>
-  <p>客室設備＆備品</p>
+  <p>Amenities</p>
   <!-- コンポーネント呼び出し↓ -->
   <!-- <Item :image="itemImage" :amenitieName="itemName" /> -->
-  <div class="amenitieBox">
-    <div class="col_4">
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-
+  <p>アメニティ</p>
+  <div class="col_4">
+    <div class="amenitieItem">
+      <Item />
     </div>
-
-    <p>アメニティ</p>
-    <div class="col_4">
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
+    <div class="amenitieItem">
+      <Item />
     </div>
+    <div class="amenitieItem">
+      <Item />
+    </div>
+    <div class="amenitieItem">
+      <Item />
+    </div>
+    <div class="amenitieItem">
+      <Item />
+    </div>
+  </div>
 
-    <p>キッチン用品</p>
-    <div class="col_4">
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
-      <div class="amenitieItem">
-        <Item />
-      </div>
+  <p>キッチン用品</p>
+  <div class="col_4">
+    <div class="amenitieItem">
+      <Item />
+    </div>
+    <div class="amenitieItem">
+      <Item />
+    </div>
+    <div class="amenitieItem">
+      <Item />
+    </div>
+    <div class="amenitieItem">
+      <Item />
+    </div>
+    <div class="amenitieItem">
+      <Item />
+    </div>
+    <div class="amenitieItem">
+      <Item />
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+// import { ref } from "vue";
 import Item from "@/components/roomFacility/AmenitesItem.vue";
 
 // const itemImage = ref<"toilet.jpg">;
