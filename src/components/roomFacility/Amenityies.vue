@@ -1,103 +1,28 @@
 <template>
-  <p>Amenities</p>
-  <!-- コンポーネント呼び出し↓ -->
-  <!-- <Item :image="itemImage" :amenitieName="itemName" /> -->
-  <p>アメニティ</p>
-  <div class="col_4">
-    <div class="amenitieItem">
-      <Item />
-    </div>
-    <div class="amenitieItem">
-      <Item />
-    </div>
-    <div class="amenitieItem">
-      <Item />
-    </div>
-    <div class="amenitieItem">
-      <Item />
-    </div>
-    <div class="amenitieItem">
-      <Item />
-    </div>
-  </div>
-
-  <p>キッチン用品</p>
-  <div class="col_4">
-    <div class="amenitieItem">
-      <Item />
-    </div>
-    <div class="amenitieItem">
-      <Item />
-    </div>
-    <div class="amenitieItem">
-      <Item />
-    </div>
-    <div class="amenitieItem">
-      <Item />
-    </div>
-    <div class="amenitieItem">
-      <Item />
-    </div>
-    <div class="amenitieItem">
-      <Item />
-    </div>
-  </div>
+  <Header />
+  <PageTop :pagetitle="page" :image="pic" :subTitle="sub" />
+  <Amenities />
+  <Kithen />
+  <FreeService />
+  <PaydService />
+  <Footer />
 </template>
 
-<script>
-// import { ref } from "vue";
-import Item from "@/components/roomFacility/AmenitesItem.vue";
+<script setup>
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
+import Kithen from "@/components/roomFacility/Kitchenware.vue";
+import Amenities from "@/components/roomFacility/Amenityies.vue";
+import FreeService from "@/components/roomFacility/FreeService.vue";
+import PaydService from "@/components/roomFacility/PaidService.vue";
+import PageTop from "@/components/PageTop.vue";
+import { ref } from "vue";
+//ページタイトル
+const page = ref("Room Facilities");
 
-// const itemImage = ref<"toilet.jpg">;
-// const itemName = ref<"トイレ">;
-export default {
-  // props: [itemImage: ref(""), itemName],
-  components: {
-    Item,
-  },
-};
+//画像
+const pic = ref("mang1.jpg");
+
+//サブタイトル
+const sub = ref("客室設備・アメニティ");
 </script>
-
-<style>
-.amenitieBox {
-  text-align: center;
-  width: 80%;
-  margin: auto;
-}
-
-.col_4 {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: top;
-}
-.col_4 .amenitieItem {
-  width: 20%;
-  /* padding: 16px;
-  display: -ms-flexbox;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box; */
-}
-
-.col_4:after {
-  content: "";
-  display: block;
-  width: 25%;
-  height: 0;
-  order: 1;
-}
-/* .col_4:before {
-  content: "";
-  display: block;
-  width: 25%;
-  height: 0;
-} */
-
-.amenitieItem {
-  width: 20%;
-  padding: 10px;
-}
-</style>
