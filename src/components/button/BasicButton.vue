@@ -22,7 +22,7 @@ const props = defineProps({
   position: relative;
   /* margin-left: auto;
   margin-right: auto; */
-  width: 150px;
+  width: 250px;
   height: 48px;
   line-height: 48px;
   display: flex;
@@ -59,19 +59,4 @@ const props = defineProps({
 .basic_btn:hover:before {
   width: 100%;
 }
-
-/* .basic_btn {
-  display: block;
-  font-size: 16px;
-  padding: 18px 30px;
-  transition: width 500ms ease;
-  width: 6%;
-  height: 15px;
-  color: darkgray;
-  background-color: aquamarine;
-} */
-/* .basic_btn:hover {
-  background: darkgray;
-  color: white;
-} */
 </style>
