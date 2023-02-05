@@ -3,7 +3,7 @@
     <h1 class="pagetitle">{{ props.pagetitle }}</h1>
     <p class="subTitle">{{ props.subTitle }}</p>
     <div class="link">
-      <a href="/top">TOP</a>
+      <a href="/">TOP</a>
       <span class="hyphen">-</span>
       <span>{{ props.subTitle }}</span>
     </div>
