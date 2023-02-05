@@ -3,7 +3,7 @@
     <img src="@/assets/sup1.jpg" alt="SUP" class="button" />
     <div class="button">
       <div class="basic">
-        <router-link to="/fasility" class="basic_btn">
+        <router-link to="facility" class="basic_btn">
           <p class="afTitle">Amenities & Fasilities</p>
           <p class="afDescription">アメニティ＆設備</p>
           <p class="afDescription">
@@ -24,6 +24,9 @@
 </script>
 
 <style>
+.afALL {
+  display: flex;
+}
 .afTitle {
   font-size: 40px;
 }
@@ -34,7 +37,7 @@
 
 .button {
   text-align: center;
-  float: left;
+  /* float: left; */
   width: 900px;
   height: 600px;
 }

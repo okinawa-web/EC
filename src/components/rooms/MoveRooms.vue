@@ -121,10 +121,12 @@ li {
 .wrap_txt {
   position: absolute;
   top: 50%;
-  /* left: 50%; */
-  transform: translate(85%, -90%);
+  transform: translate(85%, 480%); /*おかしくなるので調整 */
   background-color: rgba(252, 247, 247, 0.9);
   color: darkgray;
   text-align: center;
+}
+.room101{
+
 }
 </style>
