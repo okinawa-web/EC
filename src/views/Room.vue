@@ -1,3 +1,6 @@
+<!-- <template>
+    <p>ROompage</p>
+</template> -->
 <template>
   <div class="room">
     <Pagetop :pagetitle="page" :image="pic" :subTitle="sub" />
@@ -13,15 +16,15 @@
       <div class="item">
         <div class="terrace">
           <p>Terrace & Pool</p>
-          <img src="@/assets/terasu.jpg" alt="" class="image" />
+          <img src="@/assets/terasu.jpg" alt="" class="item_image" />
         </div>
         <div class="bath">
           <p>Bath</p>
-          <img src="@/assets/toilet.jpg" alt="" class="image" />
+          <img src="@/assets/toilet.jpg" alt="" class="item_image" />
         </div>
         <div class="kitchen">
           <p>Kitchen</p>
-          <img src="@/assets/room1.jpg" alt="" class="image" />
+          <img src="@/assets/room1.jpg" alt="" class="item_image" />
         </div>
       </div>
     </div>
@@ -66,7 +69,7 @@ const sub = ref("101号室");
   margin-left: 40%;
   margin-bottom: 10%;
 }
-.image {
+.item_image {
   width: 50%;
 }
 .bath {

@@ -13,7 +13,7 @@
   width: 12%;
   padding: 10px 25px;
   /* transition: width 500ms ease; */
-  float: left;
+  /* float: left; */
   text-align: center;
 }
 .reserve:hover {

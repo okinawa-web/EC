@@ -4,11 +4,7 @@
           <div v-for="room in rooms" :key="room.id" class="room"></div>
         </div> -->
     <div class="room101">
-      <a href="/rooms/101">
-        <!-- <router-link
-              :to="{ name: 'room', query: { room_id: room.id } }"
-              @click="roomDetails"
-            ></router-link> -->
+      <router-link :to="{ name: 'Room', query: { id: 101 } }">
         <p class="img">
           <img src="@/assets/room1.jpg" alt="101" />
         </p>
@@ -36,10 +32,10 @@
           </div>
           <p>→</p>
         </div>
-      </a>
+      </router-link>
     </div>
     <div class="room102">
-      <a href="/rooms/102">
+      <router-link :to="{ name: 'Room', query: { id: 102 } }">
         <p class="img">
           <img src="@/assets/room2.png" alt="102" />
         </p>
@@ -67,10 +63,10 @@
           </div>
           <p>→</p>
         </div>
-      </a>
+      </router-link>
     </div>
     <div class="room103">
-      <a href="/rooms/103">
+      <router-link :to="{ name: 'Room', query: { id: 103 } }">
         <p class="img">
           <img src="@/assets/room4.jpg" alt="103" />
         </p>
@@ -98,7 +94,7 @@
           </div>
           <p>→</p>
         </div>
-      </a>
+      </router-link>
     </div>
   </div>
 </template>
@@ -115,18 +111,15 @@
 li {
   list-style-type: none;
 }
-.img {
+img {
   position: relative;
 }
 .wrap_txt {
-  position: absolute;
-  top: 50%;
-  transform: translate(85%, 480%); /*おかしくなるので調整 */
+  /* position: absolute;
+  top: 70%;
+  transform: translate(85%, 480%);  */
   background-color: rgba(252, 247, 247, 0.9);
   color: darkgray;
   text-align: center;
-}
-.room101{
-
 }
 </style>
