@@ -1,4 +1,5 @@
 <template>
+  <div class="hamajma">〜HAMAJIMA LAND〜</div>
   <div class="header_all">
     <div class="header_bar">
       <router-link to="/" class="header_link"> 予約の確認 </router-link>
@@ -29,5 +30,9 @@
   background-color: rgb(14, 109, 130);
   width: 120px;
   text-align: center;
+}
+.hamajima {
+  width: 1020px;
+  text-align: right;
 }
 </style>
