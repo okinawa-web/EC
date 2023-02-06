@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import Reserve from "../views/resrve/reserve.vue";
 import AboutRikyu from "../views/AboutRikyu.vue";
 import Rooms from "../views/Rooms.vue";
+import Room from "../views/Room.vue";
 import GuestRoom from "../views/GuestRoom.vue";
 import Facility from "../views/Facility.vue";
 import Activity from "../views/Activity.vue";
@@ -33,6 +34,11 @@ const router = createRouter({
       path: "/rooms",
       name: "Rooms",
       component: Rooms,
+    },
+    {
+      path: "/room",
+      name: "Room",
+      component: Room,
     },
     {
       path: "/guestRoom",
