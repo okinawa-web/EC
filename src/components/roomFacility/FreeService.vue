@@ -1,21 +1,21 @@
 <template>
   <div class="freeBox">
-    <ul class="box_ser">
+    <ul class="box_ul">
       <h1 class="freeServise">Free Service</h1>
-      <li>
+      <li class="free_li">
         <img src="@/assets/drinkIcon.png" alt="ロゴ" class="freeIcon" />
-        <p>冷蔵庫内ドリンク</p>
-        <p>飲み放題サービス</p>
+        <p class="serviseP">冷蔵庫内ドリンク</p>
+        <p class="serviseP">飲み放題サービス</p>
       </li>
-      <li>
+      <li class="free_li">
         <img src="@/assets/carIcon.png" alt="ロゴ" class="freeIcon" />
-        <p>宿泊期間中</p>
-        <p>駐車料金無料</p>
+        <p class="serviseP">宿泊期間中</p>
+        <p class="serviseP">駐車料金無料</p>
       </li>
-      <li>
+      <li class="free_li">
         <img src="@/assets/bbqIcon.png" alt="ロゴ" class="freeIcon" />
-        <p>野外用</p>
-        <p>バーベキューコンロ</p>
+        <p class="serviseP">野外用</p>
+        <p class="serviseP">バーベキューコンロ</p>
       </li>
     </ul>
   </div>
@@ -24,7 +24,7 @@
 <style>
 .freeBox {
   width: auto;
-  /* height: auto; */
+  height: auto;
   margin: 0 30px;
 }
 
@@ -32,30 +32,25 @@
   width: 70px;
   margin-bottom: 30px;
 }
-.box_ser {
+
+.box_ul .free_li {
   text-align: center;
-}
-.box_ser li {
-  text-align: center;
-  display: inline-block;
+  list-style: none;
 }
 
-li {
+.free_li {
+  display: inline-block;
   padding: 60px;
-  width: 20%;
+  width: 23.5%;
+  height: 200px;
   border: 1px solid darkgray;
   margin-top: 50px;
 }
 
-ul {
-  list-style: none;
-}
-
-p {
+.serviceP {
   font-size: 20px;
 }
 body {
   color: darkgray;
-  font-size: 10px;
 }
 </style>

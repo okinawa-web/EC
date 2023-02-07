@@ -37,7 +37,7 @@ a,
 a,
 .green{
   text-decoration: none;
-  color: rgb(55, 238, 219);
+  color: rgb(34, 167, 154);
   transition: 0.4s;
 }
 /* @media (hover: hover) {
@@ -45,4 +45,3 @@ a,
     background-color:#f5ab6b;
   }
 } */
-
