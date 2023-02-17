@@ -6,10 +6,13 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "start": "nodemon server.js"
   },
   "dependencies": {
+    "@prisma/client": "^4.10.1",
     "express": "^4.18.2",
+    "firebase": "^9.17.1",
     "leaflet": "^1.9.3",
     "nodemon": "^2.0.20",
     "pinia": "^2.0.28",
@@ -24,9 +27,23 @@
     "eslint": "^8.22.0",
     "eslint-plugin-vue": "^9.3.0",
     "prettier": "^2.7.1",
+    "prisma": "^4.10.1",
     "vite": "^4.0.0"
   },
   "rules": {
     "vue/multi-word-component-names": "off"
-  }
+  },
+  "description": "[参考サイト]https://www.villa-rikyu.jp/",
+  "main": "servere.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/okinawa-web/EC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/okinawa-web/EC/issues"
+  },
+  "homepage": "https://github.com/okinawa-web/EC#readme"
 }
