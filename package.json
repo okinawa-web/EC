@@ -16,7 +16,6 @@
     "leaflet": "^1.9.3",
     "nodemon": "^2.0.20",
     "pinia": "^2.0.28",
-    "prisma": "^4.10.1",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
@@ -28,6 +27,7 @@
     "eslint": "^8.22.0",
     "eslint-plugin-vue": "^9.3.0",
     "prettier": "^2.7.1",
+    "prisma": "^4.10.1",
     "vite": "^4.0.0"
   },
   "rules": {
