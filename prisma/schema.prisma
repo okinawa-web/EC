@@ -37,5 +37,5 @@ model Room {
 model Image {
   id Int @id @default(autoincrement())
   pageId Int
-  path String
+  path String 
 }
