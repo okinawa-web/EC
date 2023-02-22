@@ -15,15 +15,15 @@ model Member {
   name         String
   address      String
   tel          String
-  registerDate DateTime
+  registerDate DateTime?
   email        String   @unique
 }
 
 model Reserve {
   id            Int     @id @default(autoincrement())
   memberId      Int
-  reservePeople Int
-  date DateTime
+  reservePeople Int 
+  date DateTime?
 }
 
 model Room {
