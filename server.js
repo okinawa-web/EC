@@ -22,6 +22,21 @@ app.post("/", async (req, res) => {
   });
   return res.json(posts);
 });
+//Member取得
+app.get("/", async (req, res) => {
+  const posts = await prisma.Member.findMany();
+  return res.json(posts);
+});
+//Member指定取得
+app.get("/:id", async (req, res) => {
+  const id = Number(req.params.id);
+  const posts = await prisma.Member.findUnique({
+    where: {
+      id,
+    },
+  });
+  return res.json(posts);
+});
 
 // Reserve登録（ POST ）
 // app.post("/", async (req, res) => {
@@ -35,7 +50,6 @@ app.post("/", async (req, res) => {
 //   });
 //   return res.json(posts);
 // });
-
 
 app.get("/image", async (req, res) => {
   const images = await prisma.image.findMany();

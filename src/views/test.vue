@@ -1,6 +1,5 @@
 <template>
   <h1>会員登録</h1>
-
   <ul>
     <li v-for="member in members" :key="member.id">
       <span>名前<input type="text" v-model="member.name" /></span>
@@ -19,7 +18,8 @@
 
 <script setup>
 import { ref } from "vue";
-import { axios } from "axios";
+import { onMounted } from "vue";
+import axios from "axios";
 
 const members = ref([]);
 const member = ref("");
@@ -36,15 +36,17 @@ const email = ref("");
 // };
 
 //axios
-axios
-  .get("http://localhost:8000/member")
-  .then((res) => {
-    console.log("ステータス:", res.status);
-    console.log("ボディ：", res.data);
-  })
-  .catch((err) => {
-    console.log("エラー：", err);
-  });
+onMounted(() => {
+  axios
+    .get("http://localhost:8000/")
+    .then((res) => {
+      console.log("ステータス:", res.status);
+      console.log("ボディ：", res.data);
+    })
+    .catch((err) => {
+      console.log("エラー：", err);
+    });
+});
 
 const addMember = () => {
   members.value.push({
