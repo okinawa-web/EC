@@ -1,66 +1,32 @@
 <template>
-  <h1>会員登録</h1>
-  <ul>
-    <li v-for="member in members" :key="member.id">
-      <span>名前<input type="text" v-model="member.name" /></span>
-      <span>{{ member.name }}</span>
-    </li>
-  </ul>
-  <form @submit.prevent="addMember">
-    <div>
-      <input v-model="member" />
-    </div>
-    <div>
-      <button type="submit" @click="getMembers">会員登録</button>
-    </div>
-  </form>
+  <p>画像表示チェック</p>
+  {{ Image }}
 </template>
 
-<script setup>
-import { ref } from "vue";
-import { onMounted } from "vue";
-import axios from "axios";
+<script>
+// import { ref } from 'vue';
+// import axios from "axios";
+// import { getStorage, ref } from "firebase/storage";
 
-const members = ref([]);
-const member = ref("");
-const name = ref("");
-const address = ref("");
-const tel = ref("");
-const email = ref("");
+// const storage = getStorage();
+// const imageRef = ref(storage, "images");
+// const spaceRef = ref(storage, "images/bbq.jpg");
 
-//fetch
-// const getMembers = async () => {
-//   const response = await fetch("http://localhost:8000/member");
-//   const memberData = await response.json();
-//   members.value = memberData;
-// };
+// console.log("こんにちは", imageRef);
+// console.log("こんばんは", spaceRef);
 
-//axios
-onMounted(() => {
-  axios
-    .get("http://localhost:8000/")
-    .then((res) => {
-      console.log("ステータス:", res.status);
-      console.log("ボディ：", res.data);
-    })
-    .catch((err) => {
-      console.log("エラー：", err);
-    });
-});
+import http from "../http-common";
 
-const addMember = () => {
-  members.value.push({
-    name: name.value,
-    address: address.value,
-    tel: tel.value,
-    email: email.value,
-  });
-  member.value = "";
-};
+class Image {
+  getAll() {
+    return http.get("/");
+  }
+  get(id) {
+    return http.get(`/${id}`);
+  }
+}
 
-//Member削除メソッド
-// const deleteMember = (id) => {
-//   const index = members.value.findIndex((member) => member.id === id);
-//   members.value.splice(index, 1);
-// };
+export default new Image();
+
+console.log("画像", Image);
 </script>

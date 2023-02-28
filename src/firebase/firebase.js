@@ -12,6 +12,15 @@ const firebaseConfig = {
   measurementId: "G-XEDRJNJ2MK",
 };
 
+// import firebase from "firebase";
+// import { getStorage } from "firebase/storage";
+
+// const firestorage = getStorage(firebase);
+
+// export const firebaseApp = {
+//   firestorage,
+// };
+
 // firebaseConfigの値を元にfirebaseの初期化
 const app = initializeApp(firebaseConfig);
 // アナリティクスの初期化
