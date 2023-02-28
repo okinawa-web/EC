@@ -1,6 +1,8 @@
-const { PrismaClient } = require("@prisma/client");
-const { resolveComponentType } = require("@vue/compiler-core");
-const express = require("express");
+
+// const { PrismaClient } = require("@prisma/client");
+// const express = require("express");
+import { PrismaClient } from "@prisma/client";
+import express from "express";
 const app = express();
 const PORT = 8000;
 const cors = require("cors");
@@ -61,10 +63,19 @@ app.post("/", async (req, res) => {
   return res.json(posts);
 });
 
-//Memberデータ取得
-app.get("/member", async (req, res) => {
-  const member = await prisma.member.findMany();
-  return res.json(member);
+
+app.get("/image", async (req, res) => {
+  const images = await prisma.image.findMany();
+  return res.json(images);
+});
+app.get("/image/:id", async (req, res) => {
+  const id = req.params.id;
+  const image = await prisma.image.findUnique({
+    where: {
+      id: Number(id),
+    },
+  });
+  return res.json(image);
 });
 
 //Memberデータ書き込み
