@@ -9,3 +9,33 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Member {
+  id           Int      @id @default(autoincrement())
+  name         String
+  address      String
+  tel          String
+  registerDate DateTime?
+  email        String   @unique
+}
+
+model Reserve {
+  id            Int     @id @default(autoincrement())
+  memberId      Int
+  reservePeople Int 
+  date DateTime?
+}
+
+model Room {
+  id       Int      @id @default(autoincrement())
+  roomName String
+  price    Int
+  people   Int
+  detail   String
+}
+
+model Image {
+  id Int @id @default(autoincrement())
+  pageId Int
+  path String 
+}
