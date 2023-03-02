@@ -8,8 +8,10 @@ const PORT = 8001;
 app.use(express.json());
 
 app.get("/member", async (req, res) => {
-  const posts = await prisma.member.findMany();
-  res.json(posts);
+  console.log("test desuyo");
+  res.status(200).send({ message: "success" });
+  // const posts = await prisma.member.findMany();
+  // res.json(posts);
 });
 
 app.get("/", async (req, res) => {
@@ -27,9 +29,8 @@ app.get("/", async (req, res) => {
 //   res.json(post);
 // });
 
-
 app.listen(PORT, () => {
-  console.log(`Example app listening at http://localhost:${PORT}`)
+  console.log(`Example app listening at http://localhost:${PORT}`);
 });
 
 // app.post("/", async (req, res) => {
