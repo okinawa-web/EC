@@ -9,9 +9,23 @@ app.use(express.json());
 
 app.get("/member", async (req, res) => {
   console.log("test desuyo");
-  res.status(200).send({ message: "success" });
+  const members = await prisma.member.findMany();
+  res.status(200).send(members);
   // const posts = await prisma.member.findMany();
   // res.json(posts);
+});
+
+app.post("/member", async (req, res) => {
+  const newMember = await prisma.member.create({
+    data: {
+      name: req.body.name,
+      address: req.body.address,
+      tel: req.body.tel,
+      registerDate: req.body.registerDate,
+      email: req.body.email,
+    },
+  });
+  res.json(newMember);
 });
 
 app.get("/", async (req, res) => {
