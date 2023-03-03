@@ -28,15 +28,15 @@ app.get("/", async (req, res) => {
   return res.json(posts);
 });
 //Member指定取得
-app.get("/:id", async (req, res) => {
-  const id = Number(req.params.id);
-  const posts = await prisma.Member.findUnique({
-    where: {
-      id,
-    },
-  });
-  return res.json(posts);
-});
+// app.get("/:id", async (req, res) => {
+//   const id = req.params.id;
+//   const posts = await prisma.Member.findUnique({
+//     where: {
+//       id: Number(id),
+//     },
+//   });
+//   return res.json(posts);
+// });
 
 // Reserve登録（ POST ）
 // app.post("/", async (req, res) => {
@@ -63,6 +63,18 @@ app.get("/image/:id", async (req, res) => {
     },
   });
   return res.json(image);
+});
+
+//画像取得API
+app.get("/images", async (req, res) => {
+  try {
+    const images = await prisma.image.findMany();
+    const imagePaths = images.map((image) => image.path);
+    res.send(imagePaths);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("サーバーエラー");
+  }
 });
 
 app.listen(PORT, () => {
