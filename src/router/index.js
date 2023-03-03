@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import Reserve from "../views/resrve/reserve.vue";
+import Reserve from "../views/resrve/TheReserve.vue";
 import AboutRikyu from "../views/AboutRikyu.vue";
 import Rooms from "../views/Rooms.vue";
 import Room from "../views/Room.vue";
@@ -10,7 +10,8 @@ import Activity from "../views/Activity.vue";
 import Acsess from "../views/Acsess.vue";
 import Question from "../views/Question.vue";
 import News from "../views/News.vue";
-import MemberRegistration from "../views/resrve//MemberRegistration.vue";
+import MemberRegistration from "../views/resrve/MemberRegistration.vue";
+import TheReserve from "../views/resrve/TheReserve.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -74,6 +75,11 @@ const router = createRouter({
       path: "/MemberRegistration",
       name: "MemberRegistration",
       component: MemberRegistration,
+    },
+    {
+      path: "/TheReserve",
+      name: "TheReserve",
+      component: TheReserve,
     },
 
     //テスト用

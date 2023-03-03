@@ -20,10 +20,10 @@ model Member {
 }
 
 model Reserve {
-  id            Int     @id @default(autoincrement())
-  memberId      Int
-  reservePeople Int 
-  date DateTime?
+  id            Int      @id @default(autoincrement())
+  memberId      Int      // <- 変更
+  reservePeople Int      // <- 変更
+  date          DateTime // <- 変更
 }
 
 model Room {
