@@ -38,7 +38,7 @@
 }
 
 .header_div {
-  background-color: pink;
+  background-color: rgb(34, 167, 154);
   display: flex;
   width: 10%;
   padding: 5px;
