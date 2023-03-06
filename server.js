@@ -51,10 +51,10 @@ app.get("/", async (req, res) => {
 //   return res.json(posts);
 // });
 
-app.get("/image", async (req, res) => {
-  const images = await prisma.image.findMany();
-  return res.json(images);
-});
+// app.get("/image", async (req, res) => {
+//   const images = await prisma.image.findMany();
+//   return res.json(images);
+// });
 app.get("/image/:id", async (req, res) => {
   const id = req.params.id;
   const image = await prisma.image.findUnique({
@@ -66,7 +66,7 @@ app.get("/image/:id", async (req, res) => {
 });
 
 //画像取得API
-app.get("/images", async (req, res) => {
+app.get("/image", async (req, res) => {
   try {
     const images = await prisma.image.findMany();
     const imagePaths = images.map((image) => image.path);
