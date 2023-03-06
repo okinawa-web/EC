@@ -14,6 +14,11 @@ async function start() {
     const members = await prisma.member.findMany();
     res.status(200).send(members);
   });
+  app.get("/reserve", async (req, res) => {
+    console.log("reserve テスト");
+    const reserve = await prisma.reserve.findMany();
+    res.status(200).send(reserve);
+  });
 
   app.post("/reserve", async (req, res) => {
     const { memberId, reservePeople, date } = req.body;

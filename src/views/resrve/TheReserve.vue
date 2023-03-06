@@ -24,6 +24,7 @@ const addReserve = async () => {
     <h1>予約フォーム</h1>
   </div>
   <div>
+    <!-- prevent＝ボタン押した後も画面更新しない -->
     <form @submit.prevent="addReserve">
       <label>予約人数</label>
       <select name="reserveNumber" v-model="form.reservePeople">
@@ -38,6 +39,4 @@ const addReserve = async () => {
   </div>
 </template>
 
-<style>
-
-</style>
+<style></style>
