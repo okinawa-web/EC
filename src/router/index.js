@@ -12,6 +12,9 @@ import Question from "../views/Question.vue";
 import News from "../views/News.vue";
 import MemberRegistration from "../views/resrve/MemberRegistration.vue";
 import TheReserve from "../views/resrve/TheReserve.vue";
+import Reservecomfirm from "../views/resrve/Reserve_comfirm.vue";
+import Reservecansel from "../views/resrve/Reserve_cansel.vue";
+import Login from "../views/resrve/Login.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -80,6 +83,21 @@ const router = createRouter({
       path: "/TheReserve",
       name: "TheReserve",
       component: TheReserve,
+    },
+    {
+      path: "/login",
+      name: "Login",
+      component: Login,
+    },
+    {
+      path: "/cansel",
+      name: "Reservecansel",
+      component: Reservecansel,
+    },
+    {
+      path: "/comfirm",
+      name: "Reservecomfirm",
+      component: Reservecomfirm,
     },
 
     //テスト用

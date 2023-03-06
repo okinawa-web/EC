@@ -1,5 +1,6 @@
 <script setup>
 import { reactive } from "vue";
+import ReserveHeader from "/Users/ikuri/Desktop/EC/src/components/reserve/ReaserveHeader.vue";
 
 import axios from "axios";
 const form = reactive({
@@ -20,23 +21,31 @@ const addReserve = async () => {
 </script>
 
 <template>
-  <div>
-    <h1>予約フォーム</h1>
-  </div>
-  <div>
-    <!-- prevent＝ボタン押した後も画面更新しない -->
-    <form @submit.prevent="addReserve">
-      <label>予約人数</label>
-      <select name="reserveNumber" v-model="form.reservePeople">
-        <option value="1">1人</option>
-        <option value="2">2人</option>
-        <option value="3">3人</option>
-        <option value="4">4人</option>
-      </select>
-      <input type="date" v-model="form.date" />
-      <button type="submit" @click="getUsers">予約</button>
-    </form>
+  <ReserveHeader />
+  <div class="reserveBox">
+    <div>
+      <h1>予約フォーム</h1>
+    </div>
+    <div>
+      <!-- prevent＝ボタン押した後も画面更新しない -->
+      <form @submit.prevent="addReserve">
+        <label>予約人数</label>
+        <select name="reserveNumber" v-model="form.reservePeople">
+          <option value="1">1人</option>
+          <option value="2">2人</option>
+          <option value="3">3人</option>
+          <option value="4">4人</option>
+        </select>
+        <input type="date" v-model="form.date" />
+        <button type="submit" @click="getUsers">予約</button>
+      </form>
+    </div>
   </div>
 </template>
 
-<style></style>
+<style>
+.reserveBox {
+  width: 90%;
+  margin: auto;
+}
+</style>
