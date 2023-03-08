@@ -58,6 +58,7 @@ async function start() {
     res.send("こんにちは");
   });
 
+
   //部屋情報登録 POST
   app.post("/room", async (req, res) => {
     const roomName = "203の部屋";
@@ -73,7 +74,19 @@ async function start() {
       },
     });
     return res.json(room);
+
+// app.get("/image", async (req, res) => {
+//   const images = await prisma.image.findMany();
+//   return res.json(images);
+// });
+app.get("/image/:id", async (req, res) => {
+  const id = req.params.id;
+  const image = await prisma.image.findUnique({
+    where: {
+      id: Number(id),
+    },
   });
+
 
   //部屋情報状況 GET
   app.get("/room", async (req, res) => {
@@ -86,5 +99,18 @@ async function start() {
     console.log(`Example app listening at http://localhost:${PORT}`);
   });
 }
+
+//画像取得API
+app.get("/image", async (req, res) => {
+  try {
+    const images = await prisma.image.findMany();
+    const imagePaths = images.map((image) => image.path);
+    res.send(imagePaths);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("サーバーエラー");
+  }
+});
+
 
 start().catch((err) => console.error(err));

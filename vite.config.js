@@ -15,15 +15,18 @@ export default defineConfig({
   server: {
     proxy: {
       "/member": {
-        target: "http://localhost:8001",
+        target: "http://localhost:8000",
         changeOrigin: true,
       },
       "/reserve": {
-        target: "http://localhost:8001",
+        target: "http://localhost:8000",
         changeOrigin: true,
       },
       "/room": {
-        target: "http://localhost:8001",
+        target: "http://localhost:8000",
+        }
+      "/image": {
+        target: "http://localhost:8000",
         changeOrigin: true,
       },
     },
