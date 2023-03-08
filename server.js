@@ -75,6 +75,18 @@ async function start() {
     return res.json(room);
   });
 
+  //画像取得API
+  app.get("/images", async (req, res) => {
+    try {
+      const images = await prisma.image.findMany();
+      const imagePaths = images.map((image) => image.path);
+      res.send(imagePaths);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("サーバーエラー");
+    }
+  });
+
   //部屋情報状況 GET
   app.get("/room", async (req, res) => {
     console.log("room テスト");
@@ -88,3 +100,5 @@ async function start() {
 }
 
 start().catch((err) => console.error(err));
+
+
