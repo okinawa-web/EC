@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import Reserve from "../views/resrve/reserve.vue";
+import Reserve from "../views/resrve/TheReserve.vue";
 import AboutRikyu from "../views/AboutRikyu.vue";
 import Rooms from "../views/Rooms.vue";
 import Room from "../views/Room.vue";
@@ -10,7 +10,11 @@ import Activity from "../views/Activity.vue";
 import Acsess from "../views/Acsess.vue";
 import Question from "../views/Question.vue";
 import News from "../views/News.vue";
-import TheTest from "../views/TheTest.vue";
+import MemberRegistration from "../views/resrve/MemberRegistration.vue";
+import TheReserve from "../views/resrve/TheReserve.vue";
+import Reservecomfirm from "../views/resrve/Reserve_comfirm.vue";
+import Reservecansel from "../views/resrve/Reserve_cansel.vue";
+import Login from "../views/resrve/Login.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -70,6 +74,31 @@ const router = createRouter({
       name: "News",
       component: News,
     },
+    {
+      path: "/MemberRegistration",
+      name: "MemberRegistration",
+      component: MemberRegistration,
+    },
+    {
+      path: "/TheReserve",
+      name: "TheReserve",
+      component: TheReserve,
+    },
+    {
+      path: "/login",
+      name: "Login",
+      component: Login,
+    },
+    {
+      path: "/cansel",
+      name: "Reservecansel",
+      component: Reservecansel,
+    },
+    {
+      path: "/comfirm",
+      name: "Reservecomfirm",
+      component: Reservecomfirm,
+    },
 
     //テスト用
     {
@@ -78,7 +107,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: TheTest,
+      component: () => import("../views/TheTest.vue"),
     },
   ],
 });

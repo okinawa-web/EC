@@ -85,6 +85,8 @@
 <style>
 .package_bottom {
   padding: 15px 20px;
+  width: 90%;
+  margin: auto;
 }
 
 .room_image {
@@ -92,7 +94,6 @@
 }
 
 .plan {
-  width: 25%;
   text-align: center;
 }
 
@@ -101,19 +102,19 @@
   text-align: center;
 }
 
-td,
+/* td,
 th {
-  border-bottom: 1px solid pink;
-  border-left: 1px solid pink;
+  border-bottom: 1px solid rgb(81, 81, 81);
+  border-left: 1px solid rgb(81, 81, 81);
   font-size: 86%;
 }
 
 th {
-  border-top: 1px solid pink;
-}
+  border-top: 1px solid rgb(81, 81, 81);
+} */
 
 .last {
-  border-right: 1px solid pink;
+  border-right: 1px solid rgb(81, 81, 81);
 }
 
 .calender_button {

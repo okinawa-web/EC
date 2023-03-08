@@ -16,7 +16,8 @@ CREATE TABLE `Reserve` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `memberId` INTEGER NOT NULL,
     `reservePeople` INTEGER NOT NULL,
-    `date` DATETIME(3) NULL,
+    `date` DATETIME(3) NOT NULL,
+    `roomId` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -40,3 +41,9 @@ CREATE TABLE `Image` (
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `Reserve` ADD CONSTRAINT `Reserve_memberId_fkey` FOREIGN KEY (`memberId`) REFERENCES `Member`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Reserve` ADD CONSTRAINT `Reserve_roomId_fkey` FOREIGN KEY (`roomId`) REFERENCES `Room`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

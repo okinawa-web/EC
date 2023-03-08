@@ -51,14 +51,14 @@ const siteName = ref("Amenities&Facilities");
 .info {
   font-size: 30px;
 }
-table,
+/* table,
 td,
 th {
   border-bottom: 1px solid darkgray;
   width: 50%;
   line-height: 300%;
   text-align: left;
-}
+} */
 table {
   border-collapse: collapse;
 }

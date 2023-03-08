@@ -2,17 +2,15 @@
 import ReserveHeader from "/Users/ikuri/Desktop/EC/src/components/reserve/ReaserveHeader.vue";
 </script>
 <template>
-  
   <ReserveHeader />
-  <div class="login_title">予約内容キャンセル｜HAMAJIMA LAND</div>
+  <div class="login_title">予約内容確認｜HAMAJIMA LAND</div>
   <div class="login_wrapper">
     <div class="login_package">
       <div class="login_box">
-        <h2>予約内容をキャンセルされますか？</h2>
+        <h2>予約内容を確認されますか？</h2>
         <p>
-          予約No. と E-mailアドレス
-          を入力し「キャンセル手続き」ボタンをクリックして下さい。
-          E-mailアドレスはアルファベットの大文字と小文字が区別されます。お間違えのないようご注意ください。
+          予約No. と E-mailアドレス を入力し「確認」ボタンをクリックして下さい。
+          E-mailアドレスはアルファベットの大文字と小文字が区別されます。お間違えのないようご注意ください。Ï
         </p>
         <div class="login_form">
           <div class="login_form form">
@@ -37,11 +35,7 @@ import ReserveHeader from "/Users/ikuri/Desktop/EC/src/components/reserve/Reaser
               <input type="button" value="前の画面に戻る" class="back_button" />
             </li>
             <li class="li_button">
-              <input
-                type="button"
-                value="キャンセル手続きへ"
-                class="login_button"
-              />
+              <input type="button" value="確認" class="login_button" />
             </li>
           </ul>
         </div>
