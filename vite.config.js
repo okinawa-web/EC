@@ -24,11 +24,11 @@ export default defineConfig({
       },
       "/room": {
         target: "http://localhost:8000",
-
-        "/image": {
-          target: "http://localhost:8000",
-          changeOrigin: true,
-        },
+        changeOrigin: true,
+      },
+      "/image": {
+        target: "http://localhost:8000",
+        changeOrigin: true,
       },
     },
   },
