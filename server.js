@@ -3,7 +3,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const { reactive } = require("vue");
 
-const PORT = 8001;
+const PORT = 8000;
 
 async function start() {
   const app = express();
