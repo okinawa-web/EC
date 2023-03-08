@@ -1,5 +1,6 @@
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 const { reactive } = require("vue");
 
 const PORT = 8001;
@@ -7,26 +8,47 @@ const PORT = 8001;
 async function start() {
   const app = express();
   app.use(express.json());
-  const prisma = new PrismaClient();
 
+  //会員一覧 GET
   app.get("/member", async (req, res) => {
     console.log("test desuyo");
     const members = await prisma.member.findMany();
     res.status(200).send(members);
   });
+
+  //会員登録 POST
+  app.post("/member", async (req, res) => {
+    const newMember = await prisma.member.create({
+      data: {
+        name: req.body.name,
+        address: req.body.address,
+        tel: req.body.tel,
+        registerDate: req.body.registerDate,
+        email: req.body.email,
+      },
+    });
+    res.json(newMember);
+  });
+
+  //予約状況 GET
   app.get("/reserve", async (req, res) => {
     console.log("reserve テスト");
     const reserve = await prisma.reserve.findMany();
     res.status(200).send(reserve);
   });
 
+  //予約 POST
   app.post("/reserve", async (req, res) => {
-    const { memberId, reservePeople, date } = req.body;
+    const { reservePeople, date } = req.body;
+    const memberId = 1;
+    const roomId = 6; // ここを5, 6, 7のいずれかにする
+    console.log(roomId);
     const reserve = await prisma.reserve.create({
       data: {
         memberId: memberId,
         reservePeople: reservePeople,
         date: date,
+        roomId: roomId,
       },
     });
     return res.json(reserve);
@@ -36,6 +58,30 @@ async function start() {
     res.send("こんにちは");
   });
 
+  //部屋情報登録 POST
+  app.post("/room", async (req, res) => {
+    const roomName = "203の部屋";
+    const price = 25000;
+    const people = 2;
+    const detail = "かなりいいお部屋";
+    const room = await prisma.room.create({
+      data: {
+        roomName: roomName,
+        price: price,
+        people: people,
+        detail: detail,
+      },
+    });
+    return res.json(room);
+  });
+
+  //部屋情報状況 GET
+  app.get("/room", async (req, res) => {
+    console.log("room テスト");
+    const room = await prisma.room.findMany();
+    res.status(200).send(room);
+  });
+  //サーバー起動確認
   app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT}`);
   });

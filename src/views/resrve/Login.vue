@@ -1,4 +1,8 @@
+<script setup>
+import ReserveHeader from "/Users/ikuri/Desktop/EC/src/components/reserve/ReaserveHeader.vue";
+</script>
 <template>
+  <ReserveHeader />
   <div class="login_title">マイページログイン｜HAMAJIMA LAND</div>
   <div class="login_wrapper">
     <div class="login_package">
@@ -25,6 +29,9 @@
             </table>
             <p class="forgot_password">
               <a href="">パスワードを忘れた場合</a>
+            </p>
+            <p class="forgot_password">
+              <a href="/MemberRegistration">会員登録はこちら</a>
             </p>
           </div>
           <ul class="ul_button">
@@ -77,7 +84,7 @@
 }
 
 .login_input {
-  width: 50px;
+  width: 250px;
 }
 .forgot_password {
   text-align: center;

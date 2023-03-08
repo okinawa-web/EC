@@ -41,7 +41,7 @@
   background-color: rgb(34, 167, 154);
   display: flex;
   width: 10%;
-  padding: 5px;
+  padding: 5px 0;
   justify-content: center;
 }
 .header_div ul {
