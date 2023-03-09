@@ -33,8 +33,4 @@ export default {
   position: fixed;
   top: 0%;
 }
-.elements {
-  /* width: 100%; */
-  /* flex: 1%; */
-}
 </style>

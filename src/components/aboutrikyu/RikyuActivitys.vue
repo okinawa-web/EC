@@ -4,9 +4,7 @@
     :subTitle="sub"
     :messages="msg"
     :comments="cmnt"
-    :img01="pic01"
-    :img02="pic02"
-    :img03="pic03"
+    :imageIds="imageIds"
   />
   <!-- <div class="movie">
       <video src="src/assets/umidouga.mp4"></video>
@@ -15,9 +13,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import AboutRikyuParts2 from "@/components/aboutrikyu/AboutRikyuParts2.vue";
 import BasicButton from "@/components/button/BasicButton.vue";
+// import { useImageStore } from "@/stores/image.js";
 
 //ページタイトル
 const parts = ref("Activities");
@@ -34,9 +33,8 @@ const cmnt = ref(
 );
 
 //画像
-const pic01 = ref("div.jpg");
-const pic02 = ref("jangul.jpg");
-const pic03 = ref("sup1.jpg");
+// imageIdsに画像のIDを配列で指定する
+const imageIds = ref(["11", "12", "13"]);
 
 //リンク
 const site = ref("activity");

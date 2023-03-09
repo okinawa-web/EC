@@ -55,11 +55,15 @@ app.get("/", async (req, res) => {
 //   const images = await prisma.image.findMany();
 //   return res.json(images);
 // });
+//指定した画像の取得
 app.get("/image/:id", async (req, res) => {
-  const id = req.params.id;
+  const id = parseInt(req.params.id); // parseInt() 関数を使用して数値に変換する
+  if (isNaN(id)) {
+    return res.status(400).send("idが数値ではない!");
+  }
   const image = await prisma.image.findUnique({
     where: {
-      id: Number(id),
+      id: id, // 整数値として渡す
     },
   });
   return res.json(image);
