@@ -17,13 +17,17 @@ model Member {
   tel          String
   registerDate DateTime?
   email        String   @unique
+  reserves Reserve[]
 }
 
 model Reserve {
-  id            Int     @id @default(autoincrement())
+  id            Int      @id @default(autoincrement())
   memberId      Int
-  reservePeople Int 
-  date DateTime?
+  member        Member   @relation(fields: [memberId],references: [id])
+  reservePeople Int      
+  date          DateTime 
+  roomId        Int      //各部屋のID
+  room          Room     @relation(fields: [roomId], references: [id])
 }
 
 model Room {
@@ -32,6 +36,7 @@ model Room {
   price    Int
   people   Int
   detail   String
+  reserves Reserve[] //RoomとReserveの関連付
 }
 
 model Image {
