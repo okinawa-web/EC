@@ -4,13 +4,15 @@
     :subTitle="sub"
     :messages="msg"
     :comments="cmnt"
-    :img01="pic01"
-    :img02="pic02"
-    :img03="pic03"
-  />
+    :imageIds="imageIds"
+  >
+  </AboutRikyuParts>
 </template>
 
 <script setup>
+// import { ref, watch } from "vue";
+// import AboutRikyuParts from "@/components/aboutrikyu/AboutRikyuParts.vue";
+// import { useImageStore } from "@/stores/image.js";
 import { ref } from "vue";
 import AboutRikyuParts from "@/components/aboutrikyu/AboutRikyuParts.vue";
 
@@ -29,7 +31,19 @@ const cmnt = ref(
 );
 
 //画像
-const pic01 = ref("checkin.jpg");
-const pic02 = ref("terasu.jpg");
-const pic03 = ref("sisahana.jpg");
+// const pic01 = ref("7");
+
+// const store = useImageStore();
+// watch(
+//   () => pic01.value,
+//   async (newValue) => {
+//     try {
+//       await store.loadImage(newValue);
+//     } catch (error) {
+//       console.log(`画像取得失敗:${error}`);
+//     }
+//   }
+// );
+// imageIdsに画像のIDを配列で指定する
+const imageIds = ref(["5", "6", "7"]);
 </script>

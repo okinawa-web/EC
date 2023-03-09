@@ -2,26 +2,16 @@
   aboutRikyuのページ
   <Headerset />
 
+  <!-- <Privete /> -->
   <Checkin />
-  <!-- <Privete />
-  <Meals />
-  <Activity /> -->
+  <!-- <Meals /> -->
+  <!-- <Activity /> -->
 </template>
 
-<script>
+<script setup>
 import Headerset from "@/components/Header.vue";
 import Checkin from "@/components/aboutrikyu/Checkin.vue";
-// import Privete from "@/components/aboutrikyu/Rikyuprivetevilla.vue";
-// import Meals from "@/components/aboutrikyu/Meals.vue";
-// import Activity from "@/components/aboutrikyu/RikyuActivitys.vue";
-
-export default {
-  components: {
-    Headerset,
-    Checkin,
-    // Privete,
-    // Meals,
-    // Activity,
-  },
-};
+import Privete from "@/components/aboutrikyu/Rikyuprivetevilla.vue";
+import Meals from "@/components/aboutrikyu/Meals.vue";
+import Activity from "@/components/aboutrikyu/RikyuActivitys.vue";
 </script>

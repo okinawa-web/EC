@@ -10,10 +10,16 @@
 <script setup>
 import firebase from "../firebase/firebase";
 import { ref as storageRef, getDownloadURL } from "firebase/storage";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import axios from "axios";
 
-const imageId = ref("");
+const props = defineProps({
+  imageId: {
+    type: String,
+    required: true,
+  },
+});
+
 const imageURL = ref("");
 const API_URL = "/image";
 
@@ -36,7 +42,6 @@ const getImagePath = async (id) => {
     const res = await axios.get(`${API_URL}/${id}`);
     if (res.status === 200) {
       const path = res.data.path;
-      // console.log("取得", res);
       imageURL.value = await getImageURL(path); // 画像のダウンロードURLを取得する
     }
   } catch (err) {
@@ -45,12 +50,20 @@ const getImagePath = async (id) => {
 };
 
 onMounted(async () => {
-  imageId.value = "3"; // 取得したい画像のidを入力する
-  await getImagePath(imageId.value);
+  await getImagePath(props.imageId);
 });
+
+//propsmの値が変更された場合にgetImagePathを再度実行
+watch(
+  () => props.imageId,
+  async (newValue) => {
+    await getImagePath(newValue);
+  }
+);
 </script>
 
-<!-- <template>
+<!-- 全件取得
+   <template>
   <h2>画像表示チェック</h2>
   <div v-if="imageURLs.length">
     <div v-for="(url, index) in imageURLs" :key="index">

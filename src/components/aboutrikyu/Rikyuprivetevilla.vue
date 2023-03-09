@@ -4,17 +4,16 @@
     :subTitle="sub"
     :messages="msg"
     :comments="cmnt"
-    :img01="pic01"
-    :img02="pic02"
-    :img03="pic03"
+    :imageIds="imageIds"
   />
   <BasicButton :link="site" :linkName="siteName" class="link_btn" />
 </template>
 
 <script setup>
-import { ref } from "vue";
-import AboutRikyuParts2 from "@/components/aboutrikyu/AboutRikyuParts2.vue";
+import { ref, watch } from "vue";
+import AboutRikyuParts2 from "@/components/aboutrikyu/AboutRikyuParts.vue";
 import BasicButton from "@/components/button/BasicButton.vue";
+// import { useImageStore } from "@/stores/image.js";
 
 //ページタイトル
 const parts = ref("Private Villa");
@@ -31,9 +30,8 @@ const cmnt = ref(
 );
 
 //画像
-const pic01 = ref("room.jpg");
-const pic02 = ref("room2.webp");
-const pic03 = ref("room3.jpg");
+// imageIdsに画像のIDを配列で指定する
+const imageIds = ref(["15", "16", "17"]);
 
 //リンク
 const site = ref("rooms");

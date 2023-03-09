@@ -4,15 +4,14 @@
     :subTitle="sub"
     :messages="msg"
     :comments="cmnt"
-    :img01="pic01"
-    :img02="pic02"
-    :img03="pic03"
+    :imageIds="imageIds"
   />
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import AboutRikyuParts from "@/components/aboutrikyu/AboutRikyuParts.vue";
+// import { useImageStore } from "@/stores/image.js";
 
 //ページタイトル
 const parts = ref("Meals");
@@ -29,9 +28,8 @@ const cmnt = ref(
 );
 
 //画像
-const pic01 = ref("bbq.jpg");
-const pic02 = ref("sakana.jpg");
-const pic03 = ref("soba.jpg");
+// imageIdsに画像のIDを配列で指定する
+const imageIds = ref(["8", "9", "10"]);
 </script>
 
 <style>
