@@ -1,29 +1,53 @@
-<template>
+<!-- <template>
   <p class="logo">
     <router-link to="/" class="zero">
-      <img src="@/assets/HAMAJIMAlogo.jpg" alt="logo" class="logo" />
-      <!-- <img :src="imageURL" alt="image" /> -->
+      <img :src="imageURL" alt="logo" class="logo" :key="imageURL" />
     </router-link>
   </p>
 </template>
 
-<!-- <script setup>
-import { useImageStore } from "@/store/image.js";
+<script setup>
+import { useImageStore } from "@/stores/image.js";
 
-const store = useImageStore();
+const imageStore = useImageStore();
+imageStore.loadImage("1");
 
-// imageIdを指定して画像を読み込む
-store.loadImage("imageId");
-
-const imageURL = store.imageURL;
+const imageURL = imageStore.imageURL;
 </script> -->
+<template>
+  <p class="logo">
+    <router-link to="/" class="zero">
+      <img :src="imageURL" alt="logo" class="logo" :key="imageURL" />
+    </router-link>
+  </p>
+</template>
+
+<script setup>
+import { onMounted, ref } from "vue";
+import { useImageStore } from "@/stores/image.js";
+
+const imageStore = useImageStore();
+const imageURL = ref("");
+
+onMounted(async () => {
+  try {
+    await imageStore.loadImage("1"); //imageId指定
+    imageURL.value = imageStore.imageURL;
+  } catch (error) {
+    console.error(error);
+  }
+});
+</script>
 
 <style>
 .logo {
+  width: 45%;
   margin: 0;
-  margin-right: 0%;
-  width: auto;
-  height: 100%;
+}
+
+.logo-image {
+  max-width: 100%;
+  height: auto;
 }
 .zero {
   margin: 0%;

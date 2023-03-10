@@ -12,11 +12,25 @@
   </div>
 </template>
 
-<style>
+<!-- <style>
 .link {
   bottom: 10%;
 }
 
+.mgr-10 {
+  margin: 10px;
+}
+</style> -->
+
+<style>
+.link {
+  display: block;
+  align-items: center;
+  width: 55%;
+  margin-right: 0;
+  /* margin: 0 auto; */
+}
+/* リンク間の空間 */
 .mgr-10 {
   margin: 10px;
 }

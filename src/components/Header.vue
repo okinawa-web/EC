@@ -26,7 +26,6 @@ export default {
 <style>
 #head {
   display: flex;
-  /* align-items: center; */
   background-color: white;
   width: 100%;
   /*固定*/

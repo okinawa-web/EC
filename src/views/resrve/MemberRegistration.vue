@@ -1,7 +1,7 @@
 <script setup>
 import axios from "axios";
 import { onMounted, ref, reactive } from "vue";
-import ReserveHeader from "/Users/ikuri/Desktop/EC/src/components/reserve/ReaserveHeader.vue";
+import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 
 const members = ref([]);
 
