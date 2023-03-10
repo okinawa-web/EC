@@ -2,41 +2,77 @@
   <div class="activity">
     <p class="activity_title_english">{{ props.activityTitleEnglish }}</p>
     <div class="back_color">
-      <p class="activity_title">{{ props.activityTitle }}</p><br>
+      <p class="activity_title">{{ props.activityTitle }}</p>
+      <br />
       <p class="explanation">
         {{ props.explanation }}
       </p>
-      <!-- <ArrowButton
-        :Link="`${props.link}`"
-        :Name="`${props.linkName}`"
-        class="arrow"
-      /> -->
       <div class="image">
-        <img :src="`src/assets/${props.image01}`" alt="01" />
-        <img :src="`src/assets/${props.image02}`" alt="02" />
+        <div v-if="imageURLs.length > 0">
+          <img
+            v-for="url in imageURLs"
+            :key="url"
+            :src="url"
+            alt="image"
+            class="image_size"
+          />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-// import ArrowButton from "@/components/button/ArrowButton.vue";
+import { watch, onMounted, ref } from "vue";
+import { useImageStore } from "@/stores/image.js";
 
 const props = defineProps({
   activityTitleEnglish: String,
   activityTitle: String,
   explanation: String,
-//   link: String,
-//   linkName: String,
-  image01: String,
-  image02: String,
+  imageIds: {
+    type: Array,
+    required: true,
+  },
 });
+
+const store = useImageStore();
+const imageURLs = ref([]);
+
+// 初回表示時に各画像のURLを取得する
+onMounted(async () => {
+  await getImageURLs();
+});
+
+// imageIdsが変更された場合に各画像のURLを取得する
+watch(
+  () => props.imageIds,
+  async () => {
+    await getImageURLs();
+  }
+);
+
+async function getImageURLs() {
+  // imageURLsを初期化
+  imageURLs.value = [];
+
+  // 各imageIdに対して画像のURLを取得する
+  for (const imageId of props.imageIds) {
+    try {
+      await store.loadImage(imageId);
+      imageURLs.value.push(store.imageURL);
+    } catch (error) {
+      console.log(`画像取得失敗:${error}`);
+    }
+  }
+}
 </script>
 
 <style>
 .activity {
   color: darkgray;
   text-align: center;
+  padding-top: 60px; /*Headerの高さ*/
 }
 .activity_title_english {
   font-size: 15px;
@@ -47,12 +83,26 @@ const props = defineProps({
 .explanation {
   font-size: 16px;
   width: 60%;
-}
-.image {
-  display: flex;
-  /* width: 70%; */
+  margin: auto;
 }
 .back_color {
   background-color: aliceblue;
+}
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* 画像が横幅を超えた場合は改行する */
+}
+.image div {
+  flex-basis: 40%;
+  margin: 1%;
+  display: flex;
+  justify-content: center;
+}
+.image img {
+  width: 100%;
+  height: auto;
+  margin: 1%;
 }
 </style>

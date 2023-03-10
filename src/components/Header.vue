@@ -31,5 +31,6 @@ export default {
   /*固定*/
   position: fixed;
   top: 0%;
+  z-index: 1; /* 追加 */
 }
 </style>

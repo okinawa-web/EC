@@ -31,19 +31,6 @@ const cmnt = ref(
 );
 
 //画像
-// const pic01 = ref("7");
-
-// const store = useImageStore();
-// watch(
-//   () => pic01.value,
-//   async (newValue) => {
-//     try {
-//       await store.loadImage(newValue);
-//     } catch (error) {
-//       console.log(`画像取得失敗:${error}`);
-//     }
-//   }
-// );
 // imageIdsに画像のIDを配列で指定する
 const imageIds = ref(["5", "6", "7"]);
 </script>
