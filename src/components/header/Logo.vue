@@ -1,21 +1,6 @@
-<!-- <template>
-  <p class="logo">
-    <router-link to="/" class="zero">
-      <img :src="imageURL" alt="logo" class="logo" :key="imageURL" />
-    </router-link>
-  </p>
-</template>
-
-<script setup>
-import { useImageStore } from "@/stores/image.js";
-
-const imageStore = useImageStore();
-imageStore.loadImage("1");
-
-const imageURL = imageStore.imageURL;
-</script> -->
 <template>
-  <p class="logo">
+  <p class="logo" v-if="imageLoaded">
+    <!--画像の読み込みが完了するまで非表示-->
     <router-link to="/" class="zero">
       <img :src="imageURL" alt="logo" class="logo" :key="imageURL" />
     </router-link>
@@ -28,11 +13,13 @@ import { useImageStore } from "@/stores/image.js";
 
 const imageStore = useImageStore();
 const imageURL = ref("");
+const imageLoaded = ref(false);
 
 onMounted(async () => {
   try {
     await imageStore.loadImage("1"); //imageId指定
     imageURL.value = imageStore.imageURL;
+    imageLoaded.value = true; //画像の読み込みが完了するとtrueになる
   } catch (error) {
     console.error(error);
   }
