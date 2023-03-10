@@ -1,5 +1,5 @@
 <script setup>
-import ReserveHeader from "/Users/ikuri/Desktop/EC/src/components/reserve/ReaserveHeader.vue";
+import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 </script>
 <template>
   <ReserveHeader />

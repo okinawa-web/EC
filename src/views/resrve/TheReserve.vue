@@ -1,8 +1,8 @@
 <script setup>
 import { reactive } from "vue";
-import ReserveHeader from "/Users/ikuri/Desktop/EC/src/components/reserve/ReaserveHeader.vue";
-import Serch from "/Users/ikuri/Desktop/EC/src/components/reserve/Serch.vue";
-import Carender from "/Users/ikuri/Desktop/EC/src/components/reserve/Carender.vue";
+import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
+import Serch from "@/components/reserve/Serch.vue";
+import Carender from "@/components/reserve/Carender.vue";
 
 
 import axios from "axios";

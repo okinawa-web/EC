@@ -58,7 +58,6 @@ async function start() {
     res.send("こんにちは");
   });
 
-
   //部屋情報登録 POST
   app.post("/room", async (req, res) => {
     const roomName = "203の部屋";
@@ -74,25 +73,30 @@ async function start() {
       },
     });
     return res.json(room);
+  });
+  //部屋情報状況 GET
+  app.get("/room", async (req, res) => {
+    console.log("room テスト");
+    const room = await prisma.room.findMany();
+    res.status(200).send(room);
+  });
 
-// app.get("/image", async (req, res) => {
-//   const images = await prisma.image.findMany();
-//   return res.json(images);
-// });
-//指定した画像の取得
-app.get("/image/:id", async (req, res) => {
-  const id = parseInt(req.params.id); // parseInt() 関数を使用して数値に変換する
-  if (isNaN(id)) {
-    return res.status(400).send("idが数値ではない!");
-  }
-  const image = await prisma.image.findUnique({
-    where: {
-      id: id, // 整数値として渡す
-    },
+  //指定した画像の取得
+  app.get("/image/:id", async (req, res) => {
+    const id = parseInt(req.params.id); // parseInt() 関数を使用して数値に変換する
+    if (isNaN(id)) {
+      return res.status(400).send("idが数値ではない!");
+    }
+    const image = await prisma.image.findUnique({
+      where: {
+        id: id, // 整数値として渡す
+      },
+    });
+    return res.json(image);
   });
 
   //画像取得API
-  app.get("/images", async (req, res) => {
+  app.get("/image", async (req, res) => {
     try {
       const images = await prisma.image.findMany();
       const imagePaths = images.map((image) => image.path);
@@ -103,29 +107,10 @@ app.get("/image/:id", async (req, res) => {
     }
   });
 
-  //部屋情報状況 GET
-  app.get("/room", async (req, res) => {
-    console.log("room テスト");
-    const room = await prisma.room.findMany();
-    res.status(200).send(room);
-  });
   //サーバー起動確認
   app.listen(PORT, () => {
-    console.log(`Example app listening at http://localhost:${PORT}`);
+    console.log(`Example app listening at http://localhost:${PORT}OKOK`);
   });
 }
-
-//画像取得API
-app.get("/image", async (req, res) => {
-  try {
-    const images = await prisma.image.findMany();
-    const imagePaths = images.map((image) => image.path);
-    res.send(imagePaths);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("サーバーエラー");
-  }
-});
-
 
 start().catch((err) => console.error(err));

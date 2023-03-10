@@ -18,6 +18,7 @@ export const useImageStore = defineStore({
       try {
         console.log("loadImageが呼び出された");
         const res = await axios.get(`${API_URL}/${imageId}`);
+
         if (res.status === 200) {
           const path = res.data.path;
           console.log("APIからデータを取得した! path:", path);

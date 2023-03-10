@@ -1,6 +1,6 @@
 <template>
   <p class="reserve">
-    <router-link to="/reserve/reserve" target="_blank">ご予約 </router-link>
+    <router-link to="/TheReserve" target="_blank"> ご予約</router-link>
   </p>
 </template>
 
@@ -20,3 +20,17 @@
   background: #ef7306;
 }
 </style>
+
+<!-- <style>
+
+button:hover {
+  background: #45e0e0;
+}
+button{
+  font-size: 20px;
+  font-weight: bold;
+  width: auto; /* 幅を自動調整する */
+  min-width: 100px; /* 最小幅を設定する */
+  margin-top: 40%;
+}
+</style> -->

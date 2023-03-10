@@ -28,16 +28,6 @@
 import { watch, onMounted, ref } from "vue";
 import { useImageStore } from "@/stores/image.js";
 
-// const props = defineProps({
-//   aboutTitle: String,
-//   subTitle: String,
-//   messages: String,
-//   comments: String,
-//   imageId: {
-//     String,
-//     required: true,
-//   },
-// });
 const props = defineProps({
   aboutTitle: String,
   subTitle: String,
@@ -49,21 +39,6 @@ const props = defineProps({
   },
 });
 
-// const store = useImageStore();
-
-// onMounted(async () => {
-//   try {
-//     await store.loadImage(props.imageId);
-//   } catch (error) {
-//     console.log(`画像取得失敗:${error}`);
-//   }
-// });
-// watch(
-//   () => props.imageId,
-//   async (newValue) => {
-//     await store.loadImage(newValue);
-//   }
-// );
 const store = useImageStore();
 const imageURLs = ref([]);
 
