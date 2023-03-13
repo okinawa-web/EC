@@ -26,6 +26,8 @@ export const useImageStore = defineStore({
           console.log("画像URLを取得した! url:", url);
           this.setImageURL(url);
           console.log("imageURLを更新した! imageURL:", this.imageURL);
+          
+          // return url; //urlを返す
         }
       } catch (error) {
         console.error(`画像の取得に失敗`);
