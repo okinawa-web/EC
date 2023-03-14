@@ -18,6 +18,8 @@ const props = defineProps({
   transition: 1s;
   text-align: center;
   justify-content: center;
+  z-index: 1;
+  position: absolute;
 }
 
 .arrow::before {
