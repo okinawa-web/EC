@@ -5,7 +5,6 @@
         <p class="image">
           <!-- <img src="@/assets/room1.jpg" alt="101" /> -->
           <img :src="imageURL" alt="room1" :key="imageURL" />
-          <!-- <img :src="loadImage(101)" alt="101" /> -->
         </p>
         <div class="wrap_txt">
           <p class="title">
