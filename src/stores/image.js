@@ -23,10 +23,10 @@ export const useImageStore = defineStore({
         if (res.status === 200) {
           const path = res.data.path;
           console.log("APIからデータを取得した! path:", path);
-          
+
           // キャッシュに対象のURLの画像データがある場合はキャッシュを使用する
           if (this.cache[path]) {
-            console.log("キャッシュから画像データを取得した!");
+            console.log("キャッシュから取得!");
             this.setImageURL(this.cache[path]);
             return;
           }
@@ -35,7 +35,7 @@ export const useImageStore = defineStore({
           const url = await this.getImageURL(path);
           console.log("画像URLを取得した! url:", url);
           this.setImageURL(url);
-          
+
           // 取得した画像データをキャッシュに保存する
           this.cache[path] = url;
           console.log("キャッシュに画像データを保存した!");

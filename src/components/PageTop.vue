@@ -1,26 +1,3 @@
-<!-- <template>
-  <div class="all">
-    <h1 class="pagetitle">{{ props.pagetitle }}</h1>
-    <p class="subTitle">{{ props.subTitle }}</p>
-    <div class="link">
-      <a href="/">TOP</a>
-      <span class="hyphen">-</span>
-      <span>{{ props.subTitle }}</span>
-    </div>
-    <div>
-      <img :src="`src/assets/${props.image}`" alt="海" class="topPhoto" />
-    </div>
-  </div>
-</template>
-
-<script setup>
-const props = defineProps({
-  pagetitle: String,
-  image: String,
-  subTitle: String,
-});
-</script> -->
-
 <template>
   <div class="all">
     <h1 class="pagetitle">{{ props.pagetitle }}</h1>
@@ -30,7 +7,7 @@ const props = defineProps({
       <span class="hyphen">-</span>
       <span>{{ props.subTitle }}</span>
     </div>
-    <img :src="store.imageURL" alt="image" />
+    <img :src="store.imageURL" alt="image" class="topPhoto" />
   </div>
 </template>
 
@@ -56,12 +33,12 @@ onMounted(async () => {
     console.log(`画像取得失敗:${error}`);
   }
 });
-watch(
-  () => props.imageId,
-  async (newValue) => {
-    await store.loadImage(newValue);
-  }
-);
+// watch(
+//   () => props.imageId,
+//   async (newValue) => {
+//     await store.loadImage(newValue);
+//   }
+// );
 </script>
 
 <style>

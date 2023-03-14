@@ -34,7 +34,7 @@ import Footer from "@/components/Footer.vue";
 const page = ref("Activity");
 
 //画像
-const imageId = ref("4");
+const imageId = ref("3");
 const store = useImageStore();
 watch(
   () => imageId.value,
