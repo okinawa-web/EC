@@ -28,7 +28,7 @@ onMounted(async () => {
   <div>
     <form @submit.prevent="login">
       <label>
-        Username:
+        email:
         <input type="text" v-model="username" required />
       </label>
       <br />

@@ -70,7 +70,7 @@ app.post("/api/login", async (req, res) => {
       where: {
         email: username,
       },
-      select: { name: true, email: true, password: true, tel: true },
+      select: { name: true, email: true, password: true },
     });
     console.log("prisma success");
   } catch (e) {
