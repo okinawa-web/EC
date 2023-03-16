@@ -6,6 +6,7 @@ CREATE TABLE `Member` (
     `tel` VARCHAR(191) NOT NULL,
     `registerDate` DATETIME(3) NULL,
     `email` VARCHAR(191) NOT NULL,
+    `password` VARCHAR(191) NOT NULL,
 
     UNIQUE INDEX `Member_email_key`(`email`),
     PRIMARY KEY (`id`)
