@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <PageTop :pagetitle="page" :image="pic" :subTitle="sub" />
+  <PageTop :pagetitle="page" :imageId="imageId" :subTitle="sub" />
   <div class="room_text">
     <p class="point">プライベートな休日や長期のご滞在にも最適な空間</p>
     <p>当館には３つのお部屋を設けており、</p>
@@ -12,7 +12,8 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useImageStore } from "@/stores/image.js";
 import Header from "@/components/Header.vue";
 import PageTop from "@/components/PageTop.vue";
 import Rooms from "@/components/rooms/MoveRooms.vue";
@@ -22,7 +23,18 @@ import Footer from "@/components/Footer.vue";
 //ページタイトル
 const page = ref("Rooms");
 //画像
-const pic = ref("umigame.jpg");
+const imageId = ref("17");
+const store = useImageStore();
+watch(
+  () => imageId.value,
+  async (newValue) => {
+    try {
+      await store.loadImage(newValue);
+    } catch (error) {
+      console.log(`画像取得失敗:${error}`);
+    }
+  }
+);
 //サブタイトル
 const sub = ref("お部屋");
 </script>

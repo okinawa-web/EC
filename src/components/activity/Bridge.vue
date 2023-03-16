@@ -5,8 +5,7 @@
     :explanation="coment"
     :Link="link"
     :Name="linkName"
-    :image01="img1"
-    :image02="img2"
+    :imageIds="imageIds"
   />
   <br />
   <ArrowButton :Link="link" :Name="linkName" />
@@ -26,8 +25,8 @@ const coment = ref(
   "全長3,540mの無料で渡ることのできる日本最長の橋です。青い空と透き通った宮古ブルーの海にはさまれ、絶景の中を進みます。夕陽も幻想的です。"
 );
 //画像
-const img1 = ref("bridge1.jpg");
-const img2 = ref("bridge2.jpeg");
+// imageIdsに画像のIDを配列で指定する
+const imageIds = ref(["45", "46"]);
 
 // //アローボタンコンポーネント
 const link = ref(

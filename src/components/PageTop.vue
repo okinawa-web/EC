@@ -7,24 +7,49 @@
       <span class="hyphen">-</span>
       <span>{{ props.subTitle }}</span>
     </div>
-    <div>
-      <img :src="`src/assets/${props.image}`" alt="海" class="topPhoto" />
-    </div>
+    <img v-if="imageLoaded" :src="imageURL" alt="image" class="topPhoto" />
   </div>
 </template>
 
 <script setup>
+import { watch, onMounted, ref } from "vue";
+import { useImageStore } from "@/stores/image.js";
+
 const props = defineProps({
   pagetitle: String,
   image: String,
   subTitle: String,
+  imageId: {
+    String,
+    required: true,
+  },
 });
+
+const imageURL = ref("");
+const imageLoaded = ref(false);
+
+const store = useImageStore();
+onMounted(async () => {
+  try {
+    await store.loadImage(props.imageId);
+    imageURL.value = store.imageURL;
+    imageLoaded.value = true;
+  } catch (error) {
+    console.log(`画像取得失敗:${error}`);
+  }
+});
+// watch(
+//   () => props.imageId,
+//   async (newValue) => {
+//     await store.loadImage(newValue);
+//   }
+// );
 </script>
 
 <style>
 .all {
   color: darkgray;
-  margin: 10% auto ;
+  margin: 10% auto;
 }
 
 .pagetitle {
@@ -53,7 +78,7 @@ const props = defineProps({
 .topPhoto {
   display: block;
   width: 90%;
-  height: 350px;
+  height: 300px;
   margin: 10px auto auto auto;
   /* ↓↓↓画像によって切り取り箇所調整↓↓↓ */
   /* object-fit: none; */

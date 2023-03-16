@@ -18,6 +18,8 @@ const props = defineProps({
   transition: 1s;
   text-align: center;
   justify-content: center;
+  z-index: 1;
+  /* position: absolute; */
 }
 
 .arrow::before {
@@ -51,9 +53,4 @@ const props = defineProps({
   opacity: 1;
   transition: 1s;
 }
-/* 
-.arrow:hover::after {
-  transform: translateX(50%);
-  transition-duration: 0.8s;
-} */
 </style>

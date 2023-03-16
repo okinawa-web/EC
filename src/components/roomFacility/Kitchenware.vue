@@ -1,42 +1,21 @@
 <template>
-  <p>Kitchenware</p>
-  <!-- コンポーネント呼び出し↓ -->
-  <!-- <Item :image="itemImage" :amenitieName="itemName" /> -->
-  <p>キッチン用品</p>
-  <div class="col_4">
-    <div class="amenitieItem">
-      <Item />
-    </div>
-    <div class="amenitieItem">
-      <Item />
-    </div>
-    <div class="amenitieItem">
-      <Item />
-    </div>
-    <div class="amenitieItem">
-      <Item />
-    </div>
-    <div class="amenitieItem">
-      <Item />
-    </div>
-    <div class="amenitieItem">
-      <Item />
-    </div>
-  </div>
+  <Item
+    :amenityTitleEnglish="amenityTitleEnglish"
+    :amenityTitle="amenityTitle"
+    :amenityimage="amenityimage"
+  />
 </template>
 
-<script>
-// import { ref } from "vue";
+<script setup>
 import Item from "@/components/roomFacility/AmenitesItem.vue";
+import { ref } from "vue";
 
-// const itemImage = ref<"toilet.jpg">;
-// const itemName = ref<"トイレ">;
-export default {
-  // props: [itemImage: ref(""), itemName],
-  components: {
-    Item,
-  },
-};
+//英語タイトル
+const amenityTitleEnglish = ref("Kitchenware");
+//タイトル
+const amenityTitle = ref("キッチン用品");
+//画像
+const amenityimage = ref("toilet.jpg");
 </script>
 
 <style>
@@ -55,12 +34,6 @@ export default {
 }
 .col_4 .amenitieItem {
   width: 20%;
-  /* padding: 16px;
-  display: -ms-flexbox;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box; */
 }
 
 .col_4:after {
@@ -70,12 +43,6 @@ export default {
   height: 0;
   order: 1;
 }
-/* .col_4:before {
-  content: "";
-  display: block;
-  width: 25%;
-  height: 0;
-} */
 
 .amenitieItem {
   width: 20%;
