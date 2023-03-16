@@ -14,7 +14,9 @@
         <BasicButton :linkName="linkTitle" :link="destination" />
       </div>
     </div>
-    <!-- <img :src="imageURL" alt="image" /> -->
+    <div class="photo">
+      <img :src="imageURL" alt="photo1" />
+    </div>
     <!-- <div class="photo">
       <img src="src/assets/umigame.jpg" alt="pic" class="photo1" />
       <img src="src/assets/umigame.jpg" alt="pic" class="photo2" />
@@ -31,20 +33,19 @@ import { onMounted, ref } from "vue";
 const linkTitle = ref("Acsess");
 const destination = ref("acsess");
 
-// const imageStore = useImageStore();
-// const imageURL = ref("")
+const imageStore = useImageStore();
+const imageURL = ref("");
 
-// onMounted(async () => {
-//   await imageStore.loadImage("6");
+onMounted(async () => {
+  await imageStore.loadImage("6");
 
-//   //imageURL stateを更新する
-//   imageURL.value = imageStore.imageURL
-// })
+  //imageURL stateを更新する
+  imageURL.value = imageStore.imageURL;
+});
 </script>
 
 <style>
 .roomAll {
-  /* width: auto; */
   height: 500px;
 }
 /* .roomBox {
@@ -53,13 +54,11 @@ const destination = ref("acsess");
 } */
 
 .roomSubDescription {
-  /* float: left;
-  width: 350px; */
   font-size: 20px;
   width: 50%;
 }
 
-.photo {
+/* .photo {
   float: left;
   position: relative;
 }
@@ -70,14 +69,7 @@ const destination = ref("acsess");
   bottom: 100px;
   width: 120%;
   height: 150%;
-}
-
-.photo2 {
-  width: 50%;
-  height: 140%;
-  margin-top: 100px;
-  margin-left: 40px;
-}
+} */
 
 .villaTopBox {
   width: 90%;

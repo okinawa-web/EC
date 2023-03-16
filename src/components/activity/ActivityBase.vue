@@ -44,13 +44,13 @@ onMounted(async () => {
   await getImageURLs();
 });
 
-// imageIdsが変更された場合に各画像のURLを取得する
-watch(
-  () => props.imageIds,
-  async () => {
-    await getImageURLs();
-  }
-);
+// // imageIdsが変更された場合に各画像のURLを取得する
+// watch(
+//   () => props.imageIds,
+//   async () => {
+//     await getImageURLs();
+//   }
+// );
 
 async function getImageURLs() {
   // imageURLsを初期化
@@ -66,6 +66,7 @@ async function getImageURLs() {
     }
   }
 }
+
 </script>
 
 <style>
