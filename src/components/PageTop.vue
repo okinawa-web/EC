@@ -7,7 +7,7 @@
       <span class="hyphen">-</span>
       <span>{{ props.subTitle }}</span>
     </div>
-    <img :src="store.imageURL" alt="image" class="topPhoto" />
+    <img v-if="imageLoaded" :src="imageURL" alt="image" class="topPhoto" />
   </div>
 </template>
 
@@ -25,10 +25,15 @@ const props = defineProps({
   },
 });
 
+const imageURL = ref("");
+const imageLoaded = ref(false);
+
 const store = useImageStore();
 onMounted(async () => {
   try {
     await store.loadImage(props.imageId);
+    imageURL.value = store.imageURL;
+    imageLoaded.value = true;
   } catch (error) {
     console.log(`画像取得失敗:${error}`);
   }

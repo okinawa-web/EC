@@ -1,26 +1,31 @@
 <template>
-  <!-- <img
-    :src="`@/assets/${props.image}`"
-    alt="アメニティ"
-    class="AmenitiesPhoto"
-  /> -->
-  <!-- <p class="AmenitiesTitle">{{ props.amenitieName }}</p> -->
-  <img src="@/assets/toilet.jpg" alt="トイレ" class="AmenitiesPhoto" />
-  <p class="AmenitiesTitle"></p>
+  <div class="freeBox">
+    <h1 class="freeServise">{{ props.amenityTitleEnglish }}</h1>
+    <p>{{ props.amenityTitle }}</p>
+    <div>
+      <!-- <img src="@/assets/toilet.jpg" alt="トイレ" class="AmenitiesPhoto" /> -->
+      <img
+        :src="`src/assets/${props.amenityimage}`"
+        alt="トイレ"
+        class="AmenitiesPhoto"
+      />
+      <img
+        :src="getImageURL(props.amenityimage)"
+        alt="トイレ"
+        class="AmenitiesPhoto"
+      />
+    </div>
+  </div>
 </template>
 
 <script setup>
-// const props = defineProps({
-//   image: String,Ï
-//   amenitieName: String,
-// });
-
-// export default {
-//   components: {
-//     Item,
-//   },
-// };
+const props = defineProps({
+  amenityTitleEnglish: String,
+  amenityTitle: String,
+  amenityimage: String,
+});
 </script>
+
 <style>
 .AmenitiesPhoto {
   width: 350px;

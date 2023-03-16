@@ -1,6 +1,7 @@
 <template>
   <Header />
-  <img src="/assets/access.jpg" alt="">
+  <!-- <img src="/src/assets/map.jpg" alt="">
+  <img src="/src/assets/access.jpg" alt=""> -->
   <PageTop :pagetitle="page" :subTitle="sub" :imageId="imageId" />
   <Footer />
 </template>

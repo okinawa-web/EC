@@ -5,9 +5,14 @@
 <template>
   <Header />
   <PageTop :pagetitle="page" :imageId="imageId" :subTitle="sub" />
-  <!-- <Amenities /> -->
-  <!-- <Kithen />
-  <FreeService /> -->
+  <div>
+    <p class="facirity_msg">
+      当ヴィラには、快適にご滞在いただけるような多彩な設備・備品、
+    </p>
+    <p class="facirity_msg">アメニティをご用意しております。</p>
+  </div>
+  <Kithen />
+  <FreeService />
   <PaydService />
   <Footer />
 </template>
@@ -16,7 +21,6 @@
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import Kithen from "@/components/roomFacility/Kitchenware.vue";
-import Amenities from "@/components/roomFacility/Amenityies.vue";
 import FreeService from "@/components/roomFacility/FreeService.vue";
 import PaydService from "@/components/roomFacility/PaidService.vue";
 import PageTop from "@/components/PageTop.vue";
@@ -25,6 +29,9 @@ import { useImageStore } from "@/stores/image.js";
 
 //ページタイトル
 const page = ref("Room Facilities");
+
+//サブタイトル
+const sub = ref("客室設備・アメニティ");
 
 //画像
 const imageId = ref("4");
@@ -40,6 +47,11 @@ watch(
   }
 );
 
-//サブタイトル
-const sub = ref("客室設備・アメニティ");
+
 </script>
+
+<style>
+.facirity_msg {
+  text-align: center;
+}
+</style>
