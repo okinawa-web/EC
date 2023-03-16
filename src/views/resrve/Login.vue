@@ -1,118 +1,103 @@
-<script setup>
-import ReserveHeader from "/Users/ikuri/Desktop/EC/src/components/reserve/ReaserveHeader.vue";
-</script>
-<template>
-  <ReserveHeader />
-  <div class="login_title">マイページログイン｜HAMAJIMA LAND</div>
-  <div class="login_wrapper">
-    <div class="login_package">
-      <div class="login_box">
-        <p>
-          マイページでは、予約情報の確認、会員情報の変更、退会手続きが行えます。
-          ご登録済みのＩＤ(メールアドレス)、パスワードを入力して、「ログイン」ボタンをクリックしてください。
-          E-mailアドレスはアルファベットの大文字と小文字が区別されます。お間違えのないようご注意ください。
-        </p>
-        <p class="LOGIN">ログイン</p>
-        <div class="login_form">
-          <div class="login_form">
-            <table class="login_table">
-              <tr>
-                <th>ご登録メールアドレス</th>
-                <td>
-                  <input type="text" class="login_input" />
-                </td>
-              </tr>
-              <tr>
-                <th>パスワード</th>
-                <td><input type="text" class="login_input" /></td>
-              </tr>
-            </table>
-            <p class="forgot_password">
-              <a href="">パスワードを忘れた場合</a>
-            </p>
-            <p class="forgot_password">
-              <a href="/MemberRegistration">会員登録はこちら</a>
-            </p>
-          </div>
-          <ul class="ul_button">
-            <li class="li_button">
-              <input type="button" value="前の画面に戻る" class="back_button" />
-            </li>
-            <li class="li_button">
-              <input type="button" value="ログイン" class="login_button" />
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<!-- <template>
+  <div>
+    <h2>Users</h2>
+    <ul v-if="state.users !== null && state.users.length > 0">
+      <li v-for="user in state.users" :key="user.name">
+        {{ user.name }}
+      </li>
+    </ul>
+    <p v-else>Loading...</p>
   </div>
 </template>
 
-<style>
-.login_wrapper {
-  width: 900px;
-  font-size: 100%;
-  margin: 0 auto;
-  border: 1px solid #a0a0a0;
-  padding: 0 20px;
-}
+<script setup>
+import { reactive, onMounted } from "vue";
+import axios from "axios";
 
-.login_title {
-  background-color: rgb(0, 83, 92);
-  color: white;
-  font-size: 115%;
-  padding: 10px 18px 8px;
-  width: 900px;
-  margin: auto;
-  border: 3px solid rgb(0, 83, 92);
-}
+const state = reactive({
+  users: null,
+});
 
-.LOGIN {
-  font-size: 143%;
-  font-weight: bold;
-  border-top: 3px solid #dcdcdc;
-  border-bottom: 3px solid #dcdcdc;
-  padding: 8px 15px;
-  margin-top: 30px;
-}
+onMounted(async () => {
+  const response = await axios.get("http://localhost:8000/api/users");
+  state.users = response.data;
+});
+</script> -->
 
-.logon_form {
-  width: 70%;
-}
-.login_table {
-  margin: auto;
-}
+<template>
+  <div>
+    <form @submit.prevent="login">
+      <label>
+        Username:
+        <input type="text" v-model="username" required />
+      </label>
+      <br />
+      <label>
+        Password:
+        <input type="password" v-model="password" required />
+      </label>
+      <br />
+      <button type="submit">Login</button>
+    </form>
+    <p v-if="errorMessage">{{ errorMessage }}</p>
+  </div>
+  <div>
+    <h2>Users</h2>
+    <ul v-if="state.users !== null && state.users.length > 0">
+      <li v-for="user in state.users" :key="user.name">
+        {{ user.name }}
+      </li>
+    </ul>
+    <p v-else>Loading...</p>
+  </div>
+</template>
 
-.login_input {
-  width: 250px;
-}
-.forgot_password {
-  text-align: center;
-}
+<script setup>
+import { ref } from "vue";
+import axios from "axios";
+import { useRouter } from "vue-router";
+import { reactive, onMounted } from "vue";
 
-.li_button {
-  display: inline;
-}
+const state = reactive({
+  users: null,
+});
 
-.ul_button {
-  width: 90%;
-  text-align: center;
-}
+const username = ref("");
+const password = ref("");
+const errorMessage = ref("");
 
-.back_button,
-.login_button {
-  border: 1px solid #a0a0a0;
-  background-color: white;
-  padding: 15px 35px;
-  line-height: 1.2;
-  border-radius: 3px;
-  box-shadow: 0px 2px 2px #a0a0a0;
-  cursor: pointer;
-}
+const router = useRouter();
 
-.login_button {
-  background-color: rgb(0, 114, 114);
-  color: white;
-  margin-left: 15px;
-}
-</style>
+onMounted(async () => {
+  const response = await axios.get("http://localhost:8000/api/users");
+  state.users = response.data;
+});
+
+axios.interceptors.request.use(
+  function (config) {
+    console.log(config); // リクエストの詳細を表示
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
+
+const login = () => {
+  axios
+    .post("http://localhost:8000/api/login", {
+      username: username.value,
+      password: password.value,
+    })
+    .then((response) => {
+      console.log(response.data);
+      localStorage.setItem("token", response.data.token);
+      router.push("/");
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+      console.log(error);
+      errorMessage.value = "ユーザー名またはパスワードが違います";
+    });
+};
+</script>

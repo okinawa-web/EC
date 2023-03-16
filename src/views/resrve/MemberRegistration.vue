@@ -10,6 +10,7 @@ const form = reactive({
   address: "",
   tel: "",
   email: "",
+  password: "",
   registerDate: new Date().toISOString(),
 });
 
@@ -95,6 +96,17 @@ onMounted(() => {
                         <input
                           type="email"
                           v-model="form.email"
+                          required
+                          class="login_input"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>パスワード</th>
+                      <td>
+                        <input
+                          type="text"
+                          v-model="form.password"
                           required
                           class="login_input"
                         />
