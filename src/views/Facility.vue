@@ -11,6 +11,8 @@
     </p>
     <p class="facirity_msg">アメニティをご用意しております。</p>
   </div>
+  <RoomFacilities />
+  <Amenities />
   <Kithen />
   <FreeService />
   <PaydService />
@@ -20,6 +22,8 @@
 <script setup>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import RoomFacilities from "../components/roomFacility/RoomFacilities.vue";
+import Amenities from "../components/roomFacility/Amenities.vue";
 import Kithen from "@/components/roomFacility/Kitchenware.vue";
 import FreeService from "@/components/roomFacility/FreeService.vue";
 import PaydService from "@/components/roomFacility/PaidService.vue";
@@ -46,8 +50,6 @@ watch(
     }
   }
 );
-
-
 </script>
 
 <style>
