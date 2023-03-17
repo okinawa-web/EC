@@ -2,7 +2,13 @@
   <div class="freeBox">
     <h1 class="freeServise">{{ props.amenityTitleEnglish }}</h1>
     <p>{{ props.amenityTitle }}</p>
-    <img v-for="url in imageURLs" :key="url" :src="url" alt="image" />
+    <img
+      v-for="url in imageURLs"
+      :key="url"
+      :src="url"
+      alt="image"
+      class="amenitieItem"
+    />
     <!-- <h3>{{ amenityTitle }}</h3>
       <h1>{{ amenityTitleEnglish }}</h1> -->
   </div>
@@ -45,15 +51,3 @@ async function getImageURLs() {
   }
 }
 </script>
-
-<style>
-.AmenitiesPhoto {
-  width: 350px;
-  height: 250px;
-}
-
-.AmenitiesTitle {
-  width: 400px;
-  font-size: 20px;
-}
-</style>

@@ -23,12 +23,6 @@ const imageIds = ref(["19", "20", "21", "23", "24", "25", "26", "27"]);
 </script>
 
 <style>
-.amenitieBox {
-  text-align: center;
-  width: 80%;
-  margin: auto;
-}
-
 .col_4 {
   width: 100%;
   display: flex;
@@ -36,30 +30,24 @@ const imageIds = ref(["19", "20", "21", "23", "24", "25", "26", "27"]);
   justify-content: space-between;
   align-items: top;
 }
+
 .col_4 .amenitieItem {
-  width: 20%;
+  flex: 1;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
-.col_4:after {
-  content: "";
-  display: block;
-  width: 25%;
-  height: 0;
-  order: 1;
+.col_4 .amenitieItem:last-child {
+  margin-right: 0;
 }
 .amenitieItem {
-  width: 20%;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  margin: 0 10px;
+  box-sizing: border-box; /* ボーダーを含めたサイズ指定 */
 }
 
 .amenitieItem img {
-  height: 100%;
-  max-width: 100%;
-  object-fit: contain;
+  width: 22%;
+  height: 230px;
+  /* object-fit: cover;  */ /* 画像を縦横比を維持したまま指定したサイズに収める */
 }
 </style>

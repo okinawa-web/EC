@@ -28,7 +28,7 @@ onMounted(async () => {
 
 <style>
 .logo {
-  width: 45%;
+  width: 43%;
   margin: 0;
 }
 

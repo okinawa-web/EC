@@ -1,25 +1,24 @@
 <template>
   <footer id="footer">
-    <p class="side_img">
-      <!-- <img src="@/assets/umigame.jpg" alt="footer" /> -->
-      <div class="footer_text">
-        <p class="logo" v-if="imageLoaded">
-          <!--画像の読み込みが完了するまで非表示-->
-          <router-link to="/" class="zero">
-            <img :src="imageURL" alt="logo" class="logo" :key="imageURL" />
-          </router-link>
-        </p>
-
-        <div class="footer_info">
-          <p>~HAMAJIMA~</p>
-          <p>〒000-0000 <br />沖縄県浜島2207</p>
-          <p>予約専用ダイヤル</p>
-          <h3>Tel:0000-000-000</h3>
-          <p>受付時間 10:00~18:00</p>
-        </div>
-        <div class="copyright">©︎2023~ ALL RIGTHS RESERVED HAMAJIMA.</div>
+    <!-- <p class="side_img"> -->
+    <div class="footer_text">
+      <p class="logo" v-if="imageLoaded">
+        <!--画像の読み込みが完了するまで非表示-->
+        <router-link to="/" class="zero">
+          <img :src="imageURL" alt="logo" class="logo" :key="imageURL" />
+        </router-link>
+      </p>
+      <div class="footer_info">
+        <p>~HAMAJIMA~</p>
+        <p>〒000-0000 <br />沖縄県浜島2207</p>
+        <p>予約専用ダイヤル</p>
+        <h3>Tel:0000-000-000</h3>
+        <p>受付時間 10:00~18:00</p>
       </div>
-    </p>
+    </div>
+
+    <div class="copyright">©︎2023~ ALL RIGTHS RESERVED HAMAJIMA.</div>
+    <!-- </p> -->
   </footer>
 </template>
 
@@ -42,22 +41,21 @@ onMounted(async () => {
 });
 </script>
 
-
-
-
 <style>
-.footer_text {
+#footer {
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
   position: relative;
-  color: darkgray;
-}
-.logo {
-  position: absolute;
 }
 
-.footer_info {
-  position: absolute;
-  right: 0;
-  font-size: 16px;
+.logo {
+  margin-right: auto;
+  /* position: absolute; */
+}
+
+.footer_text {
+  display: flex;
 }
 
 .copyright {

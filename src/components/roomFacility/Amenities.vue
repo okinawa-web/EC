@@ -21,35 +21,3 @@ const amenityTitle = ref("アメニティ");
 // imageIdsに画像のIDを配列で指定する
 const imageIds = ref(["28", "29", "30", "31"]);
 </script>
-
-<style>
-.amenitieBox {
-  text-align: center;
-  width: 80%;
-  margin: auto;
-}
-
-.col_4 {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: top;
-}
-.col_4 .amenitieItem {
-  width: 20%;
-}
-
-.col_4:after {
-  content: "";
-  display: block;
-  width: 25%;
-  height: 0;
-  order: 1;
-}
-
-.amenitieItem {
-  width: 20%;
-  padding: 10px;
-}
-</style>
