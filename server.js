@@ -84,7 +84,7 @@ app.post("/api/login", async (req, res) => {
         people: people,
         detail: detail,
       },
-      select: { name: true, email: true, password: true, tel: true },
+      select: { name: true, email: true, password: true },
     });
 
     console.log("prisma success");
