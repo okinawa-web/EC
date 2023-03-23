@@ -1,5 +1,25 @@
+<script setup>
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
+
+const getLoginUser = async () => {
+  try {
+    const response = await axios.get("http://localhost:8000/api/TheReserve", {
+      withCredentials: true // クッキーを送信する
+    });
+    console.log("RESPONSEデータ", response.data);
+  } catch (error) {
+    console.log("セッション持って来れてない！！", error);
+  }
+};
+
+
+</script>
+
 <template>
   <div class="HAMAJIMA">〜HAMAJIMA☆LAND〜</div>
+  <button @click="getLoginUser">ゲットログインユーザー</button>
   <div class="header">
     <div class="reserve_header">
       <ul class="header_link">

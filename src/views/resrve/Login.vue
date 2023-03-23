@@ -1,78 +1,4 @@
 
-<!-- <template>
-  <div>
-    <h2>Users</h2>
-    <ul v-if="state.users !== null && state.users.length > 0">
-      <li v-for="user in state.users" :key="user.name">
-        {{ user.name }}
-      </li>
-    </ul>
-    <p v-else>Loading...</p>
-
-<script setup>
-import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
-</script>
-<template>
-  <ReserveHeader />
-  <div class="login_title">マイページログイン｜HAMAJIMA LAND</div>
-  <div class="login_wrapper">
-    <div class="login_package">
-      <div class="login_box">
-        <p>
-          マイページでは、予約情報の確認、会員情報の変更、退会手続きが行えます。
-          ご登録済みのＩＤ(メールアドレス)、パスワードを入力して、「ログイン」ボタンをクリックしてください。
-          E-mailアドレスはアルファベットの大文字と小文字が区別されます。お間違えのないようご注意ください。
-        </p>
-        <p class="LOGIN">ログイン</p>
-        <div class="login_form">
-          <div class="login_form">
-            <table class="login_table">
-              <tr>
-                <th>ご登録メールアドレス</th>
-                <td>
-                  <input type="text" class="login_input" />
-                </td>
-              </tr>
-              <tr>
-                <th>パスワード</th>
-                <td><input type="text" class="login_input" /></td>
-              </tr>
-            </table>
-            <p class="forgot_password">
-              <a href="">パスワードを忘れた場合</a>
-            </p>
-            <p class="forgot_password">
-              <a href="/MemberRegistration">会員登録はこちら</a>
-            </p>
-          </div>
-          <ul class="ul_button">
-            <li class="li_button">
-              <input type="button" value="前の画面に戻る" class="back_button" />
-            </li>
-            <li class="li_button">
-              <input type="button" value="ログイン" class="login_button" />
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script setup>
-import { reactive, onMounted } from "vue";
-import axios from "axios";
-
-const state = reactive({
-  users: null,
-});
-
-onMounted(async () => {
-  const response = await axios.get("http://localhost:8000/api/users");
-  state.users = response.data;
-});
-</script> -->
-
 <template>
   <div>
     <form @submit.prevent="login">
@@ -91,14 +17,15 @@ onMounted(async () => {
     <p v-if="errorMessage">{{ errorMessage }}</p>
   </div>
   <div>
-    <h2>Users</h2>
-    <ul v-if="state.users !== null && state.users.length > 0">
-      <li v-for="user in state.users" :key="user.name">
-        {{ user.name }}
+    <h2>予約履歴</h2>
+    <ul v-if="state.reserves !== null && state.reserves.length > 0">
+      <li v-for="reserve in reserves" :key="reserve.id">
+        {{ reserve.date }}
       </li>
     </ul>
-    <p v-else>Loading...</p>
+    <p v-else>予約はありません</p>
   </div>
+  <a href="/TheReserve">aaaaa</a>
 </template>
 
 <script setup>
@@ -109,11 +36,13 @@ import { reactive, onMounted } from "vue";
 
 const state = reactive({
   users: null,
+  reserves: null,
 });
 
 const username = ref("");
 const password = ref("");
 const errorMessage = ref("");
+const reserves = ref("");
 
 const router = useRouter();
 
@@ -134,14 +63,20 @@ axios.interceptors.request.use(
 
 const login = () => {
   axios
-    .post("http://localhost:8000/api/login", {
-      username: username.value,
-      password: password.value,
-    })
+    .post(
+      "http://localhost:8000/api/login",
+      {
+        username: username.value,
+        password: password.value,
+      }
+    )
     .then((response) => {
-      console.log(response.data);
-      localStorage.setItem("token", response.data.token);
-      router.push("/");
+      console.log("response.dataの中身", response.data.reserves);
+      console.log("response.dataの中身", response.data);
+      reserves.value = response.data.reserves;
+      state.reserves = response.data.reserves;
+      // localStorage.setItem("token", response.data.token);
+      // router.push("/TheReserve");
     })
     .catch((error) => {
       console.log(error.response.data);
