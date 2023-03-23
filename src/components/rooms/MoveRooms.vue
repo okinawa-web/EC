@@ -1,12 +1,10 @@
 <template>
   <div class="moverooms">
-    <!-- <div class="roomWrapper">
-          <div v-for="room in rooms" :key="room.id" class="room"></div>
-        </div> -->
     <div class="room101">
       <router-link :to="{ name: 'Room', query: { id: 101 } }">
-        <p class="img">
-          <img src="@/assets/room1.jpg" alt="101" />
+        <p class="image">
+          <!-- <img src="@/assets/room1.jpg" alt="101" /> -->
+          <img :src="imageURL" alt="room1" :key="imageURL" />
         </p>
         <div class="wrap_txt">
           <p class="title">
@@ -36,7 +34,7 @@
     </div>
     <div class="room102">
       <router-link :to="{ name: 'Room', query: { id: 102 } }">
-        <p class="img">
+        <p class="image">
           <img src="@/assets/room2.png" alt="102" />
         </p>
         <div class="wrap_txt">
@@ -67,7 +65,7 @@
     </div>
     <div class="room103">
       <router-link :to="{ name: 'Room', query: { id: 103 } }">
-        <p class="img">
+        <p class="image">
           <img src="@/assets/room4.jpg" alt="103" />
         </p>
         <div class="wrap_txt">
@@ -99,25 +97,52 @@
   </div>
 </template>
 
+<script setup>
+import { onMounted, ref } from "vue";
+import { useImageStore } from "@/stores/image.js";
+
+const imageStore = useImageStore();
+const imageURL = ref("");
+const imageLoaded = ref(false);
+
+onMounted(async () => {
+  try {
+    await imageStore.loadImage("15"); //imageId指定
+    imageURL.value = imageStore.imageURL;
+    imageLoaded.value = true; //画像の読み込みが完了するとtrueになる
+  } catch (error) {
+    console.error(error);
+  }
+});
+</script>
+
 <style>
 .moverooms {
   width: 100%;
-  /* max-width: 1920px; */
   display: flex;
   justify-content: space-between;
-  /* margin-top: 4.6875%; */
-  /* overflow: hidden; */
 }
 li {
   list-style-type: none;
 }
-img {
-  position: relative;
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* 画像が横幅を超えた場合は改行する */
+}
+.image div {
+  flex-basis: 40%;
+  margin: 1%;
+  display: flex;
+  justify-content: center;
+}
+.image img {
+  width: 100%;
+  height: auto;
+  margin: 1%;
 }
 .wrap_txt {
-  /* position: absolute;
-  top: 70%;
-  transform: translate(85%, 480%);  */
   background-color: rgba(252, 247, 247, 0.9);
   color: darkgray;
   text-align: center;

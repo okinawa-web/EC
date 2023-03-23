@@ -1,3 +1,4 @@
+
 <template>
   <button @click="getLoginUser">ゲットログインユーザー</button>
 

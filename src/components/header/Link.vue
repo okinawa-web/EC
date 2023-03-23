@@ -14,17 +14,15 @@
 
 <style>
 .link {
-  bottom: 10%;
-  /* margin: 0; */
-  /* float: left; */
-  /* padding-top: 2.5%; */
-  /* margin-top: 0%;
-  margin-bottom: 50%; */
-  /* display: flex; */
-  /* position: absolute; */
-  /* bottom: 0%; */
+  display: block;
+  align-items: center;
+  width: 53%;
+  font-size: 150%;
+  margin-right: 0;
+  margin-left: 3%;
+  margin-top: 3%;
 }
-
+/* リンク間の空間 */
 .mgr-10 {
   margin: 10px;
 }

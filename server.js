@@ -5,8 +5,8 @@ const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const cookieParser = require("cookie-parser");
 // const path = require("path");
-
 const prisma = new PrismaClient();
+const { reactive } = require("vue");
 
 const app = express();
 app.use(bodyParser.json());
@@ -39,18 +39,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// // /api/usersエンドポイントにGETリクエストを送信すると、全てのユーザーのリストを返します。
-app.get("/api/users", (req, res) => {
-  const users = [{ name: "Alice" }, { name: "Bob" }, { name: "Charlie" }];
-  res.send(users);
-});
+async function start() {
+  const app = express();
+  app.use(express.json());
 
-// //会員一覧 GET
-app.get("/member", async (req, res) => {
-  console.log("test desuyo");
-  const members = await prisma.member.findMany();
-  res.status(200).send(members);
-});
+
 
 // ログインAPIのエンドポイント
 app.post("/api/login", async (req, res) => {
@@ -59,9 +52,6 @@ app.post("/api/login", async (req, res) => {
   let user;
   try {
     user = await prisma.member.findUnique({
-      where: {
-        email: username,
-      },
       select: {
         id: true,
         name: true,
@@ -241,3 +231,37 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send({ message: "あああああInternal Server Error" });
 });
+
+ //指定した画像の取得
+  app.get("/image/:id", async (req, res) => {
+    const id = parseInt(req.params.id); // parseInt() 関数を使用して数値に変換する
+    if (isNaN(id)) {
+      return res.status(400).send("idが数値ではない!");
+    }
+    const image = await prisma.image.findUnique({
+         where: {
+        id: id, // 整数値として渡す
+      },
+    });
+    return res.json(image);
+  });
+
+  //画像取得API
+  app.get("/image", async (req, res) => {
+    try {
+      const images = await prisma.image.findMany();
+      const imagePaths = images.map((image) => image.path);
+      res.send(imagePaths);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("サーバーエラー");
+    }
+  });
+
+  //サーバー起動確認
+  app.listen(PORT, () => {
+    console.log(`Example app listening at http://localhost:${PORT}OKOK`);
+  });
+}
+
+start().catch((err) => console.error(err));

@@ -3,23 +3,55 @@
     <ul class="box_ul">
       <h1 class="freeServise">Free Service</h1>
       <li class="free_li">
-        <img src="@/assets/drinkIcon.png" alt="ロゴ" class="freeIcon" />
+        <img :src="imageURL1" alt="ロゴ" class="freeIcon" />
         <p class="serviseP">冷蔵庫内ドリンク</p>
         <p class="serviseP">飲み放題サービス</p>
       </li>
       <li class="free_li">
-        <img src="@/assets/carIcon.png" alt="ロゴ" class="freeIcon" />
+        <img :src="imageURL2" alt="ロゴ" class="freeIcon" />
         <p class="serviseP">宿泊期間中</p>
         <p class="serviseP">駐車料金無料</p>
       </li>
       <li class="free_li">
-        <img src="@/assets/bbqIcon.png" alt="ロゴ" class="freeIcon" />
+        <img :src="imageURL3" alt="ロゴ" class="freeIcon" />
         <p class="serviseP">野外用</p>
         <p class="serviseP">バーベキューコンロ</p>
       </li>
     </ul>
   </div>
 </template>
+
+<script setup>
+import { useImageStore } from "@/stores/image.js";
+import { ref, onMounted } from "vue";
+
+const imageURL1 = ref("");
+const imageLoaded1 = ref(false);
+const imageURL2 = ref("");
+const imageLoaded2 = ref(false);
+const imageURL3 = ref("");
+const imageLoaded3 = ref(false);
+
+const store = useImageStore();
+onMounted(async () => {
+  try {
+    await store.loadImage(40);
+    imageURL1.value = store.imageURL;
+    imageLoaded1.value = true;
+
+    await store.loadImage(41);
+    imageURL2.value = store.imageURL;
+    imageLoaded2.value = true;
+
+    await store.loadImage(42);
+    imageURL3.value = store.imageURL;
+    imageLoaded3.value = true;
+
+  } catch (error) {
+    console.log(`画像取得失敗:${error}`);
+  }
+});
+</script>
 
 <style>
 .freeBox {

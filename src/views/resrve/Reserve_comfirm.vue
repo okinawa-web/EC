@@ -6,6 +6,7 @@ import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
 import { reactive, onMounted } from "vue";
+import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 
 
 import ReserveHeader from "/Users/ikuri/Desktop/EC/src/components/reserve/ReaserveHeader.vue";
@@ -37,6 +38,7 @@ onMounted(async () => { axios
 
     });
 });
+
 </script>
 <template>
   <ReserveHeader />

@@ -10,7 +10,7 @@ const props = defineProps({
 </script>
 
 <style>
-.arrow {
+/* .arrow {
   display: flex;
   font-size: 20px;
   color: darkgray;
@@ -18,9 +18,10 @@ const props = defineProps({
   transition: 1s;
   text-align: center;
   justify-content: center;
-}
+  z-index: 1;
+} */
 
-.arrow::before {
+/* .arrow::before {
   content: "";
   width: 60px;
   height: 10px;
@@ -28,13 +29,14 @@ const props = defineProps({
   border-bottom: solid 1px;
   transition: 1s;
   position: relative;
-}
-.arrow:hover::before {
+} */
+
+/* .arrow:hover::before {
   visibility: hidden;
   opacity: 0;
-}
+} */
 
-.arrow::after {
+/* .arrow::after {
   visibility: hidden;
   content: "";
   width: 60px;
@@ -44,16 +46,11 @@ const props = defineProps({
   border-right: solid 1px;
   transform: skew(60deg);
   display: block;
-}
+} */
 
-.arrow:hover:after {
+/* .arrow:hover:after {
   visibility: visible;
   opacity: 1;
   transition: 1s;
-}
-/* 
-.arrow:hover::after {
-  transform: translateX(50%);
-  transition-duration: 0.8s;
 } */
 </style>
