@@ -5,8 +5,7 @@
     :explanation="coment"
     :Link="link"
     :Name="linkName"
-    :image01="img1"
-    :image02="img2"
+    :imageIds="imageIds"
   />
   <br />
   <ArrowButton :Link="link" :Name="linkName" />
@@ -26,8 +25,8 @@ const coment = ref(
   "「マイパマビーチ」とも呼ばれ親しまれている与那覇前浜ビーチは、東洋一美しいビーチと言われています。海の青さのグラデーションと、真珠のように輝く白砂のコントラストが評判です。"
 );
 //画像
-const img1 = ref("beach1.jpg");
-const img2 = ref("beach3.webp");
+// imageIdsに画像のIDを配列で指定する
+const imageIds = ref(["43", "44"]);
 
 // //アローボタンコンポーネント
 const link = ref(

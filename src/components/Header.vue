@@ -7,34 +7,21 @@
   </header>
 </template>
 
-<script>
+<script setup>
 import HeaderLogo from "@/components/header/Logo.vue";
 import HeaderLink from "@/components/header/Link.vue";
 import HeaderReserve from "@/components/header/Reserve.vue";
 import HeaderMenu from "@/components/header/Menu.vue";
-
-export default {
-  components: {
-    HeaderLogo,
-    HeaderLink,
-    HeaderReserve,
-    HeaderMenu,
-  },
-};
 </script>
 
 <style>
 #head {
   display: flex;
-  /* align-items: center; */
   background-color: white;
   width: 100%;
   /*固定*/
   position: fixed;
   top: 0%;
-}
-.elements {
-  /* width: 100%; */
-  /* flex: 1%; */
+  z-index: 1; /* 追加 */
 }
 </style>

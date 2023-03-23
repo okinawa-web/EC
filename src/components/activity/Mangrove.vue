@@ -5,8 +5,7 @@
     :explanation="coment"
     :Link="link"
     :Name="linkName"
-    :image01="img1"
-    :image02="img2"
+    :imageIds="imageIds"
   />
   <br />
   <ArrowButton :Link="link" :Name="linkName" />
@@ -26,8 +25,8 @@ const coment = ref(
   "独特の見た目と手付かずの大自然が沖縄の豊かさを感じさせるマングローブ。マングローブ林の中をカヤックで漕ぎ進めるアクティビティもおすすめです。"
 );
 //画像
-const img1 = ref("mang5.jpg");
-const img2 = ref("mang3.jpg");
+// imageIdsに画像のIDを配列で指定する
+const imageIds = ref(["47", "48"]);
 
 // //アローボタンコンポーネント
 const link = ref(

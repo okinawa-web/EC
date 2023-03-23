@@ -1,6 +1,9 @@
 <template>
   <div class="afALL">
-    <img src="@/assets/sup1.jpg" alt="SUP" class="button" />
+    <!-- <img src="@/assets/sup1.jpg" alt="SUP" class="button" /> -->
+    <!--画像の読み込みが完了するまで非表示-->
+    <img :src="imageURL" alt="image" class="logo" :key="imageURL" />
+
     <div class="button">
       <div class="basic">
         <router-link to="facility" class="basic_btn">
@@ -10,6 +13,7 @@
             各部屋の本格的なキッチンやお部屋、洗面・バスルームには当館でのご滞在が快適となる多彩なアメニティ・設備をご用意しております。
           </p>
           ➡︎
+          <br />
         </router-link>
       </div>
     </div>
@@ -17,51 +21,61 @@
 </template>
 
 <script setup>
-// const props = defineProps({
-//   link: String,
-//   linkName: String,
-// });
-</script>
+import { onMounted, ref } from "vue";
+import { useImageStore } from "@/stores/image.js";
 
+const imageStore = useImageStore();
+const imageURL = ref("");
+const imageLoaded = ref(false);
+
+onMounted(async () => {
+  try {
+    await imageStore.loadImage("13"); //imageId指定
+    imageURL.value = imageStore.imageURL;
+    imageLoaded.value = true; //画像の読み込みが完了するとtrueになる
+  } catch (error) {
+    console.error(error);
+  }
+});
+</script>
 <style>
 .afALL {
   display: flex;
-}
-.afTitle {
-  font-size: 40px;
-}
-
-.afDescription {
-  font-size: 25px;
+  margin: 5% 2%;
 }
 
 .button {
-  text-align: center;
-  /* float: left; */
-  width: 900px;
+  /* display: flex; */
+  width: 100%;
   height: 600px;
+  align-items: center;
+  z-index: 0;
 }
+
 .basic {
   display: block;
-  position: relative;
-  /* width: 1000px;
-  height: 350px; */
+  /* position: relative; */
   line-height: 48px;
   display: flex;
+  flex-direction: column;
   text-align: center;
   background: #fff;
   font-size: 20px;
+  width: 900px;
+  /* margin: 0 auto; */
 }
 
 .basic_btn {
   display: block;
-  width: 90%;
+  width: 50%;
   height: 465px;
   color: darkgray;
   z-index: 10;
-  display: table-cell;
-  margin: 15% 0 0 5%;
+  margin: 0 auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .basic_btn:before {
@@ -79,24 +93,10 @@
 
 .basic_btn:hover {
   color: #fff;
+  background-color: darkgray;
 }
 
 .basic_btn:hover:before {
   width: 100%;
 }
-
-/* .basic_btn {
-  display: block;
-  font-size: 16px;
-  padding: 18px 30px;
-  transition: width 500ms ease;
-  width: 6%;
-  height: 15px;
-  color: darkgray;
-  background-color: aquamarine;
-} */
-/* .basic_btn:hover {
-  background: darkgray;
-  color: white;
-} */
 </style>
