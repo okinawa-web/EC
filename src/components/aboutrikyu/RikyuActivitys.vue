@@ -6,10 +6,7 @@
     :comments="cmnt"
     :imageIds="imageIds"
   />
-  <!-- <div class="movie">
-      <video src="src/assets/umidouga.mp4"></video>
-    </div> -->
-  <BasicButton :link="site" :linkName="siteName" class="link_btn" />
+  <!-- <BasicButton :link="site" :linkName="siteName" class="link_btn" /> -->
 </template>
 
 <script setup>
@@ -34,7 +31,7 @@ const cmnt = ref(
 
 //画像
 // imageIdsに画像のIDを配列で指定する
-const imageIds = ref(["11", "12", "13"]);
+const imageIds = ref(["11"]);
 
 //リンク
 const site = ref("activity");
@@ -49,7 +46,4 @@ const siteName = ref("Activity");
   left: 3%;
   top: 85%;
 }
-/* .movie{
-      position: absolute;
-  } */
 </style>

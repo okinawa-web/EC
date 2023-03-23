@@ -38,7 +38,7 @@ const page = ref("Room Facilities");
 const sub = ref("客室設備・アメニティ");
 
 //画像
-const imageId = ref("4");
+const imageId = ref("6");
 const store = useImageStore();
 watch(
   () => imageId.value,

@@ -1,6 +1,6 @@
 <template>
   <div class="SerchBox">
-    <div class="title">空室検索</div>
+    <div class="serch_title">空室検索</div>
     <table class="table">
       <tr>
         <th class="table_th">宿泊日</th>
@@ -52,7 +52,7 @@
   border: 1px solid #a0a0a0;
   border-radius: 3px;
 }
-.title {
+.serch_title {
   background-color: rgb(0, 83, 92);
   color: white;
   font-size: 20px;
@@ -101,7 +101,7 @@
   margin: auto;
 }
 
-.title {
+.serch_title {
   background-color: rgb(0, 73, 73);
   color: white;
   font-size: 20px;

@@ -1,5 +1,5 @@
 <template>
-  <div class="button">
+  <div class="basic_button">
     <div class="basic">
       <router-link :to="`/${props.link}`" class="basic_btn">
         ➡︎ {{ props.linkName }}
@@ -18,10 +18,7 @@ const props = defineProps({
 <style>
 .basic {
   display: block;
-
   position: relative;
-  /* margin-left: auto;
-  margin-right: auto; */
   width: 250px;
   height: 48px;
   line-height: 48px;
@@ -33,9 +30,8 @@ const props = defineProps({
 
 .basic_btn {
   display: block;
-
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   color: darkgray;
   z-index: 10;
 }

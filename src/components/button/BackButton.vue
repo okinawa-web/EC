@@ -17,9 +17,6 @@
   width: 10%;
 }
 .back_button {
-  /* background-color: darkgray;
-    width: 30%;
-    height: 20%; */
   margin: 0;
   padding: 0;
 }
