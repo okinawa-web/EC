@@ -1,5 +1,7 @@
 
 <template>
+  <button @click="getLoginUser">ゲットログインユーザー</button>
+
   <div>
     <form @submit.prevent="login">
       <label>
@@ -25,7 +27,7 @@
     </ul>
     <p v-else>予約はありません</p>
   </div>
-  <a href="/TheReserve">aaaaa</a>
+  <a href="/TheReserve">予約ページへ</a>
 </template>
 
 <script setup>
@@ -53,13 +55,27 @@ onMounted(async () => {
 
 axios.interceptors.request.use(
   function (config) {
-    console.log(config); // リクエストの詳細を表示
+    console.log("リクエストの詳細",config); // リクエストの詳細を表示
     return config;
   },
   function (error) {
     return Promise.reject(error);
   }
 );
+
+// axios.defaults.withCredentials = true;
+
+const getLoginUser = async () => {
+  try {
+    const response = await axios.get("http://localhost:8000/api/TheReserve", {
+      withCredentials: true // クッキーを送信する
+    });
+    console.log("RESPONSEデータ", response.session.data);
+  } catch (error) {
+    console.log("セッション持って来れてない！！", error);
+  }
+};
+
 
 const login = () => {
   axios

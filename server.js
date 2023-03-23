@@ -5,8 +5,8 @@ const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const cookieParser = require("cookie-parser");
 // const path = require("path");
+
 const prisma = new PrismaClient();
-const { reactive } = require("vue");
 
 const app = express();
 app.use(bodyParser.json());
@@ -39,11 +39,18 @@ app.use((req, res, next) => {
   next();
 });
 
-async function start() {
-  const app = express();
-  app.use(express.json());
+// // /api/usersエンドポイントにGETリクエストを送信すると、全てのユーザーのリストを返します。
+app.get("/api/users", (req, res) => {
+  const users = [{ name: "Alice" }, { name: "Bob" }, { name: "Charlie" }];
+  res.send(users);
+});
 
-
+// //会員一覧 GET
+app.get("/member", async (req, res) => {
+  console.log("test desuyo");
+  const members = await prisma.member.findMany();
+  res.status(200).send(members);
+});
 
 // ログインAPIのエンドポイント
 app.post("/api/login", async (req, res) => {
@@ -52,6 +59,9 @@ app.post("/api/login", async (req, res) => {
   let user;
   try {
     user = await prisma.member.findUnique({
+      where: {
+        email: username,
+      },
       select: {
         id: true,
         name: true,
@@ -147,6 +157,80 @@ app.get("/api/loginUser", (req, res) => {
   }
 });
 
+//会員一覧 GET
+app.get("/member", async (req, res) => {
+  console.log("test desuyo");
+  const members = await prisma.member.findMany();
+  res.status(200).send(members);
+});
+
+//会員登録 POST
+app.post("/member", async (req, res) => {
+  const newMember = await prisma.member.create({
+    data: {
+      name: req.body.name,
+      address: req.body.address,
+      tel: req.body.tel,
+      registerDate: req.body.registerDate,
+      email: req.body.email,
+      password: req.body.password,
+    },
+  });
+  res.json(newMember);
+});
+
+//予約状況 GET
+app.get("/reserve", async (req, res) => {
+  console.log("reserve テスト");
+  const reserve = await prisma.reserve.findMany();
+  res.status(200).send(reserve);
+});
+
+//予約 POST
+// app.post("/reserve", async (req, res) => {
+//   const { reservePeople, date } = req.body;
+//   const memberId = 2;
+//   const roomId = 3; // ここを5, 6, 7のいずれかにする
+//   console.log(roomId);
+//   const reserve = await prisma.reserve.create({
+//     data: {
+//       memberId: memberId,
+//       reservePeople: reservePeople,
+//       date: date,
+//       roomId: roomId,
+//     },
+//   });
+//   return res.json(reserve);
+// });
+
+// app.get("/", async (req, res) => {
+//   res.send("こんにちは");
+// });
+
+//部屋情報状況 GET
+app.get("/room", async (req, res) => {
+  console.log("room テスト");
+  const room = await prisma.room.findMany();
+  res.status(200).send(room);
+});
+
+//部屋情報登録 POST
+app.post("/room", async (req, res) => {
+  const roomName = "203の部屋";
+  const price = 25000;
+  const people = 2;
+  const detail = "一番いいお部屋";
+  const room = await prisma.room.create({
+    data: {
+      roomName: roomName,
+      price: price,
+      people: people,
+      detail: detail,
+    },
+  });
+  return res.json(room);
+});
+
 // サーバーの起動
 app.listen(8000, () => {
   console.log("Server is running on port 8000");
@@ -157,37 +241,3 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send({ message: "あああああInternal Server Error" });
 });
-
- //指定した画像の取得
-  app.get("/image/:id", async (req, res) => {
-    const id = parseInt(req.params.id); // parseInt() 関数を使用して数値に変換する
-    if (isNaN(id)) {
-      return res.status(400).send("idが数値ではない!");
-    }
-    const image = await prisma.image.findUnique({
-         where: {
-        id: id, // 整数値として渡す
-      },
-    });
-    return res.json(image);
-  });
-
-  //画像取得API
-  app.get("/image", async (req, res) => {
-    try {
-      const images = await prisma.image.findMany();
-      const imagePaths = images.map((image) => image.path);
-      res.send(imagePaths);
-    } catch (error) {
-      console.error(error);
-      res.status(500).send("サーバーエラー");
-    }
-  });
-
-  //サーバー起動確認
-  app.listen(PORT, () => {
-    console.log(`Example app listening at http://localhost:${PORT}OKOK`);
-  });
-}
-
-start().catch((err) => console.error(err));
