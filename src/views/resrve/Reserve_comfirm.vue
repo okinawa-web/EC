@@ -1,8 +1,55 @@
+
+<!-- ログインしている会員登録データをcookieを使ってこのページで読み込み、state.reservesに入れると、予約はありませんが予約日一覧になるはず -->
+
 <script setup>
+import { ref } from "vue";
+import axios from "axios";
+import { useRouter } from "vue-router";
+import { reactive, onMounted } from "vue";
+
+
 import ReserveHeader from "/Users/ikuri/Desktop/EC/src/components/reserve/ReaserveHeader.vue";
+
+const state = reactive({
+  reserves: null,
+});
+
+const username = ref("");
+const password = ref("");
+const reserves = ref("");
+
+onMounted(async () => { axios
+    .post("http://localhost:8000/api/login", {
+      username: username.value,
+      password: password.value,
+    })
+    .then((response) => {
+      console.log("response.dataの中身", response.data.reserves);
+      console.log("response.data.takenの中身", response.data.toke);
+      reserves.value = response.data.reserves;
+      state.reserves = response.data.reserves;
+      // localStorage.setItem("token", response.data.token);
+      // router.push("/TheReserve");
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+      console.log(error);
+
+    });
+});
 </script>
 <template>
   <ReserveHeader />
+  <!-- 実装できてそうなやつ -->
+  <div>
+    <h2>予約履歴</h2>
+    <ul v-if="state.reserves !== null && state.reserves.length > 0">
+      <li v-for="reserve in reserves" :key="reserve.id">
+        {{ reserve.date }}
+      </li>
+    </ul>
+    <p v-else>予約はありません</p>
+  </div>
   <div class="login_title">予約内容確認｜HAMAJIMA LAND</div>
   <div class="login_wrapper">
     <div class="login_package">
