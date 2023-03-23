@@ -1,8 +1,8 @@
 <template>
-  <p class="logo" v-if="imageLoaded">
+  <p class="logo-image" v-if="imageLoaded">
     <!--画像の読み込みが完了するまで非表示-->
     <router-link to="/" class="zero">
-      <img :src="imageURL" alt="logo" class="logo" :key="imageURL" />
+      <img :src="imageURL" alt="logo" :key="imageURL" />
     </router-link>
   </p>
 </template>
@@ -27,13 +27,10 @@ onMounted(async () => {
 </script>
 
 <style>
-.logo {
-  width: 43%;
-  margin: 0;
-}
-
 .logo-image {
-  max-width: 100%;
+  /* max-width: 100%; */
+  /* width: 25%; */
+  margin: 0;
   height: auto;
 }
 .zero {

@@ -1,32 +1,33 @@
 <template>
   <div class="about">
     <div class="about-text">
-      <div class="title">
+      <div class="ab_title">
         <h1 class="about-title">{{ props.aboutTitle }}</h1>
-        <span class="hyphen">
-          <p>{{ props.subTitle }}</p></span
+        <span class="title_hyphen">
+          <p>−{{ props.subTitle }}</p></span
         >
       </div>
       <div class="clear_box">
-        <p>{{ props.messages }}</p>
+        <p class="about_messages">~{{ props.messages }}~</p>
         <br />
-        <p class="coments">{{ props.comments }}</p>
+        <p class="subcoment">{{ props.comments }}</p>
       </div>
     </div>
     <div class="img-frame">
-      <!-- <img :src="store.imageURL" alt="image" /> -->
       <div v-if="imageURLs.length > 0">
         <div v-for="url in imageURLs" :key="url">
-          <img :src="url" alt="image" />
+          <img :src="url" alt="about_image" />
         </div>
       </div>
     </div>
   </div>
+  <!-- <BasicButton /> -->
 </template>
 
 <script setup>
 import { watch, onMounted, ref } from "vue";
 import { useImageStore } from "@/stores/image.js";
+import BasicButton from "@/components/button/BasicButton.vue";
 
 const props = defineProps({
   aboutTitle: String,
@@ -38,7 +39,6 @@ const props = defineProps({
     required: true,
   },
 });
-
 const store = useImageStore();
 const imageURLs = ref([]);
 
@@ -73,56 +73,60 @@ async function getImageURLs() {
 
 <style>
 .about {
-  color: darkgray;
   display: flex;
-  z-index: 1;
-  margin-top: 100px; /* 他のコンポーネントとの間隔を調整 */
+  flex-direction: row;
+  margin: 5%;
+  margin-bottom: 0;
+  background-color: bisque;
 }
 
 .about-text {
-  background-color: rgb(249, 246, 242);
-  width: 50%;
-  height: 60%;
-  padding: 50px;
-  margin: 4%;
-  position: absolute;
+  flex: 1;
 }
-.clear_box {
-  width: 80%;
+.ab_title {
+  margin: 5%;
 }
+
 .about-title {
-  margin: -120px 10px 0;
-  padding: 20px;
+  font-size: 55px;
+  margin-bottom: 0;
 }
-.coments {
-  font-size: 100%;
-  width: 90%;
-  margin: auto;
+
+.title_hyphen {
+  font-size: 20px;
 }
-.hyphen {
-  display: flex;
-  align-items: center; /*垂直中心 */
-  justify-content: center; /* 水平中心 */
+
+.about_messages {
+  font-size: 20px;
 }
-.hyphen:before {
-  border-top: 1px solid;
-  content: "";
-  width: 3em;
+
+.subcoment {
+  font-size: 16px;
+}
+
+.clear_box {
+  width: 70%;
+  margin-left: 20%;
+  margin-top: 8%;
+  /* text-align: center; */
 }
 .img-frame {
-  display: flex;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  flex: 1;
+  margin-top: 3%;
+}
+.about-image {
+  margin: 0 10px;
+  box-sizing: border-box; /* ボーダーを含めたサイズ指定 */
 }
 
-.img-frame > div {
-  scroll-snap-align: center;
-  width: 100%;
+.about-image img {
+  width: 22%;
+  height: 230px;
+  object-fit: cover; /* 画像を縦横比を維持したまま指定したサイズに収める */
 }
-
-.img-frame img {
-  max-width: 100%;
-  height: auto;
-}
+/* @media (max-width: 768px) {
+  .about-image img {
+    width: 100%;
+    height: auto;
+  }} */
 </style>

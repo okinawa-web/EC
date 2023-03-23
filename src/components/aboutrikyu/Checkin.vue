@@ -5,6 +5,8 @@
     :messages="msg"
     :comments="cmnt"
     :imageIds="imageIds"
+    :link="site"
+    :linkName="siteName"
   >
   </AboutRikyuParts>
 </template>
@@ -32,5 +34,11 @@ const cmnt = ref(
 
 //画像
 // imageIdsに画像のIDを配列で指定する
-const imageIds = ref(["5", "6", "7"]);
+const imageIds = ref(["7"]);
+
+//リンク
+const site = ref("rooms");
+
+//リンク先の名前
+const siteName = ref("Room");
 </script>

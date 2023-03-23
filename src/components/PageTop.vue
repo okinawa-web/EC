@@ -2,7 +2,7 @@
   <div class="all">
     <h1 class="pagetitle">{{ props.pagetitle }}</h1>
     <p class="subTitle">{{ props.subTitle }}</p>
-    <div class="link">
+    <div class="toplink">
       <a href="/">TOP</a>
       <span class="hyphen">-</span>
       <span>{{ props.subTitle }}</span>
@@ -64,7 +64,7 @@ onMounted(async () => {
   margin: auto;
 }
 
-.link {
+.toplink {
   font-size: 150%;
   width: 90%;
   margin: 80px auto auto auto;

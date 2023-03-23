@@ -2,7 +2,7 @@
   <footer id="footer">
     <!-- <p class="side_img"> -->
     <div class="footer_text">
-      <p class="logo" v-if="imageLoaded">
+      <p class="footer_logo" v-if="imageLoaded">
         <!--画像の読み込みが完了するまで非表示-->
         <router-link to="/" class="zero">
           <img :src="imageURL" alt="logo" class="logo" :key="imageURL" />
@@ -47,15 +47,21 @@ onMounted(async () => {
   flex-direction: column;
   align-items: center;
   position: relative;
+  margin-top: 5%;
 }
 
-.logo {
+.footer_logo {
   margin-right: auto;
+  width: 30%;
   /* position: absolute; */
 }
 
 .footer_text {
   display: flex;
+}
+
+.footer_info {
+  font-size: 16px;
 }
 
 .copyright {

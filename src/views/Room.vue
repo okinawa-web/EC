@@ -4,7 +4,7 @@
 <template>
   <div class="room">
     <Pagetop :pagetitle="page" :image="pic" :subTitle="sub" />
-    <div class="coments">
+    <div class="room_coments">
       <p>
         広々としたオープンスタイルのリビングから見えるプライベートテラスやプールをはじめ、
       </p>
@@ -61,7 +61,7 @@ const sub = ref("101号室");
   width: 70%;
   margin: auto;
 }
-.coments {
+.room_coments {
   text-align: center;
 }
 .reserve_btn {

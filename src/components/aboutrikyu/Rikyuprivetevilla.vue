@@ -6,7 +6,7 @@
     :comments="cmnt"
     :imageIds="imageIds"
   />
-  <BasicButton :link="site" :linkName="siteName" class="link_btn" />
+  <!-- <BasicButton :link="site" :linkName="siteName" class="link_btn" /> -->
 </template>
 
 <script setup>
@@ -31,7 +31,7 @@ const cmnt = ref(
 
 //画像
 // imageIdsに画像のIDを配列で指定する
-const imageIds = ref(["15", "16", "17"]);
+const imageIds = ref(["17"]);
 
 //リンク
 const site = ref("rooms");

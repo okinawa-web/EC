@@ -29,13 +29,5 @@ const cmnt = ref(
 
 //画像
 // imageIdsに画像のIDを配列で指定する
-const imageIds = ref(["8", "9", "10"]);
+const imageIds = ref(["10"]);
 </script>
-
-<style>
-.link_btn {
-  position: absolute;
-  left: 3%;
-  top: 85%;
-}
-</style>
