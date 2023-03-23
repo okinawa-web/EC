@@ -9,7 +9,6 @@ async function start() {
   const app = express();
   app.use(express.json());
 
-
   //指定した画像の取得
   app.get("/image/:id", async (req, res) => {
     const id = parseInt(req.params.id); // parseInt() 関数を使用して数値に変換する
