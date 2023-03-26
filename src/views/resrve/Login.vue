@@ -1,4 +1,3 @@
-
 <template>
   <button @click="getLoginUser">ゲットログインユーザー</button>
 
@@ -79,13 +78,10 @@ const getLoginUser = async () => {
 
 const login = () => {
   axios
-    .post(
-      "http://localhost:8000/api/login",
-      {
-        username: username.value,
-        password: password.value,
-      }
-    )
+    .post("http://localhost:8000/api/login", {
+      username: username.value,
+      password: password.value,
+    })
     .then((response) => {
       console.log("response.dataの中身", response.data.reserves);
       console.log("response.dataの中身", response.data);

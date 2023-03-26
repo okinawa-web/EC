@@ -1,8 +1,12 @@
 <template>
   <Header />
-  <!-- <img src="/src/assets/map.jpg" alt="">
-  <img src="/src/assets/access.jpg" alt=""> -->
+  <!-- <img src="/src/assets/map.jpg" alt=""> -->
   <PageTop :pagetitle="page" :subTitle="sub" :imageId="imageId" />
+  <div class="acsses">
+    <p class="start">浜島空港</p>
+    <p class="center"> ----お車で20分 🚕💨----> </p>
+    <p class="goal">HAMAJIMA LAND</p>
+  </div>
   <Footer />
 </template>
 
@@ -33,3 +37,25 @@ watch(
 //サブタイトル
 const sub = ref("アクセス");
 </script>
+
+<style>
+.acsses {
+  display: flex;
+  color: black;
+  font-size: 30px;
+  text-align: center;
+}
+.start,
+.goal {
+  background-color: rgb(246, 210, 143);
+  width: 20%;
+}
+.start,
+.center,
+.goal {
+  margin: 3%;
+}
+.start{
+  margin-left: 10%;
+}
+</style>

@@ -2,7 +2,7 @@
   <div class="afALL">
     <!-- <img src="@/assets/sup1.jpg" alt="SUP" class="button" /> -->
     <!--画像の読み込みが完了するまで非表示-->
-    <img :src="imageURL" alt="image" class="logo" :key="imageURL" />
+    <img :src="imageURL" alt="image" class="rooms_amenimage" :key="imageURL" />
 
     <div class="button">
       <div class="basic">
@@ -30,7 +30,7 @@ const imageLoaded = ref(false);
 
 onMounted(async () => {
   try {
-    await imageStore.loadImage("13"); //imageId指定
+    await imageStore.loadImage("14"); //imageId指定
     imageURL.value = imageStore.imageURL;
     imageLoaded.value = true; //画像の読み込みが完了するとtrueになる
   } catch (error) {
@@ -98,5 +98,8 @@ onMounted(async () => {
 
 .basic_btn:hover:before {
   width: 100%;
+}
+.rooms_amenimage {
+  width: 30%;
 }
 </style>

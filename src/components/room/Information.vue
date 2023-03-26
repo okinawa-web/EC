@@ -30,7 +30,7 @@
         </p>
         <p>※プールご利用の際は、水着着用となります。</p>
       </div>
-      <BasicButton :link="site" :linkName="siteName" class="link_btn" />
+      <!-- <BasicButton :link="site" :linkName="siteName" class="link_btn" /> -->
     </div>
   </div>
 </template>
@@ -47,21 +47,25 @@ const siteName = ref("Amenities&Facilities");
 <style>
 .information {
   color: darkgray;
+  margin: 5% 10%;
 }
 .info {
-  font-size: 30px;
+  font-size: 45px;
 }
-/* table,
+.mini {
+  font-size: 25px;
+}
+table,
 td,
 th {
   border-bottom: 1px solid darkgray;
   width: 50%;
   line-height: 300%;
   text-align: left;
-} */
-table {
-  border-collapse: collapse;
 }
+/* table {
+  border-collapse: collapse;
+} */
 .attention {
   line-height: 5%;
 }
