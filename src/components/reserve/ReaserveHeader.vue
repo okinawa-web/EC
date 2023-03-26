@@ -8,7 +8,7 @@ const getLoginUser = async () => {
     const response = await axios.get("http://localhost:8000/api/TheReserve", {
       withCredentials: true, // クッキーを送信する
     });
-    console.log("RESPONSEデータ", response.data);
+    console.log("RESPONSEデータ", response.session.data);
   } catch (error) {
     console.log("セッション持って来れてない！！", error);
   }

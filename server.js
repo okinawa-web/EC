@@ -5,8 +5,8 @@ const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const cookieParser = require("cookie-parser");
 // const path = require("path");
+
 const prisma = new PrismaClient();
-const { reactive } = require("vue");
 
 const app = express();
 app.use(bodyParser.json());
@@ -153,6 +153,12 @@ async function start() {
       console.log("別APIからのセッション", req.session.user);
     }
   });
+// // /api/usersエンドポイントにGETリクエストを送信すると、全てのユーザーのリストを返します。
+app.get("/api/users", (req, res) => {
+  const users = [{ name: "Alice" }, { name: "Bob" }, { name: "Charlie" }];
+  res.send(users);
+});
+
 
   //会員一覧 GET
   app.get("/member", async (req, res) => {
@@ -171,6 +177,21 @@ async function start() {
         registerDate: req.body.registerDate,
         email: req.body.email,
         password: req.body.password,
+        
+  let user;
+  try {
+    user = await prisma.member.findUnique({
+      where: {
+        email: username,
+      },
+      select: {
+        id: true,
+        name: true,
+        address: true,
+        registerDate: true,
+        email: true,
+        password: true,
+        reserves: true,
       },
     });
     res.json(newMember);
