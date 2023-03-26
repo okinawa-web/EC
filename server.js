@@ -30,6 +30,7 @@ app.use(
 
 // CORSを設定する
 app.use((req, res, next) => {
+  // console.log("確認", res.getHeaders());
   res.header("Access-Control-Allow-Origin", "http://localhost:5173");
   res.header(
     "Access-Control-Allow-Headers",
@@ -42,6 +43,14 @@ app.use((req, res, next) => {
 async function start() {
   const app = express();
   app.use(express.json());
+
+  //ログイン確認 GET
+  app.get("/api/login", async (req, res) => {
+    console.log("GETできますか");
+    const loggg = await prisma.member.findMany();
+    res.status(200).send(loggg);
+    console.log("内容", loggg);
+  });
 
   // ログインAPIのエンドポイント
   app.post("/api/login", async (req, res) => {
@@ -145,9 +154,78 @@ async function start() {
     }
   });
 
-  // サーバーの起動
-  app.listen(8000, () => {
-    console.log("Server is running on port 8000");
+  //会員一覧 GET
+  app.get("/member", async (req, res) => {
+    console.log("test desuyo");
+    const members = await prisma.member.findMany();
+    res.status(200).send(members);
+  });
+
+  //会員登録 POST
+  app.post("/member", async (req, res) => {
+    const newMember = await prisma.member.create({
+      data: {
+        name: req.body.name,
+        address: req.body.address,
+        tel: req.body.tel,
+        registerDate: req.body.registerDate,
+        email: req.body.email,
+        password: req.body.password,
+      },
+    });
+    res.json(newMember);
+  });
+
+  //予約状況 GET
+  app.get("/reserve", async (req, res) => {
+    console.log("reserve テスト");
+    const reserve = await prisma.reserve.findMany();
+    res.status(200).send(reserve);
+  });
+
+  //予約 POST
+  // app.post("/reserve", async (req, res) => {
+  //   const { reservePeople, date } = req.body;
+  //   const memberId = 2;
+  //   const roomId = 3; // ここを5, 6, 7のいずれかにする
+  //   console.log(roomId);
+  //   const reserve = await prisma.reserve.create({
+  //     data: {
+  //       memberId: memberId,
+  //       reservePeople: reservePeople,
+  //       date: date,
+  //       roomId: roomId,
+  //     },
+  //   });
+  //   return res.json(reserve);
+  // });
+
+  // app.get("/", async (req, res) => {
+  //   res.send("こんにちは");
+  // });
+
+  //部屋情報状況 GET
+  app.get("/room", async (req, res) => {
+    console.log("room テスト");
+    const room = await prisma.room.findMany();
+    res.status(200).send(room);
+  });
+
+  //部屋情報登録 POST
+  app.post("/room", async (req, res) => {
+    const roomName = "203の部屋";
+    const price = 25000;
+    const people = 2;
+    const detail = "一番いいお部屋";
+    const room = await prisma.room.create({
+      data: {
+        roomName: roomName,
+        price: price,
+        people: people,
+        detail: detail,
+      },
+    });
+    return res.json(room);
   });
 
   // 500エラーをキャッチするミドルウェア
@@ -181,10 +259,9 @@ async function start() {
       res.status(500).send("サーバーエラー");
     }
   });
-
-  //サーバー起動確認
-  app.listen(PORT, () => {
-    console.log(`Example app listening at http://localhost:${PORT}OKOK`);
+  // サーバーの起動
+  app.listen(8000, () => {
+    console.log("Server is running on port 8000");
   });
 }
 

@@ -2,8 +2,9 @@
     <p>ROompage</p>
 </template> -->
 <template>
+  <Header />
   <div class="room">
-    <Pagetop :pagetitle="page" :image="pic" :subTitle="sub" />
+    <Pagetop :pagetitle="page" :imageId="imageId" :subTitle="sub" />
     <div class="room_coments">
       <p>
         広々としたオープンスタイルのリビングから見えるプライベートテラスやプールをはじめ、
@@ -15,33 +16,51 @@
     <div class="items">
       <div class="item">
         <div class="terrace">
-          <p>Terrace & Pool</p>
+          <p>Terrace</p>
           <img src="@/assets/terasu.jpg" alt="" class="item_image" />
         </div>
-        <div class="bath">
-          <p>Bath</p>
-          <img src="@/assets/toilet.jpg" alt="" class="item_image" />
-        </div>
-        <div class="kitchen">
-          <p>Kitchen</p>
+        <div class="living">
+          <p>Living</p>
           <img src="@/assets/room1.jpg" alt="" class="item_image" />
         </div>
+        <!-- <div class="bath">
+          <p>Toilet</p>
+          <img src="@/assets/toilet.jpg" alt="" class="item_image" />
+        </div> -->
       </div>
     </div>
     <Info />
   </div>
+  <Footer />
 </template>
 
 <script setup>
+import { ref, watch } from "vue";
+import { useImageStore } from "@/stores/image.js";
+import Header from "@/components/Header.vue";
 import Pagetop from "@/components/PageTop.vue";
 import Reserve from "@/components/header/Reserve.vue";
 import Info from "@/components/room/Information.vue";
-import { ref } from "vue";
+import Footer from "@/components/Footer.vue";
 
 //Pagetop
 const page = ref("Room 101");
-const pic = ref("room1.jpg");
+// const pic = ref("room1.jpg");
 const sub = ref("101号室");
+
+//画像
+const imageId = ref("15");
+const store = useImageStore();
+watch(
+  () => imageId.value,
+  async (newValue) => {
+    try {
+      await store.loadImage(newValue);
+    } catch (error) {
+      console.log(`画像取得失敗:${error}`);
+    }
+  }
+);
 </script>
 
 <style>
@@ -72,7 +91,7 @@ const sub = ref("101号室");
 .item_image {
   width: 50%;
 }
-.bath {
+.living {
   text-align: right;
 }
 </style>

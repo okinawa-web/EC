@@ -15,12 +15,8 @@
       </div>
     </div>
     <div class="photo">
-      <img :src="imageURL" alt="photo1" />
+      <!-- <img :src="imageURL" alt="photo1" /> -->
     </div>
-    <!-- <div class="photo">
-      <img src="src/assets/umigame.jpg" alt="pic" class="photo1" />
-      <img src="src/assets/umigame.jpg" alt="pic" class="photo2" />
-    </div> -->
   </div>
   <!-- </div> -->
 </template>

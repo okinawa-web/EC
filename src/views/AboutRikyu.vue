@@ -31,7 +31,7 @@ import { useImageStore } from "@/stores/image.js";
 const page = ref("About HAMAJIMA");
 
 //画像
-const imageId = ref("12");
+const imageId = ref("11");
 const store = useImageStore();
 watch(
   () => imageId.value,
