@@ -9,7 +9,6 @@ import { reactive, onMounted } from "vue";
 import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 
 
-import ReserveHeader from "/Users/ikuri/Desktop/EC/src/components/reserve/ReaserveHeader.vue";
 
 const state = reactive({
   reserves: null,

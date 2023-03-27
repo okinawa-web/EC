@@ -5,21 +5,31 @@ const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const cookieParser = require("cookie-parser");
 // const path = require("path");
+// const sessionStore = require('./sessionStore');
 
 const prisma = new PrismaClient();
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, x-session-id"
+  );
+  next();
+});
 
 //セッションの設定
 app.use(
   session({
+    // name: "ikuri.sid",
     secret: "your_secret_key_here",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
       maxAge: 3600000, // 1 hour
       sameSite: "none",
@@ -27,22 +37,20 @@ app.use(
     },
   })
 );
-
 // CORSを設定する
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.header("Access-Control-Allow-Credentials", true);
-  next();
-});
+const corsOptions = {
+  origin: "http://localhost:5173",
+  credentials: true,
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type", "Authorization", "x-session-id"],
+  exposedHeaders: ["x-session-id"],
+};
 
-// // /api/usersエンドポイントにGETリクエストを送信すると、全てのユーザーのリストを返します。
-app.get("/api/users", (req, res) => {
-  const users = [{ name: "Alice" }, { name: "Bob" }, { name: "Charlie" }];
-  res.send(users);
+app.use(cors(corsOptions));
+
+app.get("/test", (req, res) => {
+  console.log(req.headers);
+  res.send("test");
 });
 
 // //会員一覧 GET
@@ -50,6 +58,18 @@ app.get("/member", async (req, res) => {
   console.log("test desuyo");
   const members = await prisma.member.findMany();
   res.status(200).send(members);
+});
+
+// ログインが必要なAPIのエンドポイント
+app.get("/api/protected-resource", (req, res) => {
+  if (req.session.loggedIn) {
+    // セッションにログイン状態が格納されているかどうかを確認
+    // ログインされている場合は、保護されたリソースを返す
+    res.json({ message: "Protected resource" });
+  } else {
+    // ログインされていない場合は、401 Unauthorizedを返す
+    res.status(401).json({ message: "Unauthorized！！！！！！" });
+  }
 });
 
 // ログインAPIのエンドポイント
@@ -92,34 +112,102 @@ app.post("/api/login", async (req, res) => {
 
   // ログイン成功
   req.session.user = user; //userをセッションに保存
-  res.status(200).send(user);
+  // res.status(200).send( req.session.user);
+  res.status(200).send({ user: user, session_id: req.sessionID });
+
+  // // セッションストレージに保存する
+  // req.sessionStorage.setItem("user", JSON.stringify(user));
+  req.session.loggedIn = true;
   console.log("セッションの中身", user);
   console.log("セッションID", req.sessionID);
+  // res.json({ message: 'Logged in' });
 });
 
-app.get("/api/TheReserve", (req, res) => {
-  const sessionID = req.cookies["connect.sid"]; // connect.sidはセッションIDを表すクッキーの名前
-  if (sessionID) {
-    const sessionStore = req.sessionStore;
-    sessionStore.get(sessionID, (error, session) => {
-      if (error) {
-        console.log("Error:", error);
-        res.status(500).send("Internal Server Error");
-      } else if (!session) {
-        console.log("Session not found");
-        res.status(401).send("Unauthorized");
-      } else {
-        console.log("Session found:", session);
-        // req.session.userの値を取得
-        const user = session.user;
-        res.send("Welcome, " + user);
-      }
-    });
+// app.get("/api/session", async (req, res) => {
+//   const sessionID = req.header("x-session-id"); // リクエストヘッダーからセッションIDを取得する
+
+//   try {
+//     const sessionData = await sessionStore.get(sessionID); // セッションストアからセッションデータを取得する
+//     const userID = sessionData.userId;
+//     const user = await User.findById(userID); // ユーザーデータを取得する
+//     res.json(user); // ユーザーデータをJSON形式で返す
+//   } catch (err) {
+//     console.log("エラーが発生しました:", err);
+//     res.status(500).send("Internal Server Error");
+//   }
+// });
+// app.get("/api/session", (req, res) => {
+//   // console.log("セッションどうなっている");
+//   //   const sessionId = req.headers["x-session-id"]; // リクエストヘッダーからセッションIDを取得する
+//   //   const sessionStore = req.sessionStore;
+//   //   console.log("sessionStore", sessionStore);
+//   //   console.log("sessionID", sessionId);
+
+//   const sessionStore = req.sessionStore;
+//   const sessionId = req.headers["x-session-id"];
+//   const session = sessionStore.sessions[sessionId];
+//   if (session) {
+//     // セッションが有効であるため、何か処理を実行する
+//     console.log("セッション有効");
+//   } else {
+//     // セッションが無効であるため、エラーを返すなどの処理を実行する
+//     console.log("セッション無効");
+//   }
+// });
+
+app.get("/api/session", (req, res) => {
+  const sessionStore = req.sessionStore;
+  const sessionId = req.headers["x-session-id"];
+  console.log("セッションID！！！！！！:", sessionId);
+  const session = sessionStore.sessions[sessionId];
+  if (session) {
+    // セッションが有効であるため、何か処理を実行する
+    console.log("セッション有効");
+    res.status(200).json(session);
   } else {
-    console.log("Session ID not found");
-    res.status(401).send("Unauthorized");
+    // セッションが無効であるため、エラーを返すなどの処理を実行する
+    console.log("セッション無効");
+    res.status(404).send("セッションが見つかりません");
   }
 });
+
+
+app.get("/api/TheReserve", (req, res) => {
+  const user = req.session.user; // 認証トークンをセッションから取得
+
+  if (!user) {
+    console.log("User not found");
+    res.status(401).send("Unauthorized");
+  } else {
+    console.log("User found:", user);
+    // ユーザー情報を返す
+    res.send("Welcome, " + user.name);
+  }
+});
+
+// app.get("/api/TheReserve", (req, res) => {
+//   const sessionID = req.cookies["connect.sid"]; // connect.sidはセッションIDを表すクッキーの名前
+//   if (sessionID) {
+//     const sessionStore = req.sessionStore;
+//     sessionStore.get(sessionID, (error, session) => {
+//       if (error) {
+//         console.log("Error:", error);
+//         res.status(500).send("Internal Server Error");
+//       } else if (!session) {
+//         console.log("Session not found");
+//         res.status(401).send("Unauthorized");
+//       } else {
+//         console.log("Session found:", session);
+//         // req.session.userの値を取得
+//         const user = session.user;
+//         res.send("Welcome, " + user);
+//       }
+//     });
+//   } else {
+//     console.log("Session ID not found");
+//     res.status(401).send("Unauthorized");
+//   }
+// });
 
 app.get("/api/loginUser", (req, res) => {
   const sessionID = req.cookies["connect.sid"]; // connect.sidはセッションIDを表すクッキーの名前
