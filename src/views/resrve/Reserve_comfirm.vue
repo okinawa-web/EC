@@ -1,4 +1,3 @@
-
 <!-- ログインしている会員登録データをcookieを使ってこのページで読み込み、state.reservesに入れると、予約はありませんが予約日一覧になるはず -->
 
 <script setup>
@@ -8,8 +7,6 @@ import { useRouter } from "vue-router";
 import { reactive, onMounted } from "vue";
 import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 
-
-
 const state = reactive({
   reserves: null,
 });
@@ -18,7 +15,8 @@ const username = ref("");
 const password = ref("");
 const reserves = ref("");
 
-onMounted(async () => { axios
+onMounted(async () => {
+  axios
     .post("http://localhost:8000/api/login", {
       username: username.value,
       password: password.value,
@@ -34,10 +32,8 @@ onMounted(async () => { axios
     .catch((error) => {
       console.log(error.response.data);
       console.log(error);
-
     });
 });
-
 </script>
 <template>
   <ReserveHeader />
