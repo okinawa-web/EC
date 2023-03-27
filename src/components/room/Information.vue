@@ -5,19 +5,19 @@
 
     <div class="info/details">
       <div class="table">
-        <table>
+        <table class="ta">
           <tbody>
             <tr>
-              <th>ご利用時間</th>
-              <td>チェックイン 15:00 / チェックアウト 11:00</td>
+              <th class="h">ご利用時間</th>
+              <td class="d">チェックイン 15:00 / チェックアウト 11:00</td>
             </tr>
             <tr>
-              <th>フロント営業時間</th>
-              <td>9:00~17:00</td>
+              <th class="h">フロント営業時間</th>
+              <td class="d">9:00~17:00</td>
             </tr>
             <tr>
-              <th>お食事</th>
-              <td>朝食・夕食はついておりません。</td>
+              <th class="h">お食事</th>
+              <td class="d">朝食・夕食はついておりません。</td>
             </tr>
           </tbody>
         </table>
@@ -55,9 +55,9 @@ const siteName = ref("Amenities&Facilities");
 .mini {
   font-size: 25px;
 }
-table,
-td,
-th {
+ta,
+d,
+h {
   border-bottom: 1px solid darkgray;
   width: 50%;
   line-height: 300%;
