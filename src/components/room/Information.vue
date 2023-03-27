@@ -5,19 +5,19 @@
 
     <div class="info/details">
       <div class="table">
-        <table>
+        <table class="ta">
           <tbody>
             <tr>
-              <th>ご利用時間</th>
-              <td>チェックイン 15:00 / チェックアウト 11:00</td>
+              <th class="h">ご利用時間</th>
+              <td class="d">チェックイン 15:00 / チェックアウト 11:00</td>
             </tr>
             <tr>
-              <th>フロント営業時間</th>
-              <td>9:00~17:00</td>
+              <th class="h">フロント営業時間</th>
+              <td class="d">9:00~17:00</td>
             </tr>
             <tr>
-              <th>お食事</th>
-              <td>朝食・夕食はついておりません。</td>
+              <th class="h">お食事</th>
+              <td class="d">朝食・夕食はついておりません。</td>
             </tr>
           </tbody>
         </table>
@@ -30,7 +30,7 @@
         </p>
         <p>※プールご利用の際は、水着着用となります。</p>
       </div>
-      <BasicButton :link="site" :linkName="siteName" class="link_btn" />
+      <!-- <BasicButton :link="site" :linkName="siteName" class="link_btn" /> -->
     </div>
   </div>
 </template>
@@ -47,21 +47,25 @@ const siteName = ref("Amenities&Facilities");
 <style>
 .information {
   color: darkgray;
+  margin: 5% 10%;
 }
 .info {
-  font-size: 30px;
+  font-size: 45px;
 }
-/* table,
-td,
-th {
+.mini {
+  font-size: 25px;
+}
+ta,
+d,
+h {
   border-bottom: 1px solid darkgray;
   width: 50%;
   line-height: 300%;
   text-align: left;
-} */
-table {
-  border-collapse: collapse;
 }
+/* table {
+  border-collapse: collapse;
+} */
 .attention {
   line-height: 5%;
 }

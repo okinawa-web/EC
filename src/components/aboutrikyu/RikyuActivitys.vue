@@ -31,7 +31,7 @@ const cmnt = ref(
 
 //画像
 // imageIdsに画像のIDを配列で指定する
-const imageIds = ref(["11"]);
+const imageIds = ref(["12"]);
 
 //リンク
 const site = ref("activity");
