@@ -1,18 +1,20 @@
 <script setup>
-import axios from "axios";
+// import axios from "axios";
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
-const getLoginUser = async () => {
-  try {
-    const response = await axios.get("http://localhost:8000/api/TheReserve", {
-      withCredentials: true, // クッキーを送信する
-    });
-    console.log("RESPONSEデータ", response.session.data);
-  } catch (error) {
-    console.log("セッション持って来れてない！！", error);
-  }
-};
+// const getLoginUser = async () => {
+//   try {
+//     const response = await axios.get("http://localhost:8000/api/TheReserve", {
+//       withCredentials: true // クッキーを送信する
+//     });
+//     console.log("RESPONSEデータ", response.session.data);
+//   } catch (error) {
+//     console.log("セッション持って来れてない?????", error);
+//   }
+// };
+
+
 </script>
 
 <template>
