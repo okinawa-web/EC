@@ -26,7 +26,6 @@ const aaa = () => {
   }
 }
 
-
 const form = reactive({
   reservePeople: "",
   date: "",
@@ -56,6 +55,7 @@ const addReserve = async () => {
   <ReserveHeader />
   <Serch />
   <Carender />
+  <!-- <Test /> -->
   <div class="reserveBox">
     <div>
       <h1>予約フォーム</h1>
