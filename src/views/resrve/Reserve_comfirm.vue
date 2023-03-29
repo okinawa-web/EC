@@ -6,89 +6,54 @@ import axios from "axios";
 import { useRouter } from "vue-router";
 import { reactive, onMounted } from "vue";
 import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
+import { useSessionStore } from "@/stores/session.js";
+
+const sessionStore = useSessionStore();
 
 const state = reactive({
-  reserves: null,
+  reserves: [],
 });
 
-const username = ref("");
-const password = ref("");
+const User = ref([]);
 const reserves = ref("");
 
 onMounted(async () => {
-  axios
-    .post("http://localhost:8000/api/login", {
-      username: username.value,
-      password: password.value,
-    })
-    .then((response) => {
-      console.log("response.dataの中身", response.data.reserves);
-      console.log("response.data.takenの中身", response.data.toke);
-      reserves.value = response.data.reserves;
-      state.reserves = response.data.reserves;
-      // localStorage.setItem("token", response.data.token);
-      // router.push("/TheReserve");
-    })
-    .catch((error) => {
-      console.log(error.response.data);
-      console.log(error);
-    });
+  await sessionStore.piniabetu();
+  console.log("userData!!!!", sessionStore.userData.user.name);
+  User.value = sessionStore.userData.user;
+  state.reserves = sessionStore.userData.user.reserves;
 });
 </script>
 <template>
   <ReserveHeader />
-  <!-- 実装できてそうなやつ -->
-  <div>
-    <h2>予約履歴</h2>
-    <ul v-if="state.reserves !== null && state.reserves.length > 0">
-      <li v-for="reserve in reserves" :key="reserve.id">
-        {{ reserve.date }}
-      </li>
-    </ul>
-    <p v-else>予約はありません</p>
-  </div>
   <div class="login_title">予約内容確認｜HAMAJIMA LAND</div>
   <div class="login_wrapper">
     <div class="login_package">
       <div class="login_box">
-        <h2>予約内容を確認されますか？</h2>
-        <p>
-          予約No. と E-mailアドレス を入力し「確認」ボタンをクリックして下さい。
-          E-mailアドレスはアルファベットの大文字と小文字が区別されます。お間違えのないようご注意ください。Ï
-        </p>
-        <div class="login_form">
-          <div class="login_form form">
-            <table class="login_table">
-              <tr>
-                <th>予約No.</th>
-                <td>
-                  <input type="text" class="login_input" />
-                </td>
-              </tr>
-              <tr>
-                <th>予約時のE-mailアドレス</th>
-                <td><input type="text" class="login_input" /></td>
-              </tr>
-            </table>
-            <p class="forgot_password">
-              <a href="">パスワードを忘れた場合</a>
+        <h2>予約履歴</h2>
+        <p>現在予約している一覧です</p>
+        <div></div>
+
+        <ul v-if="state.reserves !== null && state.reserves.length > 0">
+          <li v-for="reserve in state.reserves" :key="reserve.id" class="reservespace">
+            <p>予約日：{{ new Date(reserve.date).toLocaleDateString() }}</p>
+            <!-- {{ reserve.date }} -->
+            <p v-if="state.reserves.some((reserve) => reserve.roomId === 1)">
+              部屋名：Room 201
             </p>
-          </div>
-          <ul class="ul_button">
-            <li class="li_button">
-              <input type="button" value="前の画面に戻る" class="back_button" />
-            </li>
-            <li class="li_button">
-              <input type="button" value="確認" class="login_button" />
-            </li>
-          </ul>
-        </div>
+            <p>予約人数：{{ reserve.reservePeople }}名</p>
+          </li>
+        </ul>
+        <p v-else>予約はありません</p>
       </div>
     </div>
   </div>
 </template>
 
 <style>
+.reservespace {
+  margin: 60px 0;
+}
 .login_wrapper {
   width: 900px;
   font-size: 100%;

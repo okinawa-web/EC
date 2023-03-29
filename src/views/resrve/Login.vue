@@ -1,9 +1,7 @@
 <template>
-  <button @click="getLoginUser">ゲットログインユーザー</button>
-  <button @click="check">ログインチェックcheck</button>
+  <button @click="betu">認証トークンチェックbetu</button>
   <button @click="check2">認証トークンチェックcheck2</button>
-  <button @click="session">セッションデータチェックsession</button>
-
+  <div>{{ MemberInformation }}</div>
   <div>
     <form @submit.prevent="login">
       <label>
@@ -18,7 +16,7 @@
       <br />
       <button type="submit">Login</button>
     </form>
-    <p v-if="errorMessage">{{ errorMessage }}</p>
+    <p v-if="errorMessage">{{ errorMessage.value }}</p>
   </div>
   <div>{{ username }}</div>
   <div>
@@ -37,7 +35,8 @@
 import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
-import { reactive, onMounted } from "vue";
+import { reactive } from "vue";
+import { betu } from "../../utils/session";
 
 const state = reactive({
   users: null,
@@ -53,33 +52,10 @@ const router = useRouter();
 
 axios.defaults.withCredentials = true;
 
-onMounted(async () => {
-  console.log("axiosのデフォルト", axios.defaults);
-  console.log("withCredentialsの設定", axios.defaults.withCredentials);
-});
-
-// axios.interceptors.request.use(
-//   function (config) {
-//     console.log("リクエストの詳細", config); // リクエストの詳細を表示
-//     return config;
-//   },
-//   function (error) {
-//     return Promise.reject(error);
-//   }
-// );
-
-const getLoginUser = async () => {
-  try {
-    const response = await axios.get("http://localhost:8000/api/TheReserve", {
-      withCredentials: true, // クッキーを送信する
-    });
-    console.log("RESPONSEデータ", response.data);
-  } catch (error) {
-    console.log("セッション持って来れてない????", error);
-  }
-};
-
 let sessionID = "";
+
+let MemberInformation = "";
+
 
 const login = () => {
   axios
@@ -93,49 +69,56 @@ const login = () => {
       console.log("response.dataの中身", response.data);
       reserves.value = response.data.reserves;
       state.reserves = response.data.reserves;
-      // localStorage.setItem("token", response.data.token);
       sessionID = response.data.session_id;
       console.log("session_id:", sessionID);
-      console.log("session_id:", response.data.user.email);
-      // router.push("/TheReserve");
       localStorage.setItem("authToken", sessionID);
+      // check2();
     })
     .catch((error) => {
-      console.log(error.response.data);
-      console.log(error);
+      if (error.response) {
+        console.log(error.response.data);
+      } else {
+        console.log(error);
+      }
       errorMessage.value = "ユーザー名またはパスワードが違います";
     });
 };
 
-const check = () => {
-  return localStorage.getItem("authToken");
-}
+// const check = () => {
+//   return localStorage.getItem("authToken");
+// }
 
 const check2 = () => {
-  const sessionID = check();
   console.log("トークンの中見", sessionID);
   axios.defaults.headers.common["x-session-id"] = sessionID;
+
   axios
     .get("http://localhost:8000/api/session")
     .then(function (response) {
       console.log("サーバーから受け取ったユーザーデータ:", response.data);
+      MemberInformation = response.data;
     })
     .catch(function (error) {
       console.log("エラーが発生しました:", error);
     });
 };
 
+defineExpose({
+  sessionID,
+});
+// import { useSessionStore } from "@/stores/session.js";
+// import { onMounted } from "vue";
 
-const session = () => {
-  axios
-    .get("http://localhost:8000/api/session")
-    .then((response) => {
-      const sessionData = response.data;
-      // 取得したセッション情報を利用する
-      console.log("セッションデータ", sessionData);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
+
+// const sessionStore = useSessionStore();
+
+// onMounted(() => {
+//   const authToken = localStorage.getItem("authToken");
+//   console.log("authToken",authToken);
+// })
+// const pinia = () => {
+//   const sessionA = sessionStore.sessionA;
+//   console.log("果たして",sessionA);
+
+// };
 </script>

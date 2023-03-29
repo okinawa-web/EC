@@ -1,12 +1,31 @@
 <script setup>
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 import Serch from "@/components/reserve/Serch.vue";
 import Carender from "@/components/reserve/Carender.vue";
-import Test from "@/views/TheTest.vue"
-
-
 import axios from "axios";
+import { betu } from "../../utils/session";
+import { onMounted } from "vue";
+import { useSessionStore } from "@/stores/session.js";
+
+const sessionStore = useSessionStore();
+
+const User = ref([]);
+onMounted(async () => {
+  await sessionStore.piniabetu();
+  console.log("userData!!!!", sessionStore.userData.user.name);
+  User.value = sessionStore.userData.user;
+});
+
+const aaa = () => {
+  if (User.value.user) {
+    console.log("はい",User.value.user);
+    console.log("User.value.user.name", User.value.user.name);
+  } else {
+    console.log("User.value.user is undefined");
+  }
+}
+
 const form = reactive({
   reservePeople: "",
   date: "",
@@ -26,11 +45,13 @@ const addReserve = async () => {
   } catch (error) {
     console.error(error);
   }
-}
-
+};
 </script>
 
 <template>
+  <button @click="betu">betu</button>
+  <button @click="aaa">あああ</button>
+  <p>{{ User.name }}様</p>
   <ReserveHeader />
   <Serch />
   <Carender />
