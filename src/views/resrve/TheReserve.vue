@@ -3,6 +3,7 @@ import { reactive } from "vue";
 import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 import Serch from "@/components/reserve/Serch.vue";
 import Carender from "@/components/reserve/Carender.vue";
+import Test from "@/views/TheTest.vue"
 
 
 import axios from "axios";
@@ -33,6 +34,7 @@ const addReserve = async () => {
   <ReserveHeader />
   <Serch />
   <Carender />
+  <!-- <Test /> -->
   <div class="reserveBox">
     <div>
       <h1>予約フォーム</h1>

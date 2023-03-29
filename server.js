@@ -229,26 +229,65 @@ async function start() {
   });
 
   //空室状況確認  (現在時刻以降の予約状況を取得して空室判断)
+  // app.get("/room-status", async (req, res) => {
+  //   const now = new Date();
+  //   // console.log("いつ", now);
+  //   const reserve = await prisma.reserve.findFirst({
+  //     where: {
+  //       date: {
+  //         lte: now,
+  //       },
+  //     },
+  //     orderBy: {
+  //       date: "desc",
+  //     },
+  //   });
+  //   // console.log("どっち", reserve);
+
+  //   if (reserve) {
+  //     res.json({ status: ",満室" });
+  //   } else {
+  //     res.json({ status: "空室" });
+  //   }
+  // });
+
+  //追加
   app.get("/room-status", async (req, res) => {
     const now = new Date();
-    // console.log("いつ", now);
-    const reserve = await prisma.reserve.findFirst({
+    const endOfMonth = new Date(
+      now.getFullYear(),
+      now.getMonth() + 1,
+      0,
+      23,
+      59,
+      59
+    );
+    endOfMonth.setDate(endOfMonth.getDate() + 30); // 30日後の日付
+    const reserve = await prisma.reserve.findMany({
       where: {
         date: {
-          lte: now,
+          gte: now,
+          lte: endOfMonth,
         },
       },
-      orderBy: {
-        date: "desc",
-      },
     });
-    // console.log("どっち", reserve);
-
-    if (reserve) {
-      res.json({ status: ",満室" });
-    } else {
-      res.json({ status: "空室" });
+    const events = reserve.map((r) => ({
+      title: "満室",
+      start: r.date.toISOString(),
+    }));
+    const dates = new Set();
+    for (let d = now; d <= endOfMonth; d.setDate(d.getDate() + 1)) {
+      dates.add(d.toISOString().slice(0, 10));
     }
+    for (let event of events) {
+      dates.delete(event.start.slice(0, 10));
+    }
+    const availableEvents = [...dates].map((d) => ({
+      title: "空室",
+      start: d,
+    }));
+    const allEvents = events.concat(availableEvents);
+    res.json({ events: allEvents });
   });
 
   //指定した画像の取得
@@ -259,7 +298,7 @@ async function start() {
     }
     const image = await prisma.image.findUnique({
       where: {
-        id: id, // 整数値として渡す
+        id: id,
       },
     });
     return res.json(image);
