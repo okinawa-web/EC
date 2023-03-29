@@ -1,25 +1,25 @@
-<script setup>
-// import axios from "axios";
-
-// axios.defaults.withCredentials = true;
-
-// const getLoginUser = async () => {
-//   try {
-//     const response = await axios.get("http://localhost:8000/api/TheReserve", {
-//       withCredentials: true // クッキーを送信する
-//     });
-//     console.log("RESPONSEデータ", response.session.data);
-//   } catch (error) {
-//     console.log("セッション持って来れてない?????", error);
-//   }
-// };
+<!-- <script setup>
+import { sessionID } from "../../views/resrve/Login.vue";
+import axios from "axios";
 
 
-</script>
+const check2 = () => {
+  console.log("トークンの中見", sessionID);
+  axios.defaults.headers.common["x-session-id"] = sessionID;
+  axios
+    .get("http://localhost:8000/api/session")
+    .then(function (response) {
+      console.log("サーバーから受け取ったユーザーデータ:", response.data);
+      // MemberInformation.value = response.data;
+    })
+    .catch(function (error) {
+      console.log("エラーが発生しました:", error);
+    });
+};
+</script> -->
 
 <template>
   <div class="HAMAJIMA">〜HAMAJIMA☆LAND〜</div>
-  <button @click="getLoginUser">ゲットログインユーザー</button>
   <div class="header">
     <div class="reserve_header">
       <ul class="header_link">
