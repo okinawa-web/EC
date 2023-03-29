@@ -228,30 +228,7 @@ async function start() {
     return res.json(room);
   });
 
-  //空室状況確認  (現在時刻以降の予約状況を取得して空室判断)
-  // app.get("/room-status", async (req, res) => {
-  //   const now = new Date();
-  //   // console.log("いつ", now);
-  //   const reserve = await prisma.reserve.findFirst({
-  //     where: {
-  //       date: {
-  //         lte: now,
-  //       },
-  //     },
-  //     orderBy: {
-  //       date: "desc",
-  //     },
-  //   });
-  //   // console.log("どっち", reserve);
-
-  //   if (reserve) {
-  //     res.json({ status: ",満室" });
-  //   } else {
-  //     res.json({ status: "空室" });
-  //   }
-  // });
-
-  //追加
+//空室状況確認  (現在時刻以降の予約状況を取得して空室判断)
   app.get("/room-status", async (req, res) => {
     const now = new Date();
     const endOfMonth = new Date(
