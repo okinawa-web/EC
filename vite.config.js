@@ -10,6 +10,8 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
+      // "@fullcalendar/interaction":
+      //   "@fullcalendar/interaction/dist/esm/plugin/main.js",
     },
   },
   server: {

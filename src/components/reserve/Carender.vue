@@ -57,7 +57,7 @@
           ご宿泊中無料でご利用いただけるカーサービス付！
         </td>
         <td>
-          <a href="#" class="calender_button"
+          <a href="/calender" class="calender_button"
             >カレンダー<br />
             表示</a
           >
@@ -71,7 +71,7 @@
         <td class="room_state last">空室待ち</td>
       </tr>
     </table>
-    <p class="bottom_footer">空有：空室あり　満：満室　-：設定なし</p>
+    <p class="bottom_footer">空有：空室あり 満：満室 -：設定なし</p>
     <p class="bottom_footer red">料金は税込み価格です。</p>
     <p class="bottom_footer">
       ※上記の表示は、空室検索の照会時点の状況ですので、予約時にお取りできない場合もございます。

@@ -132,7 +132,6 @@ app.get("/api/session", (req, res) => {
 
 app.get("/api/TheReserve", (req, res) => {
   const user = req.session.user; // 認証トークンをセッションから取得
-
   if (!user) {
     console.log("User not found");
     res.status(401).send("Unauthorized");
@@ -161,12 +160,6 @@ app.get("/api/loginUser", (req, res) => {
         const user = session.user;
         res.send("Welcome, " + user);
       }
-    });
-  } else {
-    console.log("Session ID not found");
-    res.status(401).send("Unauthorized");
-  }
-});
 
 // ユーザーデータを取得するAPIエンドポイント
 app.get("/api/loginUser", (req, res) => {
@@ -253,6 +246,71 @@ app.post("/room", async (req, res) => {
   });
   return res.json(room);
 });
+
+//空室状況確認  (現在時刻以降の予約状況を取得して空室判断)
+  app.get("/room-status", async (req, res) => {
+    const now = new Date();
+    const endOfMonth = new Date(
+      now.getFullYear(),
+      now.getMonth() + 1,
+      0,
+      23,
+      59,
+      59
+    );
+    endOfMonth.setDate(endOfMonth.getDate() + 30); // 30日後の日付
+    const reserve = await prisma.reserve.findMany({
+      where: {
+        date: {
+          gte: now,
+          lte: endOfMonth,
+        },
+      },
+    });
+    const events = reserve.map((r) => ({
+      title: "満室",
+      start: r.date.toISOString(),
+    }));
+    const dates = new Set();
+    for (let d = now; d <= endOfMonth; d.setDate(d.getDate() + 1)) {
+      dates.add(d.toISOString().slice(0, 10));
+    }
+    for (let event of events) {
+      dates.delete(event.start.slice(0, 10));
+    }
+    const availableEvents = [...dates].map((d) => ({
+      title: "空室",
+      start: d,
+    }));
+    const allEvents = events.concat(availableEvents);
+    res.json({ events: allEvents });
+  });
+
+  //指定した画像の取得
+  app.get("/image/:id", async (req, res) => {
+    const id = parseInt(req.params.id); // parseInt() 関数を使用して数値に変換する
+    if (isNaN(id)) {
+      return res.status(400).send("idが数値ではない!");
+    }
+    const image = await prisma.image.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    return res.json(image); 
+  });
+
+  //画像取得API
+  app.get("/image", async (req, res) => {
+    try {
+      const images = await prisma.image.findMany();
+      const imagePaths = images.map((image) => image.path);
+      res.send(imagePaths);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("サーバーエラー");
+    }
+  });
 
 // サーバーの起動
 app.listen(8000, () => {
