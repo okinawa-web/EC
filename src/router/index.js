@@ -1,10 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import Reserve from "../views/resrve/TheReserve.vue";
+import Test from "../views/TheTest.vue";
 import AboutRikyu from "../views/AboutRikyu.vue";
 import Rooms from "../views/Rooms.vue";
 import Room from "../views/Room.vue";
-import GuestRoom from "../views/GuestRoom.vue";
 import Facility from "../views/Facility.vue";
 import Activity from "../views/Activity.vue";
 import Acsess from "../views/Acsess.vue";
@@ -15,6 +14,7 @@ import TheReserve from "../views/resrve/TheReserve.vue";
 import Reservecomfirm from "../views/resrve/Reserve_comfirm.vue";
 import Reservecansel from "../views/resrve/Reserve_cansel.vue";
 import Login from "../views/resrve/Login.vue";
+import Calender from "../components/reserve/Calender.vue";
 import LoginReset from "../views/resrve/LogionReset.vue";
 
 const router = createRouter({
@@ -24,11 +24,6 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
-    },
-    {
-      path: "/reserve",
-      name: "Reserve",
-      component: Reserve,
     },
     {
       path: "/aboutRikyu",
@@ -44,11 +39,6 @@ const router = createRouter({
       path: "/room",
       name: "Room",
       component: Room,
-    },
-    {
-      path: "/guestRoom",
-      name: "GuestRoom",
-      component: GuestRoom,
     },
     {
       path: "/facility",
@@ -105,6 +95,11 @@ const router = createRouter({
       name: "Reservecomfirm",
       component: Reservecomfirm,
     },
+    {
+      path: "/calender",
+      name: "Calender",
+      component: Calender,
+    },
 
     //テスト用
     {
@@ -114,6 +109,11 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/TheTest.vue"),
+    },
+    {
+      path: "/test",
+      name: "TheTest",
+      component: Test,
     },
   ],
 });

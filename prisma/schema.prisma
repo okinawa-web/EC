@@ -26,7 +26,7 @@ model Reserve {
   memberId      Int
   member        Member   @relation(fields: [memberId], references: [id])
   reservePeople Int
-  date          DateTime
+  date          DateTime @unique
   roomId        Int //各部屋のID
   room          Room     @relation(fields: [roomId], references: [id])
 }
