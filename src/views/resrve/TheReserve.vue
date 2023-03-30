@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import { reactive, ref,onMounted } from "vue";
+import { reactive, ref, onMounted } from "vue";
 import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 import axios from "axios";
 import { betu } from "../../utils/session";
@@ -44,12 +44,12 @@ onMounted(async () => {
 
 const aaa = () => {
   if (User.value.user) {
-    console.log("はい",User.value.user);
+    console.log("はい", User.value.user);
     console.log("User.value.user.name", User.value.user.name);
   } else {
     console.log("User.value.user is undefined");
   }
-}
+};
 
 const form = reactive({
   reservePeople: "",

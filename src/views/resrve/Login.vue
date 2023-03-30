@@ -56,7 +56,6 @@ let sessionID = "";
 
 let MemberInformation = "";
 
-
 const login = () => {
   axios
     .post("http://localhost:8000/api/login", {
@@ -65,7 +64,8 @@ const login = () => {
     })
     .then((response) => {
       axios.defaults.withCredentials = true; // クッキーを送信する
-      axios.defaults.headers.common["Authorization"] = response.data.session_id;
+      axios.defaults.headers.common["Authorization"] =
+        response.data.sessioCn_id;
       console.log("response.dataの中身", response.data);
       reserves.value = response.data.reserves;
       state.reserves = response.data.reserves;
@@ -108,7 +108,6 @@ defineExpose({
 });
 // import { useSessionStore } from "@/stores/session.js";
 // import { onMounted } from "vue";
-
 
 // const sessionStore = useSessionStore();
 

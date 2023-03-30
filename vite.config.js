@@ -10,8 +10,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
-      // "@fullcalendar/interaction":
-      //   "@fullcalendar/interaction/dist/esm/plugin/main.js",
     },
   },
   server: {
@@ -38,6 +36,10 @@ export default defineConfig({
       },
 
       "/api/session": {
+        target: "http://localhost:8000",
+        changeOrigin: true,
+      },
+      "/api/cansel": {
         target: "http://localhost:8000",
         changeOrigin: true,
       },
