@@ -1,50 +1,60 @@
 <script setup>
 import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
+import { useSessionStore } from "@/stores/session.js";
+import axios from "axios";
+import { reactive, onMounted, ref } from "vue";
+
+const sessionStore = useSessionStore();
+
+const state = reactive({
+  reserves: [],
+});
+
+const User = ref([]);
+
+onMounted(async () => {
+  await sessionStore.piniabetu();
+  console.log("userData!!!!", sessionStore.userData.user.name);
+  User.value = sessionStore.userData.user;
+  state.reserves = sessionStore.userData.user.reserves;
+});
+
+const cansel = (id) => {
+  axios.delete(`http://localhost:8000/api/delete/${id}`, { data: { id: id } })
+    .then((response) => {
+      console.log("削除できた");
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log("削除できない");
+      console.error(error);
+    });
+};
 </script>
 <template>
-  
   <ReserveHeader />
   <div class="login_title">予約内容キャンセル｜HAMAJIMA LAND</div>
   <div class="login_wrapper">
     <div class="login_package">
       <div class="login_box">
         <h2>予約内容をキャンセルされますか？</h2>
-        <p>
-          予約No. と E-mailアドレス
-          を入力し「キャンセル手続き」ボタンをクリックして下さい。
-          E-mailアドレスはアルファベットの大文字と小文字が区別されます。お間違えのないようご注意ください。
-        </p>
-        <div class="login_form">
-          <div class="login_form form">
-            <table class="login_table">
-              <tr>
-                <th>予約No.</th>
-                <td>
-                  <input type="text" class="login_input" />
-                </td>
-              </tr>
-              <tr>
-                <th>予約時のE-mailアドレス</th>
-                <td><input type="text" class="login_input" /></td>
-              </tr>
-            </table>
-            <p class="forgot_password">
-              <a href="">パスワードを忘れた場合</a>
+        <p>「キャンセル手続き」ボタンをクリックして下さい。</p>
+        <ul v-if="state.reserves !== null && state.reserves.length > 0">
+          <li
+            v-for="reserve in state.reserves"
+            :key="reserve.id"
+            class="reservespace"
+          >
+            <p>予約日：{{ new Date(reserve.date).toLocaleDateString() }}</p>
+            <!-- {{ reserve.date }} -->
+            <p v-if="state.reserves.some((reserve) => reserve.roomId === 1)">
+              部屋名：Room 201
             </p>
-          </div>
-          <ul class="ul_button">
-            <li class="li_button">
-              <input type="button" value="前の画面に戻る" class="back_button" />
-            </li>
-            <li class="li_button">
-              <input
-                type="button"
-                value="キャンセル手続きへ"
-                class="login_button"
-              />
-            </li>
-          </ul>
-        </div>
+            <p>予約人数：{{ reserve.reservePeople }}名</p>
+            <button @click="cansel(reserve.id)">キャンセル手続き</button>
+          </li>
+        </ul>
+        <p v-else>予約はありません</p>
       </div>
     </div>
   </div>

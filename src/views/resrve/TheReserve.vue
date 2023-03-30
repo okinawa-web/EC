@@ -63,13 +63,14 @@ const addReserve = async () => {
     const reserve = await axios.post("/reserve", {
       memberId: memberId, //予約した人のメンバーID
       reservePeople: parseInt(reservePeople), //フォームに入力された予約人数
-      date: new Date(date + "T10:00:00Z"), //フォームに入力された予約日
+      date: new Date(date), //フォームに入力された予約日
       roomId: roomId,
     });
     console.log(reserve.data);
   } catch (error) {
     console.error(error);
   }
+
 };
 const route = useRoute();
 onMounted(() => {

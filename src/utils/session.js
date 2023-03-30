@@ -20,3 +20,4 @@ export function betu() {
       console.log("エラーが発生しました:", error);
     });
 }
+
