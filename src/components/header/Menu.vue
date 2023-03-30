@@ -22,15 +22,6 @@
             <router-link to="/rooms">お部屋</router-link>
           </li>
           <li class="nav_item">
-            <router-link to="/guestRoom">-101</router-link>
-          </li>
-          <li class="nav_item">
-            <router-link to="/guestRoom">-102</router-link>
-          </li>
-          <li class="nav_item">
-            <router-link to="/guestRoom">-103</router-link>
-          </li>
-          <li class="nav_item">
             <router-link to="/facility">-客室設備・アメニティ</router-link>
           </li>
           <li class="nav_item">

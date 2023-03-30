@@ -1,6 +1,6 @@
 <template>
   <p class="reserve">
-    <router-link to="/TheReserve" target="_blank" class="reserve_text">
+    <router-link to="/calender" target="_blank" class="reserve_text">
       ご予約</router-link
     >
   </p>

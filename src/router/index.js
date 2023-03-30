@@ -4,7 +4,6 @@ import Test from "../views/TheTest.vue";
 import AboutRikyu from "../views/AboutRikyu.vue";
 import Rooms from "../views/Rooms.vue";
 import Room from "../views/Room.vue";
-import GuestRoom from "../views/GuestRoom.vue";
 import Facility from "../views/Facility.vue";
 import Activity from "../views/Activity.vue";
 import Acsess from "../views/Acsess.vue";
@@ -15,8 +14,8 @@ import TheReserve from "../views/resrve/TheReserve.vue";
 import Reservecomfirm from "../views/resrve/Reserve_comfirm.vue";
 import Reservecansel from "../views/resrve/Reserve_cansel.vue";
 import Login from "../views/resrve/Login.vue";
+import Calender from "../components/reserve/Calender.vue";
 import LoginReset from "../views/resrve/LogionReset.vue";
-import Calender from "../components/reserve/VacancySearch.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,11 +39,6 @@ const router = createRouter({
       path: "/room",
       name: "Room",
       component: Room,
-    },
-    {
-      path: "/guestRoom",
-      name: "GuestRoom",
-      component: GuestRoom,
     },
     {
       path: "/facility",

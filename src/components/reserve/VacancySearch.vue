@@ -12,7 +12,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import jaLocale from "@fullcalendar/core/locales/ja";
 import { onMounted, ref } from "vue";
 import axios from "axios";
-import router from "../router";
+import { useRouter } from "vue-router";
 
 const calendarOptions = ref({
   plugins: [dayGridPlugin, interactionPlugin],
@@ -38,12 +38,19 @@ onMounted(() => {
   getRoomStatus();
 });
 
-// const handleDateClick = (arg) => {
-//   alert(arg.dateStr + "  空室の場合は予約ページへ移動させる");
-//   router.push("/reserve");
-// };
-const handleDateClick = () => {
-  router.push({ path: "/TheReserve" });
+const router = useRouter();
+
+const handleDateClick = (info) => {
+  const clickedDate = info.dateStr;
+  const clickedEvent = calendarOptions.value.events.find(
+    (event) => event.start === clickedDate
+  );
+  if (clickedEvent && clickedEvent.title === "空室") {
+    router.push({ path: "/TheReserve", query: { date: clickedDate } });
+  } else {
+    alert("指定した日付は満室のため予約できません");
+  }
+  console.log("いつ", clickedDate);
 };
 
 calendarOptions.value.dateClick = handleDateClick;
