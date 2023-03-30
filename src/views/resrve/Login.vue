@@ -65,7 +65,7 @@ const login = () => {
     })
     .then((response) => {
       axios.defaults.withCredentials = true; // クッキーを送信する
-      axios.defaults.headers.common["Authorization"] = response.data.session_id;
+      axios.defaults.headers.common["Authorization"] = response.data.sessioCn_id;
       console.log("response.dataの中身", response.data);
       reserves.value = response.data.reserves;
       state.reserves = response.data.reserves;

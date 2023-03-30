@@ -41,7 +41,7 @@ app.use(
 const corsOptions = {
   origin: "http://localhost:5173",
   credentials: true,
-  methods: ["GET", "POST"],
+  methods: ["GET", "POST", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization", "x-session-id"],
   exposedHeaders: ["x-session-id"],
 };
@@ -59,8 +59,6 @@ app.get("/member", async (req, res) => {
   const members = await prisma.member.findMany();
   res.status(200).send(members);
 });
-
-
 
 // ログインAPIのエンドポイント
 app.post("/api/login", async (req, res) => {
@@ -113,6 +111,30 @@ app.post("/api/login", async (req, res) => {
   // res.json({ message: 'Logged in' });
 });
 
+//API
+app.delete("/api/delete/:id", async (req, res) => {
+  try {
+    const id = isNaN(req.params.id) ? 0 : parseInt(req.params.id);
+    console.log("req.body :",req.body);
+    console.log("req.params.id : " , req.params.id)
+    // データベースから指定されたIDのデータを削除
+    const deletedData = await prisma.reserve.delete({
+      where: {
+        id: id
+      }
+    });
+    res.send({ message: "OK", data: deletedData });
+
+  } catch (err) {
+    console.error(err);
+    if (err instanceof prisma.errors.NotFoundError) {
+      res.status(404).send("Not Found");
+    } else {
+      res.status(500).send("Error");
+    }
+  }
+});
+
 
 app.get("/api/session", (req, res) => {
   const sessionStore = req.sessionStore;
@@ -127,57 +149,6 @@ app.get("/api/session", (req, res) => {
     // セッションが無効であるため、エラーを返すなどの処理を実行する
     console.log("セッション無効");
     res.status(404).send("セッションが見つかりません");
-  }
-});
-
-
-app.get("/api/TheReserve", (req, res) => {
-  const user = req.session.user; // 認証トークンをセッションから取得
-
-  if (!user) {
-    console.log("User not found");
-    res.status(401).send("Unauthorized");
-  } else {
-    console.log("User found:", user);
-    // ユーザー情報を返す
-    res.send("Welcome, " + user.name);
-  }
-});
-
-
-app.get("/api/loginUser", (req, res) => {
-  const sessionID = req.cookies["connect.sid"]; // connect.sidはセッションIDを表すクッキーの名前
-  if (sessionID) {
-    const sessionStore = req.sessionStore;
-    sessionStore.get(sessionID, (error, session) => {
-      if (error) {
-        console.log("Error:", error);
-        res.status(500).send("Internal Server Error");
-      } else if (!session) {
-        console.log("Session not found");
-        res.status(401).send("Unauthorized");
-      } else {
-        console.log("Session found:", session);
-        // req.session.userの値を取得
-        const user = session.user;
-        res.send("Welcome, " + user);
-      }
-    });
-  } else {
-    console.log("Session ID not found");
-    res.status(401).send("Unauthorized");
-  }
-});
-
-// ユーザーデータを取得するAPIエンドポイント
-app.get("/api/loginUser", (req, res) => {
-  const user = req.session.user;
-  if (user) {
-    console.log(user);
-    res.json(user);
-  } else {
-    console.log("ログインできてません");
-    console.log("別APIからのセッション", req.session.user);
   }
 });
 
@@ -211,25 +182,25 @@ app.get("/reserve", async (req, res) => {
 });
 
 //予約 POST
-// app.post("/reserve", async (req, res) => {
-//   const { reservePeople, date } = req.body;
-//   const memberId = 2;
-//   const roomId = 3; // ここを5, 6, 7のいずれかにする
-//   console.log(roomId);
-//   const reserve = await prisma.reserve.create({
-//     data: {
-//       memberId: memberId,
-//       reservePeople: reservePeople,
-//       date: date,
-//       roomId: roomId,
-//     },
-//   });
-//   return res.json(reserve);
-// });
+app.post("/reserve", async (req, res) => {
+  const { reservePeople, date } = req.body;
+  const memberId = 1;
+  const roomId = 1;
+  console.log(roomId);
+  const reserve = await prisma.reserve.create({
+    data: {
+      memberId: memberId,
+      reservePeople: reservePeople,
+      date: date,
+      roomId: roomId,
+    },
+  });
+  return res.json(reserve);
+});
 
-// app.get("/", async (req, res) => {
-//   res.send("こんにちは");
-// });
+app.get("/", async (req, res) => {
+  res.send("こんにちは");
+});
 
 //部屋情報状況 GET
 app.get("/room", async (req, res) => {

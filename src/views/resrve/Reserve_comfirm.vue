@@ -2,8 +2,6 @@
 
 <script setup>
 import { ref } from "vue";
-import axios from "axios";
-import { useRouter } from "vue-router";
 import { reactive, onMounted } from "vue";
 import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 import { useSessionStore } from "@/stores/session.js";
@@ -15,7 +13,6 @@ const state = reactive({
 });
 
 const User = ref([]);
-const reserves = ref("");
 
 onMounted(async () => {
   await sessionStore.piniabetu();
@@ -32,8 +29,6 @@ onMounted(async () => {
       <div class="login_box">
         <h2>予約履歴</h2>
         <p>現在予約している一覧です</p>
-        <div></div>
-
         <ul v-if="state.reserves !== null && state.reserves.length > 0">
           <li v-for="reserve in state.reserves" :key="reserve.id" class="reservespace">
             <p>予約日：{{ new Date(reserve.date).toLocaleDateString() }}</p>
