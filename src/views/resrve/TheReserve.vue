@@ -1,4 +1,7 @@
 <template>
+  <button @click="betu">betu</button>
+  <button @click="aaa">あああ</button>
+  <p>{{ User.name }}様</p>
   <ReserveHeader />
   <div class="reserveBox">
     <div>
@@ -23,10 +26,30 @@
 </template>
 
 <script setup>
-import { onMounted, reactive } from "vue";
+import { reactive, ref,onMounted } from "vue";
 import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 import axios from "axios";
+import { betu } from "../../utils/session";
+import { useSessionStore } from "@/stores/session.js";
 import { useRoute } from "vue-router";
+
+const sessionStore = useSessionStore();
+
+const User = ref([]);
+onMounted(async () => {
+  await sessionStore.piniabetu();
+  console.log("userData!!!!", sessionStore.userData.user.name);
+  User.value = sessionStore.userData.user;
+});
+
+const aaa = () => {
+  if (User.value.user) {
+    console.log("はい",User.value.user);
+    console.log("User.value.user.name", User.value.user.name);
+  } else {
+    console.log("User.value.user is undefined");
+  }
+}
 
 const form = reactive({
   reservePeople: "",

@@ -15,6 +15,7 @@ import Reservecomfirm from "../views/resrve/Reserve_comfirm.vue";
 import Reservecansel from "../views/resrve/Reserve_cansel.vue";
 import Login from "../views/resrve/Login.vue";
 import Calender from "../components/reserve/Calender.vue";
+import LoginReset from "../views/resrve/LogionReset.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -78,6 +79,11 @@ const router = createRouter({
       path: "/login",
       name: "Login",
       component: Login,
+    },
+    {
+      path: "/loginreset",
+      name: "LoginReset",
+      component: LoginReset,
     },
     {
       path: "/cansel",
