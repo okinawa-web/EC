@@ -1,12 +1,33 @@
+<template>
+  <ReserveHeader />
+  <div class="reserveBox">
+    <div>
+      <h1>予約フォーム</h1>
+    </div>
+    <div>
+      <!-- prevent＝ボタン押した後も画面更新しない -->
+      <form @submit.prevent="addReserve">
+        <label>予約人数</label>
+        <select name="reserveNumber" v-model="form.reservePeople">
+          <option value="1">1人</option>
+          <option value="2">2人</option>
+          <option value="3">3人</option>
+          <option value="4">4人</option>
+          <option value="5">5人</option>
+        </select>
+        <input type="date" v-model="form.date" />
+        <button type="submit">予約</button>
+      </form>
+    </div>
+  </div>
+</template>
+
 <script setup>
-import { reactive } from "vue";
+import { onMounted, reactive } from "vue";
 import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
-import Serch from "@/components/reserve/Serch.vue";
-import Carender from "@/components/reserve/Carender.vue";
-import Test from "@/views/TheTest.vue"
-
-
 import axios from "axios";
+import { useRoute } from "vue-router";
+
 const form = reactive({
   reservePeople: "",
   date: "",
@@ -26,35 +47,12 @@ const addReserve = async () => {
   } catch (error) {
     console.error(error);
   }
-}
-
+};
+const route = useRoute();
+onMounted(() => {
+  form.date = route.query.date;
+});
 </script>
-
-<template>
-  <ReserveHeader />
-  <Serch />
-  <Carender />
-  <!-- <Test /> -->
-  <div class="reserveBox">
-    <div>
-      <h1>予約フォーム</h1>
-    </div>
-    <div>
-      <!-- prevent＝ボタン押した後も画面更新しない -->
-      <form @submit.prevent="addReserve">
-        <label>予約人数</label>
-        <select name="reserveNumber" v-model="form.reservePeople">
-          <option value="1">1人</option>
-          <option value="2">2人</option>
-          <option value="3">3人</option>
-          <option value="4">4人</option>
-        </select>
-        <input type="date" v-model="form.date" />
-        <button type="submit">予約</button>
-      </form>
-    </div>
-  </div>
-</template>
 
 <style>
 .reserveBox {

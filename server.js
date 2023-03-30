@@ -212,7 +212,7 @@ async function start() {
   });
 
   //部屋情報登録 POST
-  app.post("/room", async (req, res) => {
+  app.post("/", async (req, res) => {
     const roomName = "203の部屋";
     const price = 25000;
     const people = 2;
@@ -228,7 +228,7 @@ async function start() {
     return res.json(room);
   });
 
-//空室状況確認  (現在時刻以降の予約状況を取得して空室判断)
+  //空室状況確認  (現在時刻以降の予約状況を取得して空室判断)
   app.get("/room-status", async (req, res) => {
     const now = new Date();
     const endOfMonth = new Date(
@@ -239,7 +239,7 @@ async function start() {
       59,
       59
     );
-    endOfMonth.setDate(endOfMonth.getDate() + 30); // 30日後の日付
+    endOfMonth.setDate(endOfMonth.getDate() + 90); // 3ヶ月
     const reserve = await prisma.reserve.findMany({
       where: {
         date: {
