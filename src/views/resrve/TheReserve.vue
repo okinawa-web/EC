@@ -1,7 +1,6 @@
 <template>
-  <button @click="betu">betu</button>
-  <button @click="aaa">あああ</button>
-  <p>{{ User.name }}様</p>
+  <button @click="logout">ログアウト</button>
+  <h1>ようこそ、 {{ User ? User.name : 'ゲスト' }} 様</h1>
   <ReserveHeader />
   <div class="reserveBox">
     <div>
@@ -29,27 +28,32 @@
 import { reactive, ref, onMounted } from "vue";
 import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 import axios from "axios";
-import { betu } from "../../utils/session";
 import { useSessionStore } from "@/stores/session.js";
 import { useRoute } from "vue-router";
 
 const sessionStore = useSessionStore();
 
-const User = ref([]);
+const User = ref(null);
 onMounted(async () => {
   await sessionStore.piniabetu();
   console.log("userData!!!!", sessionStore.userData.user.name);
   User.value = sessionStore.userData.user;
 });
 
-const aaa = () => {
-  if (User.value.user) {
-    console.log("はい", User.value.user);
-    console.log("User.value.user.name", User.value.user.name);
-  } else {
-    console.log("User.value.user is undefined");
-  }
-};
+const logout = () => {
+  axios.post("http://localhost:8000/api/logout")
+  .then(() => {
+    localStorage.setItem("authToken", null); // ログアウトが成功した場合はnullにする
+    User.value = null;
+    console.log(User.value);
+    console.log("ログアウト完了");
+    // location.reload(); // ログアウト後にページを再読み込みする
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}
+
 
 const form = reactive({
   reservePeople: "",
@@ -63,14 +67,13 @@ const addReserve = async () => {
     const reserve = await axios.post("/reserve", {
       memberId: memberId, //予約した人のメンバーID
       reservePeople: parseInt(reservePeople), //フォームに入力された予約人数
-      date: new Date(date), //フォームに入力された予約日
+      date: new Date(date + "T10:00:00Z"), //フォームに入力された予約日
       roomId: roomId,
     });
     console.log(reserve.data);
   } catch (error) {
     console.error(error);
   }
-
 };
 const route = useRoute();
 onMounted(() => {
