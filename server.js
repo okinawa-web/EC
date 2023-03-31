@@ -113,7 +113,6 @@ app.post("/api/login", async (req, res) => {
   // res.json({ message: 'Logged in' });
 });
 
-
 //ログアウトAPI
 app.post("/api/logout", async (req, res) => {
   // セッションを破棄する処理などがある場合はここに実装する

@@ -16,7 +16,10 @@
       <br />
       <button type="submit">Login</button>
     </form>
-    <p v-if="errorMessage">{{ errorMessage.value }}</p>
+    <p v-if="errorMessage">
+      <span style="color: red">{{ errorMessage }}</span>
+    </p>
+    <p></p>
   </div>
   <div>{{ username }}</div>
   <div>
@@ -73,14 +76,15 @@ const login = () => {
       console.log("session_id:", sessionID);
       localStorage.setItem("authToken", sessionID);
       // check2();
+      router.push("/TheReserve");
     })
     .catch((error) => {
       if (error.response) {
         console.log(error.response.data);
+        errorMessage.value = error.response.data.error;
       } else {
         console.log(error);
       }
-      errorMessage.value = "ユーザー名またはパスワードが違います";
     });
 };
 
@@ -106,18 +110,4 @@ const check2 = () => {
 defineExpose({
   sessionID,
 });
-// import { useSessionStore } from "@/stores/session.js";
-// import { onMounted } from "vue";
-
-// const sessionStore = useSessionStore();
-
-// onMounted(() => {
-//   const authToken = localStorage.getItem("authToken");
-//   console.log("authToken",authToken);
-// })
-// const pinia = () => {
-//   const sessionA = sessionStore.sessionA;
-//   console.log("果たして",sessionA);
-
-// };
 </script>
