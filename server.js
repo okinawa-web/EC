@@ -83,6 +83,7 @@ app.post("/api/login", async (req, res) => {
     });
     console.log("prisma success");
   } catch (e) {
+    console.log("失敗理由",e.message);
     return res.status(401).json({ error: "Prismaとの接続に失敗しました" });
   }
 
@@ -112,7 +113,15 @@ app.post("/api/login", async (req, res) => {
   // res.json({ message: 'Logged in' });
 });
 
-//API
+
+//ログアウトAPI
+app.post("/api/logout", async (req, res) => {
+  // セッションを破棄する処理などがある場合はここに実装する
+  res.clearCookie("authToken"); // クッキーを削除する
+  res.send({ message: "ログアウトしました" });
+});
+
+//キャンセルAPI
 app.delete("/api/delete/:id", async (req, res) => {
   try {
     const id = isNaN(req.params.id) ? 0 : parseInt(req.params.id);
