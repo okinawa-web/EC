@@ -17,7 +17,6 @@ onMounted(async () => {
   console.log("userData!!!!", sessionStore.userData.user.name);
   if (sessionStore.userData.user !== null) {
     User.value = sessionStore.userData.user;
-    console.log("キャンセルページでのUSer",User.value.name);
     state.reserves = sessionStore.userData.user.reserves;
   }
 });
@@ -54,7 +53,8 @@ const cansellogin = () => {
       sessionID = response.data.session_id;
       console.log("session_id:", sessionID);
       localStorage.setItem("authToken", sessionID);
-      
+      location.reload();
+
       // check2();
     })
     .catch((error) => {
