@@ -3,6 +3,7 @@ import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 import { useSessionStore } from "@/stores/session.js";
 import axios from "axios";
 import { reactive, onMounted, ref } from "vue";
+import { cancellogin } from "../../utils/session";
 
 const sessionStore = useSessionStore();
 
@@ -20,7 +21,8 @@ onMounted(async () => {
 });
 
 const cansel = (id) => {
-  axios.delete(`http://localhost:8000/api/delete/${id}`, { data: { id: id } })
+  axios
+    .delete(`http://localhost:8000/api/delete/${id}`, { data: { id: id } })
     .then((response) => {
       console.log("削除できた");
       console.log(response.data);
@@ -52,6 +54,7 @@ const cansel = (id) => {
             </p>
             <p>予約人数：{{ reserve.reservePeople }}名</p>
             <button @click="cansel(reserve.id)">キャンセル手続き</button>
+            <button @click="cancellogin(reserve.id)">最終確認</button>
           </li>
         </ul>
         <p v-else>予約はありません</p>

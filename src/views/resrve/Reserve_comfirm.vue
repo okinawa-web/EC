@@ -1,5 +1,3 @@
-<!-- ログインしている会員登録データをcookieを使ってこのページで読み込み、state.reservesに入れると、予約はありませんが予約日一覧になるはず -->
-
 <script setup>
 import { ref } from "vue";
 import { reactive, onMounted } from "vue";

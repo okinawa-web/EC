@@ -4,9 +4,10 @@ import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 import Serch from "@/components/reserve/Serch.vue";
 import Carender from "@/components/reserve/Carender.vue";
 import axios from "axios";
-import { betu } from "../../utils/session";
+// import { betu } from "../../utils/session";
 import { onMounted } from "vue";
 import { useSessionStore } from "@/stores/session.js";
+
 
 const sessionStore = useSessionStore();
 
@@ -17,15 +18,18 @@ onMounted(async () => {
   User.value = sessionStore.userData.user;
 });
 
-const aaa = () => {
-  if (User.value.user) {
-    console.log("はい",User.value.user);
-    console.log("User.value.user.name", User.value.user.name);
-  } else {
-    console.log("User.value.user is undefined");
-  }
+const logout = () => {
+  axios.post("http://localhost:8000/api/logout")
+  .then(() => {
+    localStorage.setItem("authToken", null); // ログアウトが成功した場合はnullにする
+    User.value = "";
+    console.log("ログアウト完了");
+    // location.reload(); // ログアウト後にページを再読み込みする
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 }
-
 
 const form = reactive({
   reservePeople: "",
@@ -54,6 +58,7 @@ const addReserve = async () => {
   <button @click="betu">betu</button>
   <button @click="aaa">あああ</button>
   <p>{{ User.name }}様</p>
+  <button @click="logout">ログアウト</button>
   <ReserveHeader />
   <Serch />
   <Carender />

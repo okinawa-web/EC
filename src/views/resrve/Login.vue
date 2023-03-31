@@ -1,5 +1,5 @@
 <template>
-  <button @click="betu">認証トークンチェックbetu</button>
+  <!-- <button @click="betu">認証トークンチェックbetu</button> -->
   <button @click="check2">認証トークンチェックcheck2</button>
   <div>{{ MemberInformation }}</div>
   <div>
@@ -36,7 +36,7 @@ import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
 import { reactive } from "vue";
-import { betu } from "../../utils/session";
+// import { betu } from "../../utils/session";
 
 const state = reactive({
   users: null,
