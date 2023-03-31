@@ -29,8 +29,6 @@
 import { reactive, ref, onMounted } from "vue";
 import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 import axios from "axios";
-// import { betu } from "../../utils/session";
-import { onMounted } from "vue";
 import { useSessionStore } from "@/stores/session.js";
 import { useRoute } from "vue-router";
 
