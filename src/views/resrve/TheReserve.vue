@@ -1,6 +1,4 @@
 <template>
-  <button @click="logout">ログアウト</button>
-  <h1>ようこそ、 {{ User ? User.name : 'ゲスト' }} 様</h1>
   <ReserveHeader />
   <div class="reserveBox">
     <div>
@@ -39,21 +37,6 @@ onMounted(async () => {
   console.log("userData!!!!", sessionStore.userData.user.name);
   User.value = sessionStore.userData.user;
 });
-
-const logout = () => {
-  axios.post("http://localhost:8000/api/logout")
-  .then(() => {
-    localStorage.setItem("authToken", null); // ログアウトが成功した場合はnullにする
-    User.value = null;
-    console.log(User.value);
-    console.log("ログアウト完了");
-    // location.reload(); // ログアウト後にページを再読み込みする
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-}
-
 
 const form = reactive({
   reservePeople: "",
