@@ -12,6 +12,13 @@
         <div v-if="state.editingName">
           <input type="text" v-model="state.newName"><button @click="updateName">確定</button>
         </div>
+        <!-- <button @click="changelogin">changelogin</button> -->
+
+
+
+        名前の変更と同じように、メールアドレスなども全部ボタン作る
+
+        
       </div>
     </div>
   </div>
@@ -34,8 +41,12 @@ const User = ref([]);
 
 onMounted(async () => {
   await sessionStore.piniabetu();
-  User.value = sessionStore.userData.user;
-  state.reserves = sessionStore.userData.user.reserves;
+  console.log("userData!!!!", sessionStore.userData.user.name);
+  if (sessionStore.userData.user !== null) {
+    User.value = sessionStore.userData.user;
+    console.log("MYPAG",User.value);
+    state.reserves = sessionStore.userData.user.reserves;
+  }
 });
 
 const updateName = async () => {
@@ -45,13 +56,44 @@ const updateName = async () => {
 
     User.value.name = state.newName;
     state.newName = '';
+    changelogin();
   } catch (error) {
     console.error(error);
   }
 };
 
 
+const reserves = ref("");
+let sessionID = "";
 
+const changelogin = () => {
+  axios
+    .post("http://localhost:8000/api/login", {
+      username: User.value.email,
+      password: User.value.password
+    })
+    .then((response) => {
+      axios.defaults.withCredentials = true; // クッキーを送信する
+      axios.defaults.headers.common["Authorization"] = response.data.sessioCn_id;
+
+      console.log("response.dataの中身", response.data);
+      reserves.value = response.data.user.reserves;
+      state.reserves = response.data.user.reserves;
+      sessionID = response.data.session_id;
+      console.log("session_id:", sessionID);
+      localStorage.setItem("authToken", sessionID);
+      location.reload();
+
+      // check2();
+    })
+    .catch((error) => {
+      if (error.response) {
+        console.log(error.response.data);
+      } else {
+        console.log(error);
+      }
+    });
+};
 </script>
 
 <style>
