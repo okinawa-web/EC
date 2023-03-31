@@ -1,5 +1,24 @@
 <script setup>
 import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
+import { useSessionStore } from "@/stores/session.js";
+import axios from "axios";
+import { reactive, onMounted, ref } from "vue";
+
+const sessionStore = useSessionStore();
+
+const state = reactive({
+  reserves: [],
+});
+
+const User = ref([]);
+
+onMounted(async () => {
+  await sessionStore.piniabetu();
+  console.log("userData!!!!", sessionStore.userData.user.name);
+  User.value = sessionStore.userData.user;
+  console.log("Userdataの中身",User.value);
+  state.reserves = sessionStore.userData.user.reserves;
+});
 
 </script>
 
@@ -11,11 +30,10 @@ import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
     <div class="login_package">
       <div class="login_box">
         <h2>ご登録情報</h2>
-        <p>名前：</p>
-        <p>メールアドレス：</p>
-        <p>住所：</p>
-        <p>電話番号：</p>
-        
+        <p>名前：{{ User.name }}</p>
+        <p>メールアドレス：{{ User.email }}</p>
+        <p>住所：{{ User.address }}</p>
+        <p>電話番号：{{ User.tel }}</p>
       </div>
     </div>
   </div>

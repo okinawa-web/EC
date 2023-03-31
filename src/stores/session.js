@@ -17,11 +17,11 @@ export const useSessionStore = defineStore("session", {
         const response = await axios.get("http://localhost:8000/api/session");
         const responseData = JSON.parse(response.data);
         console.log(
-          "サーバーから受け取ったユーザーデータ response:",
+          "サーバーから受け取ったユーザーデータ response piniabetu:",
           responseData
         );
         console.log(
-          "サーバーから受け取ったユーザーデータ response.data.user",
+          "サーバーから受け取ったユーザーデータ response.data.user piniabetu",
           responseData.user
         );
         this.userData = responseData;
