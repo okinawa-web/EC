@@ -16,6 +16,7 @@ import Reservecansel from "../views/resrve/Reserve_cansel.vue";
 import Login from "../views/resrve/Login.vue";
 import Calender from "../components/reserve/Calender.vue";
 import LoginReset from "../views/resrve/LogionReset.vue";
+import MyPage from "../views/resrve/MyPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -99,6 +100,11 @@ const router = createRouter({
       path: "/calender",
       name: "Calender",
       component: Calender,
+    },
+    {
+      path: "/mypage",
+      name: "mypage",
+      component: MyPage,
     },
 
     //テスト用

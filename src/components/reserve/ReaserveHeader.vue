@@ -41,6 +41,9 @@ const logout = () => {
         <li class="reserve_link">
           <a href="/cansel" class="reserve_color">予約のキャンセル</a>
         </li>
+        <li class="mypage">
+          <a href="/mypage" class="reserve_color">会員情報</a>
+        </li>
       </ul>
     </div>
     <div class="header_div">
