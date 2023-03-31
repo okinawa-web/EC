@@ -83,7 +83,7 @@ app.post("/api/login", async (req, res) => {
     });
     console.log("prisma success");
   } catch (e) {
-    console.log("失敗理由", e.message);
+    console.log("失敗理由",e.message);
     return res.status(401).json({ error: "Prismaとの接続に失敗しました" });
   }
 
@@ -113,20 +113,26 @@ app.post("/api/login", async (req, res) => {
   // res.json({ message: 'Logged in' });
 });
 
+//ログアウトAPI
+app.post("/api/logout", async (req, res) => {
+  // セッションを破棄する処理などがある場合はここに実装する
+  res.clearCookie("authToken"); // クッキーを削除する
+  res.send({ message: "ログアウトしました" });
+});
 
 //キャンセルAPI
 app.delete("/api/delete/:id", async (req, res) => {
   try {
     const id = isNaN(req.params.id) ? 0 : parseInt(req.params.id);
-    console.log("req.body :", req.body);
-    console.log("req.params.id : ", req.params.id);
+    console.log("req.body :",req.body);
+    console.log("req.params.id : " , req.params.id)
     // データベースから指定されたIDのデータを削除
     const deletedData = await prisma.reserve.delete({
       where: {
-        id: id,
-      },
+        id: id
+      }
     });
-    res.send("OK", deletedData);
+    res.send({ message: "OK", data: deletedData });
   } catch (err) {
     console.error(err);
     if (err instanceof prisma.errors.NotFoundError) {
@@ -183,25 +189,25 @@ app.get("/reserve", async (req, res) => {
 });
 
 //予約 POST
-// app.post("/reserve", async (req, res) => {
-//   const { reservePeople, date } = req.body;
-//   const memberId = 2;
-//   const roomId = 3; // ここを5, 6, 7のいずれかにする
-//   console.log(roomId);
-//   const reserve = await prisma.reserve.create({
-//     data: {
-//       memberId: memberId,
-//       reservePeople: reservePeople,
-//       date: date,
-//       roomId: roomId,
-//     },
-//   });
-//   return res.json(reserve);
-// });
+app.post("/reserve", async (req, res) => {
+  const { reservePeople, date } = req.body;
+  const memberId = 1;
+  const roomId = 1;
+  console.log(roomId);
+  const reserve = await prisma.reserve.create({
+    data: {
+      memberId: memberId,
+      reservePeople: reservePeople,
+      date: date,
+      roomId: roomId,
+    },
+  });
+  return res.json(reserve);
+});
 
-// app.get("/", async (req, res) => {
-//   res.send("こんにちは");
-// });
+app.get("/", async (req, res) => {
+  res.send("こんにちは");
+});
 
 //部屋情報状況 GET
 app.get("/room", async (req, res) => {

@@ -1,25 +1,37 @@
-<!-- <script setup>
-import { sessionID } from "../../views/resrve/Login.vue";
+<script setup>
+import { ref, onMounted } from "vue";
+import { useSessionStore } from "@/stores/session.js";
 import axios from "axios";
+const sessionStore = useSessionStore();
 
+const User = ref(null);
+onMounted(async () => {
+  await sessionStore.piniabetu();
+  console.log("userData!!!!", sessionStore.userData.user.name);
+  User.value = sessionStore.userData.user;
+});
 
-const check2 = () => {
-  console.log("トークンの中見", sessionID);
-  axios.defaults.headers.common["x-session-id"] = sessionID;
+const logout = () => {
   axios
-    .get("http://localhost:8000/api/session")
-    .then(function (response) {
-      console.log("サーバーから受け取ったユーザーデータ:", response.data);
-      // MemberInformation.value = response.data;
+    .post("http://localhost:8000/api/logout")
+    .then(() => {
+      localStorage.setItem("authToken", null); // ログアウトが成功した場合はnullにする
+      User.value = null;
+      console.log(User.value);
+      console.log("ログアウト完了");
+      // location.reload(); // ログアウト後にページを再読み込みする
     })
-    .catch(function (error) {
-      console.log("エラーが発生しました:", error);
+    .catch((error) => {
+      console.log(error);
     });
 };
-</script> -->
+</script>
 
 <template>
-  <div class="HAMAJIMA">〜HAMAJIMA☆LAND〜</div>
+  <h1 class="HAMAJIMA">ようこそ、 {{ User ? User.name : "ゲスト" }} 様</h1>
+  <h1 class="HAMAJIMA">〜HAMAJIMA☆LAND〜</h1>
+  <button @click="logout"  class="HAMAJIMA">ログアウト</button>
+
   <div class="header">
     <div class="reserve_header">
       <ul class="header_link">
@@ -28,6 +40,9 @@ const check2 = () => {
         </li>
         <li class="reserve_link">
           <a href="/cansel" class="reserve_color">予約のキャンセル</a>
+        </li>
+        <li class="mypage">
+          <a href="/mypage" class="reserve_color">会員情報</a>
         </li>
       </ul>
     </div>
