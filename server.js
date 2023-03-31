@@ -75,6 +75,7 @@ app.post("/api/login", async (req, res) => {
         id: true,
         name: true,
         address: true,
+        tel: true,
         registerDate: true,
         email: true,
         password: true,

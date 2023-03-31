@@ -14,10 +14,9 @@ export function betu() {
   axios
     .get("http://localhost:8000/api/session")
     .then(function (response) {
-      console.log("サーバーから受け取ったユーザーデータ:", response.data);
+      console.log("サーバーから受け取ったユーザーデータsession.js:", response.data);
     })
     .catch(function (error) {
       console.log("エラーが発生しました:", error);
     });
 }
-
