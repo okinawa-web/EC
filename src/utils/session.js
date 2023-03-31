@@ -1,41 +1,23 @@
 import axios from "axios";
-import { ref } from "vue";
+// import { useSessionStore } from "@/stores/session.js";
 
-const state = {
-  users: null,
-  reserves: null,
-};
+// const sessionStore = useSessionStore();
 
-const errorMessage = ref("");
-let sessionID = "";
-const reserves = ref("");
-let MemberInformation = "";
-export async function cancellogin() {
-  try {
-    const response = await axios.get("http://localhost:8000/api/session");
-    const responseData = JSON.parse(response.data);
-    console.log("サーバーから受け取ったユーザーデータ:", responseData.user.email);
-    MemberInformation = response.data;
-    console.log("仕方なし", MemberInformation);
-    console.log("レスポンスデータ", responseData);
-
-    const loginResponse = await axios.post("http://localhost:8000/api/login", {
-      username: responseData.user.email,
-      password: responseData.user.password,
+export function betu() {
+  const authToken = localStorage.getItem("authToken");
+  console.log("betu", authToken);
+  axios.defaults.headers.common["x-session-id"] = authToken;
+  console.log("トークンの中見", axios.defaults.headers.common["x-session-id"]);
+  // sessionStore.sessionA = "きじま";
+  //   const sessionA = sessionStore.sessionA;
+  // console.log("sessionA!!!!!", sessionA);
+  axios
+    .get("http://localhost:8000/api/session")
+    .then(function (response) {
+      console.log("サーバーから受け取ったユーザーデータ:", response.data);
+    })
+    .catch(function (error) {
+      console.log("エラーが発生しました:", error);
     });
-
-    axios.defaults.withCredentials = true; // クッキーを送信する
-    axios.defaults.headers.common["Authorization"] = loginResponse.data.session_id;
-    console.log("response.dataの中身", loginResponse.data);
-    reserves.value = loginResponse.data.reserves;
-    state.reserves = loginResponse.data.reserves;
-    sessionID = loginResponse.data.session_id;
-    console.log("session_id:", sessionID);
-    console.log("再ログイン完了");
-    localStorage.setItem("authToken", sessionID);
-    window.location.reload();
-  } catch (error) {
-    console.log("エラーが発生しました:", error);
-    errorMessage.value = "ユーザー名またはパスワードが違います";
-  }
 }
+
