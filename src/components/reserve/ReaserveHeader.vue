@@ -7,7 +7,6 @@ const sessionStore = useSessionStore();
 const User = ref(null);
 onMounted(async () => {
   await sessionStore.piniabetu();
-  console.log("userData!!!!", sessionStore.userData.user.name);
   User.value = sessionStore.userData.user;
 });
 
