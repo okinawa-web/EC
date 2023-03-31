@@ -84,7 +84,7 @@
   padding: 0 15px;
 }
 
-.table_th{
+.table_th {
   padding: 0 15px;
 }
 .table_btn {

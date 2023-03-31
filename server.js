@@ -39,7 +39,8 @@ app.use(
 );
 // CORSを設定する
 const corsOptions = {
-  origin: "http://localhost:5173",
+  // origin: "http://localhost:5173",
+  origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
   credentials: true,
   methods: ["GET", "POST", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization", "x-session-id"],
@@ -63,7 +64,7 @@ app.get("/member", async (req, res) => {
 // ログインAPIのエンドポイント
 app.post("/api/login", async (req, res) => {
   const { username, password } = req.body;
-
+  console.log("ログイン情報", username, password);
   let user;
   try {
     user = await prisma.member.findUnique({
@@ -131,7 +132,6 @@ app.delete("/api/delete/:id", async (req, res) => {
       }
     });
     res.send({ message: "OK", data: deletedData });
-
   } catch (err) {
     console.error(err);
     if (err instanceof prisma.errors.NotFoundError) {
@@ -141,7 +141,6 @@ app.delete("/api/delete/:id", async (req, res) => {
     }
   }
 });
-
 
 app.get("/api/session", (req, res) => {
   const sessionStore = req.sessionStore;
@@ -231,6 +230,71 @@ app.post("/room", async (req, res) => {
     },
   });
   return res.json(room);
+});
+
+//空室状況確認  (現在時刻以降の予約状況を取得して空室判断)
+app.get("/room-status", async (req, res) => {
+  const now = new Date();
+  const endOfMonth = new Date(
+    now.getFullYear(),
+    now.getMonth() + 1,
+    0,
+    23,
+    59,
+    59
+  );
+  endOfMonth.setDate(endOfMonth.getDate() + 90); // 3ヶ月
+  const reserve = await prisma.reserve.findMany({
+    where: {
+      date: {
+        gte: now,
+        lte: endOfMonth,
+      },
+    },
+  });
+  const events = reserve.map((r) => ({
+    title: "満室",
+    start: r.date.toISOString(),
+  }));
+  const dates = new Set();
+  for (let d = now; d <= endOfMonth; d.setDate(d.getDate() + 1)) {
+    dates.add(d.toISOString().slice(0, 10));
+  }
+  for (let event of events) {
+    dates.delete(event.start.slice(0, 10));
+  }
+  const availableEvents = [...dates].map((d) => ({
+    title: "空室",
+    start: d,
+  }));
+  const allEvents = events.concat(availableEvents);
+  res.json({ events: allEvents });
+});
+
+//指定した画像の取得
+app.get("/image/:id", async (req, res) => {
+  const id = parseInt(req.params.id); // parseInt() 関数を使用して数値に変換する
+  if (isNaN(id)) {
+    return res.status(400).send("idが数値ではない!");
+  }
+  const image = await prisma.image.findUnique({
+    where: {
+      id: id,
+    },
+  });
+  return res.json(image);
+});
+
+//画像取得API
+app.get("/image", async (req, res) => {
+  try {
+    const images = await prisma.image.findMany();
+    const imagePaths = images.map((image) => image.path);
+    res.send(imagePaths);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("サーバーエラー");
+  }
 });
 
 // サーバーの起動
