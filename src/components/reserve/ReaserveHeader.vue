@@ -31,13 +31,21 @@ const check2 = () => {
         </li>
       </ul>
     </div>
-    <div class="header_div">
+    <div class="header_div" v-if="!loginSuccess">
       <ul class="reserve_link">
         <li><a href="/login" class="reserve_color">ログイン</a></li>
       </ul>
     </div>
   </div>
 </template>
+
+<script setup>
+import { computed } from "vue";
+
+const loginSuccess = computed(() => {
+  return localStorage.getItem("authToken") !== null;
+})
+</script>
 
 <style>
 .HAMAJIMA {

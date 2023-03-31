@@ -83,6 +83,7 @@ app.post("/api/login", async (req, res) => {
     });
     console.log("prisma success");
   } catch (e) {
+    console.log("失敗理由", e.message);
     return res.status(401).json({ error: "Prismaとの接続に失敗しました" });
   }
 
@@ -111,6 +112,7 @@ app.post("/api/login", async (req, res) => {
   console.log("セッションID", req.sessionID);
   // res.json({ message: 'Logged in' });
 });
+
 
 //キャンセルAPI
 app.delete("/api/delete/:id", async (req, res) => {
