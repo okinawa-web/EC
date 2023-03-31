@@ -15,8 +15,11 @@ const User = ref([]);
 onMounted(async () => {
   await sessionStore.piniabetu();
   console.log("userData!!!!", sessionStore.userData.user.name);
-  User.value = sessionStore.userData.user;
-  state.reserves = sessionStore.userData.user.reserves;
+  if (sessionStore.userData.user !== null) {
+    User.value = sessionStore.userData.user;
+    console.log("キャンセルページでのUSer",User.value.name);
+    state.reserves = sessionStore.userData.user.reserves;
+  }
 });
 
 const cansel = (id) => {
@@ -30,6 +33,39 @@ const cansel = (id) => {
       console.error(error);
     });
 };
+  
+const reserves = ref("");
+let sessionID = "";
+
+
+const cansellogin = () => {
+  axios
+    .post("http://localhost:8000/api/login", {
+      username: User.value.email,
+      password: User.value.password
+    })
+    .then((response) => {
+      axios.defaults.withCredentials = true; // クッキーを送信する
+      axios.defaults.headers.common["Authorization"] = response.data.sessioCn_id;
+
+      console.log("response.dataの中身", response.data);
+      reserves.value = response.data.user.reserves;
+      state.reserves = response.data.user.reserves;
+      sessionID = response.data.session_id;
+      console.log("session_id:", sessionID);
+      localStorage.setItem("authToken", sessionID);
+      
+      // check2();
+    })
+    .catch((error) => {
+      if (error.response) {
+        console.log(error.response.data);
+      } else {
+        console.log(error);
+      }
+    });
+};
+
 </script>
 <template>
   <ReserveHeader />
@@ -51,7 +87,8 @@ const cansel = (id) => {
               部屋名：Room 201
             </p>
             <p>予約人数：{{ reserve.reservePeople }}名</p>
-            <button @click="cansel(reserve.id)">キャンセル手続き</button>
+            <button @click="cansel(reserve.id)">キャンセル手続きを行う</button>
+            <button @click="cansellogin(reserve.id)">確定</button>
           </li>
         </ul>
         <p v-else>予約はありません</p>

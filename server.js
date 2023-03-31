@@ -300,6 +300,23 @@ app.get("/image", async (req, res) => {
   }
 });
 
+//会員情報名前変更
+app.put('/member/:id', async (req, res) => {
+  const memberId = Number(req.params.id);
+  const { name } = req.body;
+
+  try {
+    const updatedMember = await prisma.member.update({
+      where: { id: memberId },
+      data: { name: name },
+    });
+    res.json(updatedMember);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: '更新に失敗しました' });
+  }
+});
+
 // サーバーの起動
 app.listen(8000, () => {
   console.log("Server is running on port 8000");
