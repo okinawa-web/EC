@@ -1,3 +1,21 @@
+<template>
+  <ReserveHeader />
+  <div class="login_title">会員情報｜HAMAJIMA LAND</div>
+  <div class="login_wrapper">
+    <div class="login_package">
+      <div class="login_box">
+        <h2>ご登録情報</h2>
+        <div v-if="!state.editingName">
+          <span>名前：{{ User.name }}</span
+          ><span><button @click="state.editingName = true">変更</button></span>
+        </div>
+        <div v-if="state.editingName">
+          <input type="text" v-model="state.newName"><button @click="updateName">確定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 <script setup>
 import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 import { useSessionStore } from "@/stores/session.js";
@@ -8,36 +26,33 @@ const sessionStore = useSessionStore();
 
 const state = reactive({
   reserves: [],
+  newName: '',
+  editingName: false, // 追加
 });
 
 const User = ref([]);
 
 onMounted(async () => {
   await sessionStore.piniabetu();
-  console.log("userData!!!!", sessionStore.userData.user.name);
   User.value = sessionStore.userData.user;
-  console.log("Userdataの中身",User.value);
   state.reserves = sessionStore.userData.user.reserves;
 });
 
+const updateName = async () => {
+  try {
+    const response = await axios.put(`/member/${User.value.id}`, { name: state.newName });
+    console.log("responseの中身",response);
+
+    User.value.name = state.newName;
+    state.newName = '';
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
 </script>
-
-<template>
-  <ReserveHeader />
-
-  <div class="login_title">会員情報｜HAMAJIMA LAND</div>
-  <div class="login_wrapper">
-    <div class="login_package">
-      <div class="login_box">
-        <h2>ご登録情報</h2>
-        <p>名前：{{ User.name }}</p>
-        <p>メールアドレス：{{ User.email }}</p>
-        <p>住所：{{ User.address }}</p>
-        <p>電話番号：{{ User.tel }}</p>
-      </div>
-    </div>
-  </div>
-</template>
 
 <style>
 .login_wrapper {
