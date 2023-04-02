@@ -13,7 +13,7 @@
           <li class="reserve_link">
             <a href="/cansel" class="reserve_color">予約のキャンセル</a>
           </li>
-          <li class="mypage">
+          <li v-if="loginSuccess" class="mypage">
             <a href="/mypage" class="reserve_color">会員情報</a>
           </li>
           <li v-if="loginSuccess" class="reserve_link">
@@ -65,7 +65,7 @@ const logout = () => {
 
 const loginSuccess = computed(() => {
   const authToken = localStorage.getItem("authToken");
-  return authToken !== null && authToken !== "null";
+  return authToken !== null && authToken !== "null"; //ログアウト=null=false
 });
 
 console.log("loginSuccessの結果", loginSuccess.value);
