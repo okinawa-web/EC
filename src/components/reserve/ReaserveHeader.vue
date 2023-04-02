@@ -1,5 +1,37 @@
+<template>
+  <div>
+    <h1 class="HAMAJIMA">
+      ようこそ、 {{ User && User.name ? User.name : "ゲスト" }} 様
+    </h1>
+    <h1 class="HAMAJIMA">〜HAMAJIMA☆LAND〜</h1>
+    <div class="header">
+      <div class="reserve_header">
+        <ul class="header_link">
+          <li class="reserve_link">
+            <a href="/comfirm" class="reserve_color">予約の確認</a>
+          </li>
+          <li class="reserve_link">
+            <a href="/cansel" class="reserve_color">予約のキャンセル</a>
+          </li>
+          <li class="mypage">
+            <a href="/mypage" class="reserve_color">会員情報</a>
+          </li>
+          <li v-if="loginSuccess" class="reserve_link">
+            <a href="/logout" class="reserve_color" @click.prevent="logout"
+              >ログアウト</a
+            >
+          </li>
+          <li v-else class="reserve_link">
+            <a href="/login" class="reserve_color">ログイン</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useSessionStore } from "@/stores/session.js";
 import axios from "axios";
 const sessionStore = useSessionStore();
@@ -16,50 +48,28 @@ const logout = () => {
     .post("http://localhost:8000/api/logout")
     .then(() => {
       localStorage.setItem("authToken", null); // ログアウトが成功した場合はnullにする
+      console.log(
+        "確認",
+        localStorage.getItem("authToken") !== null &&
+          localStorage.getItem("authToken") !== "null"
+      ); //ログアウト時はfalseが返ってくる
+
       User.value = null;
       console.log(User.value);
       console.log("ログアウト完了");
-      // location.reload(); // ログアウト後にページを再読み込みする
+      location.reload(); // ログアウト後にページを再読み込みする
     })
     .catch((error) => {
       console.log(error);
     });
 };
-</script>
-
-<template>
-  <h1 class="HAMAJIMA">ようこそ、 {{ User ? User.name : "ゲスト" }} 様</h1>
-  <h1 class="HAMAJIMA">〜HAMAJIMA☆LAND〜</h1>
-  <button @click="logout"  class="HAMAJIMA">ログアウト</button>
-
-  <div class="header">
-    <div class="reserve_header">
-      <ul class="header_link">
-        <li class="reserve_link">
-          <a href="/comfirm" class="reserve_color">予約の確認</a>
-        </li>
-        <li class="reserve_link">
-          <a href="/cansel" class="reserve_color">予約のキャンセル</a>
-        </li>
-        <li class="mypage">
-          <a href="/mypage" class="reserve_color">会員情報</a>
-        </li>
-      </ul>
-    </div>
-    <div class="header_div" v-if="!loginSuccess">
-      <ul class="reserve_link">
-        <li><a href="/login" class="reserve_color">ログイン</a></li>
-      </ul>
-    </div>
-  </div>
-</template>
-
-<script setup>
-import { computed } from "vue";
 
 const loginSuccess = computed(() => {
-  return localStorage.getItem("authToken") !== null;
-})
+  const authToken = localStorage.getItem("authToken");
+  return authToken !== null && authToken !== "null";
+});
+
+console.log("loginSuccessの結果", loginSuccess.value);
 </script>
 
 <style>
