@@ -10,7 +10,7 @@
           <p class="title">
             <em>Room 101</em>
           </p>
-          <div class="table">
+          <div class="rooms_table">
             <table>
               <tbody>
                 <tr>
@@ -41,7 +41,7 @@
           <p class="title">
             <em>Room 102</em>
           </p>
-          <div class="table">
+          <div class="rooms_table">
             <table>
               <tbody>
                 <tr>
@@ -72,7 +72,7 @@
           <p class="title">
             <em>Room 103</em>
           </p>
-          <div class="table">
+          <div class="rooms_table">
             <table>
               <tbody>
                 <tr>
@@ -147,4 +147,7 @@ li {
   color: darkgray;
   text-align: center;
 }
+/* .rooms_table {
+  text-align: center;
+} */
 </style>

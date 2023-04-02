@@ -62,7 +62,7 @@ onMounted(async () => {
   background: #fff;
   font-size: 20px;
   width: 900px;
-  /* margin: 0 auto; */
+  margin: 0 auto;
 }
 
 .basic_btn {
@@ -77,7 +77,7 @@ onMounted(async () => {
   flex-direction: column;
   justify-content: center;
 }
-
+/* 
 .basic_btn:before {
   content: "";
   position: absolute;
@@ -89,7 +89,7 @@ onMounted(async () => {
   background: rgb(230, 230, 230);
   z-index: -1;
   transition: 0.5s;
-}
+} */
 
 .basic_btn:hover {
   color: #fff;
@@ -100,6 +100,6 @@ onMounted(async () => {
   width: 100%;
 }
 .rooms_amenimage {
-  width: 30%;
+  width: 50%;
 }
 </style>

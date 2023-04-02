@@ -30,12 +30,12 @@
           <li class="nav_item">
             <router-link to="/acsess">アクセス</router-link>
           </li>
-          <li class="nav_item">
+          <!-- <li class="nav_item">
             <router-link to="/question">よくあるご質問</router-link>
           </li>
           <li class="nav_item">
             <router-link to="/news">新着情報</router-link>
-          </li>
+          </li> -->
         </ul>
       </nav>
     </div>

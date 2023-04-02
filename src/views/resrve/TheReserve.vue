@@ -20,6 +20,7 @@
       </form>
     </div>
   </div>
+  <Footer />
 </template>
 
 <script setup>
@@ -28,6 +29,7 @@ import ReserveHeader from "@/components/reserve/ReaserveHeader.vue";
 import axios from "axios";
 import { useSessionStore } from "@/stores/session.js";
 import { useRoute } from "vue-router";
+import Footer from "@/components/Footer.vue";
 
 const sessionStore = useSessionStore();
 
@@ -68,5 +70,6 @@ onMounted(() => {
 .reserveBox {
   width: 90%;
   margin: auto;
+  margin-bottom: 20%;
 }
 </style>
