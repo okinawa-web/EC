@@ -84,7 +84,7 @@ app.post("/api/login", async (req, res) => {
     });
     console.log("prisma success");
   } catch (e) {
-    console.log("失敗理由",e.message);
+    console.log("失敗理由", e.message);
     return res.status(401).json({ error: "Prismaとの接続に失敗しました" });
   }
 
@@ -125,13 +125,13 @@ app.post("/api/logout", async (req, res) => {
 app.delete("/api/delete/:id", async (req, res) => {
   try {
     const id = isNaN(req.params.id) ? 0 : parseInt(req.params.id);
-    console.log("req.body :",req.body);
-    console.log("req.params.id : " , req.params.id)
+    console.log("req.body :", req.body);
+    console.log("req.params.id : ", req.params.id);
     // データベースから指定されたIDのデータを削除
     const deletedData = await prisma.reserve.delete({
       where: {
-        id: id
-      }
+        id: id,
+      },
     });
     res.send({ message: "OK", data: deletedData });
   } catch (err) {
