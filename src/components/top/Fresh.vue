@@ -29,14 +29,14 @@ import { useImageStore } from "@/stores/image.js";
 import { onMounted, ref } from "vue";
 
 const imageStore = useImageStore();
-const imageURL = ref("")
+const imageURL = ref("");
 
 onMounted(async () => {
   await imageStore.loadImage("3");
 
   //imageURL stateを更新する
-  imageURL.value = imageStore.imageURL
-})
+  imageURL.value = imageStore.imageURL;
+});
 </script>
 
 <style>
@@ -54,11 +54,22 @@ onMounted(async () => {
 }
 .fresh_img {
   position: relative;
-  margin-top: 10%;
+  margin-top: 5%;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9のアスペクト比を保つための値 */
+}
+.fresh_img img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
 }
 .fresh_info {
   position: relative;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .news-banner {

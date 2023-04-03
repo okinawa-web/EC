@@ -312,7 +312,7 @@ app.put('/memberName/:id', async (req, res) => {
     res.json(updatedMember);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: '更新に失敗しました' });
+    res.status(500).json({ message: "更新に失敗しました" });
   }
 });
 //会員情報住所変更

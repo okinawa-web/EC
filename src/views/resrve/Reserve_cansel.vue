@@ -84,7 +84,7 @@ const cansellogin = () => {
             <p>予約日：{{ new Date(reserve.date).toLocaleDateString() }}</p>
             <!-- {{ reserve.date }} -->
             <p v-if="state.reserves.some((reserve) => reserve.roomId === 1)">
-              部屋名：Room 201
+              部屋名：Room 101
             </p>
             <p>予約人数：{{ reserve.reservePeople }}名</p>
             <button @click="cansel(reserve.id)">キャンセル手続きを行う</button>

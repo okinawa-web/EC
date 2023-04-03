@@ -41,13 +41,9 @@ onMounted(async () => {
 </script>
 
 <style>
-.roomAll {
-  height: 500px;
+.roomSubDescription {
+  margin: 3%;
 }
-/* .roomBox {
-  font-size: 12px;
-  margin: 10%;
-} */
 
 .roomSubDescription {
   font-size: 20px;
@@ -74,7 +70,6 @@ onMounted(async () => {
 
 .villaTitle {
   font-size: 80px;
-  margin-top: 23%;
 }
 
 .villaSubTitle {

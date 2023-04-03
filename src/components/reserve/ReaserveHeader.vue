@@ -7,10 +7,10 @@
     <div class="header">
       <div class="reserve_header">
         <ul class="header_link">
-          <li class="reserve_link">
+          <li v-if="loginSuccess" class="reserve_link">
             <a href="/comfirm" class="reserve_color">予約の確認</a>
           </li>
-          <li class="reserve_link">
+          <li v-if="loginSuccess" class="reserve_link">
             <a href="/cansel" class="reserve_color">予約のキャンセル</a>
           </li>
           <li v-if="loginSuccess" class="mypage">
