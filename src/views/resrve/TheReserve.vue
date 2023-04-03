@@ -36,7 +36,7 @@ const sessionStore = useSessionStore();
 const User = ref(null);
 onMounted(async () => {
   await sessionStore.piniabetu();
-  console.log("userData!!!!", sessionStore.userData.user.name);
+  console.log("userData!!!!", sessionStore.userData.user.id);
   User.value = sessionStore.userData.user;
 });
 
@@ -46,13 +46,14 @@ const form = reactive({
 });
 const addReserve = async () => {
   const { reservePeople, date } = form;
-  const memberId = 1; // 仮に1を指定
-  const roomId = 1; //仮に201を指定
+  const memberId = User.value.id;
+  const roomId = 1;
+  console.log("会員ID!", User.value.id);
   try {
     const reserve = await axios.post("/reserve", {
-      memberId: memberId, //予約した人のメンバーID
-      reservePeople: parseInt(reservePeople), //フォームに入力された予約人数
-      date: new Date(date + "T10:00:00Z"), //フォームに入力された予約日
+      memberId: memberId,
+      reservePeople: parseInt(reservePeople),
+      date: new Date(date + "T10:00:00Z"),
       roomId: roomId,
     });
     console.log(reserve.data);
@@ -60,6 +61,7 @@ const addReserve = async () => {
     console.error(error);
   }
 };
+
 const route = useRoute();
 onMounted(() => {
   form.date = route.query.date;

@@ -191,8 +191,7 @@ app.get("/reserve", async (req, res) => {
 
 //予約 POST
 app.post("/reserve", async (req, res) => {
-  const { reservePeople, date } = req.body;
-  const memberId = 1;
+  const { reservePeople, date, memberId } = req.body;
   const roomId = 1;
   console.log(roomId);
   const reserve = await prisma.reserve.create({
