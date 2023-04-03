@@ -300,7 +300,7 @@ app.get("/image", async (req, res) => {
 });
 
 //会員情報名前変更
-app.put('/member/:id', async (req, res) => {
+app.put("/member/:id", async (req, res) => {
   const memberId = Number(req.params.id);
   const { name } = req.body;
 
@@ -312,7 +312,7 @@ app.put('/member/:id', async (req, res) => {
     res.json(updatedMember);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: '更新に失敗しました' });
+    res.status(500).json({ message: "更新に失敗しました" });
   }
 });
 

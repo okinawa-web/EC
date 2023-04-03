@@ -6,7 +6,7 @@
           <!-- <img src="@/assets/room1.jpg" alt="101" /> -->
           <img :src="imageURL" alt="room1" :key="imageURL" />
         </p>
-        <div class="wrap_txt">
+        <!-- <div class="wrap_txt">
           <p class="title">
             <em>Room 101</em>
           </p>
@@ -23,13 +23,13 @@
                 </tr>
                 <tr>
                   <th>ベッドルーム</th>
-                  <td>ツインベッド</td>
+                  <td>キングベッド</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p>→</p>
-        </div>
+        </div> -->
       </router-link>
     </div>
     <div class="room102">
@@ -37,7 +37,7 @@
         <p class="image">
           <img src="@/assets/room2.png" alt="102" />
         </p>
-        <div class="wrap_txt">
+        <!-- <div class="wrap_txt">
           <p class="title">
             <em>Room 102</em>
           </p>
@@ -60,7 +60,7 @@
             </table>
           </div>
           <p>→</p>
-        </div>
+        </div> -->
       </router-link>
     </div>
     <div class="room103">
@@ -68,7 +68,7 @@
         <p class="image">
           <img src="@/assets/room4.jpg" alt="103" />
         </p>
-        <div class="wrap_txt">
+        <!-- <div class="wrap_txt">
           <p class="title">
             <em>Room 103</em>
           </p>
@@ -91,10 +91,36 @@
             </table>
           </div>
           <p>→</p>
-        </div>
+        </div> -->
       </router-link>
     </div>
   </div>
+  <router-link :to="{ name: 'Room', query: { id: 101 } }">
+    <div class="wrap_txt">
+      <p class="title">
+        <em>Room 101</em>
+      </p>
+      <div class="rooms_table">
+        <table>
+          <tbody>
+            <tr>
+              <th>定員</th>
+              <td>1~5名</td>
+            </tr>
+            <tr>
+              <th>広さ</th>
+              <td>86.70㎡(2LDK)</td>
+            </tr>
+            <tr>
+              <th>ベッドルーム</th>
+              <td>キングベッド</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>→</p>
+    </div>
+  </router-link>
 </template>
 
 <script setup>
@@ -146,8 +172,12 @@ li {
   background-color: rgba(252, 247, 247, 0.9);
   color: darkgray;
   text-align: center;
+  font-size: 20px;
 }
-/* .rooms_table {
+.rooms_table {
   text-align: center;
-} */
+}
+.rooms_table table {
+  margin: 0 auto;
+}
 </style>

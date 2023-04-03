@@ -28,7 +28,10 @@
           ご宿泊中無料でご利用いただけるカーサービス付！
         </td>
         <td>
-          <a href="/room" class="calender_button">お部屋詳細</a>
+          <!-- <a href="/rooms" class="calender_button">お部屋詳細</a> -->
+          <router-link to="/rooms" class="calender_button"
+            >お部屋詳細</router-link
+          >
         </td>
       </tr>
     </table>

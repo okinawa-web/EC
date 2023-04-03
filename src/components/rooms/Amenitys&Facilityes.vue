@@ -54,7 +54,6 @@ onMounted(async () => {
 
 .basic {
   display: block;
-  /* position: relative; */
   line-height: 48px;
   display: flex;
   flex-direction: column;
@@ -62,7 +61,7 @@ onMounted(async () => {
   background: #fff;
   font-size: 20px;
   width: 900px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .basic_btn {
@@ -76,6 +75,7 @@ onMounted(async () => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative; /* 追加 */
 }
 /* 
 .basic_btn:before {
@@ -91,14 +91,23 @@ onMounted(async () => {
   transition: 0.5s;
 } */
 
-.basic_btn:hover {
+/* .basic_btn:hover {
   color: #fff;
   background-color: darkgray;
 }
 
 .basic_btn:hover:before {
   width: 100%;
+} */
+.basic:hover .basic_btn {
+  color: #fff;
+  background-color: darkgray;
 }
+
+.basic:hover .basic_btn:before {
+  width: 100%;
+}
+
 .rooms_amenimage {
   width: 50%;
 }

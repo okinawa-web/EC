@@ -56,6 +56,7 @@ const sub = ref("アクティビティ");
   color: darkgray;
   text-align: center;
   padding: 6%;
+  font-size: 20px;
 }
 /* .message {
   font-size: 16px;
