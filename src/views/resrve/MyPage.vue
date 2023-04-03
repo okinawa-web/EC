@@ -5,20 +5,35 @@
     <div class="login_package">
       <div class="login_box">
         <h2>ご登録情報</h2>
+
+        <!-- 名前 -->
         <div v-if="!state.editingName">
           <span>名前：{{ User.name }}</span
           ><span><button @click="state.editingName = true">変更</button></span>
         </div>
         <div v-if="state.editingName">
-          <input type="text" v-model="state.newName"><button @click="updateName">確定</button>
+          名前：<input type="text" v-model="state.newName"><button @click="updateName">確定</button>
+          <button @click="state.editingName = false">キャンセル</button>
         </div>
-        <!-- <button @click="changelogin">changelogin</button> -->
+        <!-- 住所 -->
+        <div v-if="!state.editingAddress">
+          <span>住所：{{ User.address }}</span
+          ><span><button @click="state.editingAddress = true">変更</button></span>
+        </div>
+        <div v-if="state.editingAddress">
+          住所：<input type="text" v-model="state.newAddress"><button @click="updateAddress ">確定</button>
+          <button @click="state.editingAddress = false">キャンセル</button>
+        </div>
+        <!-- 電話番号 -->
+        <div v-if="!state.editingTel">
+          <span>電話番号：{{ User.tel}}</span
+          ><span><button @click="state.editingTel = true">変更</button></span>
+        </div>
+        <div v-if="state.editingTel">
+          電話番号：<input type="text" v-model="state.newTel"><button @click="updateTel ">確定</button>
+          <button @click="state.editingTel = false">キャンセル</button>
+        </div>
 
-
-
-        名前の変更と同じように、メールアドレスなども全部ボタン作る
-
-        
       </div>
     </div>
   </div>
@@ -34,24 +49,28 @@ const sessionStore = useSessionStore();
 const state = reactive({
   reserves: [],
   newName: '',
+  newAddress: '',
+  newEmail: '',
+  newTell: '',
   editingName: false, // 追加
+  editingAddress: false, // 追加
+  editingTell: false, // 追加
 });
 
 const User = ref([]);
 
 onMounted(async () => {
   await sessionStore.piniabetu();
-  console.log("userData!!!!", sessionStore.userData.user.name);
   if (sessionStore.userData.user !== null) {
     User.value = sessionStore.userData.user;
-    console.log("MYPAG",User.value);
+    console.log("userData!!!!", sessionStore.userData.user.tel);
     state.reserves = sessionStore.userData.user.reserves;
   }
 });
 
 const updateName = async () => {
   try {
-    const response = await axios.put(`/member/${User.value.id}`, { name: state.newName });
+    const response = await axios.put(`/memberName/${User.value.id}`, { name: state.newName });
     console.log("responseの中身",response);
 
     User.value.name = state.newName;
@@ -61,6 +80,42 @@ const updateName = async () => {
     console.error(error);
   }
 };
+const updateAddress = async () => {
+  try {
+    const response = await axios.put(`/memberAddress/${User.value.id}`, { address: state.newAddress });
+    console.log("responseの中身",response);
+
+    User.value.address = state.newAddress;
+    state.newAddress = '';
+    changelogin();
+  } catch (error) {
+    console.error(error);
+  }
+};
+const updateTel = async () => {
+  try {
+    const response = await axios.put(`/memberTel/${User.value.id}`, { tel: state.newTel });
+    console.log("responseの中身",response);
+
+    User.value.tel = state.newTel;
+    state.newTel = '';
+    changelogin();
+  } catch (error) {
+    console.error(error);
+  }
+};
+// const updateAddress = async () => {
+//   try {
+//     const response = await axios.put(`/member/${Address.value.id}`, { address: state.newAddress });
+//     console.log("responseの中身",response);
+
+//     Address.value.address = state.newAddress;
+//     state.newAddress = '';
+//     changelogin();
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
 
 
 const reserves = ref("");
