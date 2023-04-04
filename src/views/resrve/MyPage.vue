@@ -3,38 +3,52 @@
   <div class="login_title">会員情報｜HAMAJIMA LAND</div>
   <div class="login_wrapper">
     <div class="login_package">
-      <div class="login_box">
+      <div>
         <h2>ご登録情報</h2>
-
+        <div class="reservespace">
         <!-- 名前 -->
         <div v-if="!state.editingName">
-          <span>名前：{{ User.name }}</span
+          <span class="mypageItem">名前：{{ User.name }}</span
           ><span><button @click="state.editingName = true">変更</button></span>
         </div>
         <div v-if="state.editingName">
-          名前：<input type="text" v-model="state.newName"><button @click="updateName">確定</button>
+          名前：<input type="text" v-model="state.newName" /><button
+            @click="updateName"
+          >
+            確定
+          </button>
           <button @click="state.editingName = false">キャンセル</button>
         </div>
         <!-- 住所 -->
         <div v-if="!state.editingAddress">
           <span>住所：{{ User.address }}</span
-          ><span><button @click="state.editingAddress = true">変更</button></span>
+          ><span
+            ><button @click="state.editingAddress = true">変更</button></span
+          >
         </div>
         <div v-if="state.editingAddress">
-          住所：<input type="text" v-model="state.newAddress"><button @click="updateAddress ">確定</button>
+          住所：<input type="text" v-model="state.newAddress" /><button
+            @click="updateAddress"
+          >
+            確定
+          </button>
           <button @click="state.editingAddress = false">キャンセル</button>
         </div>
         <!-- 電話番号 -->
         <div v-if="!state.editingTel">
-          <span>電話番号：{{ User.tel}}</span
+          <span>電話番号：{{ User.tel }}</span
           ><span><button @click="state.editingTel = true">変更</button></span>
         </div>
         <div v-if="state.editingTel">
-          電話番号：<input type="text" v-model="state.newTel"><button @click="updateTel ">確定</button>
+          電話番号：<input type="text" v-model="state.newTel" /><button
+            @click="updateTel"
+          >
+            確定
+          </button>
           <button @click="state.editingTel = false">キャンセル</button>
         </div>
-
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -48,10 +62,10 @@ const sessionStore = useSessionStore();
 
 const state = reactive({
   reserves: [],
-  newName: '',
-  newAddress: '',
-  newEmail: '',
-  newTell: '',
+  newName: "",
+  newAddress: "",
+  newEmail: "",
+  newTell: "",
   editingName: false, // 追加
   editingAddress: false, // 追加
   editingTell: false, // 追加
@@ -70,11 +84,13 @@ onMounted(async () => {
 
 const updateName = async () => {
   try {
-    const response = await axios.put(`/memberName/${User.value.id}`, { name: state.newName });
-    console.log("responseの中身",response);
+    const response = await axios.put(`/memberName/${User.value.id}`, {
+      name: state.newName,
+    });
+    console.log("responseの中身", response);
 
     User.value.name = state.newName;
-    state.newName = '';
+    state.newName = "";
     changelogin();
   } catch (error) {
     console.error(error);
@@ -82,11 +98,13 @@ const updateName = async () => {
 };
 const updateAddress = async () => {
   try {
-    const response = await axios.put(`/memberAddress/${User.value.id}`, { address: state.newAddress });
-    console.log("responseの中身",response);
+    const response = await axios.put(`/memberAddress/${User.value.id}`, {
+      address: state.newAddress,
+    });
+    console.log("responseの中身", response);
 
     User.value.address = state.newAddress;
-    state.newAddress = '';
+    state.newAddress = "";
     changelogin();
   } catch (error) {
     console.error(error);
@@ -94,11 +112,13 @@ const updateAddress = async () => {
 };
 const updateTel = async () => {
   try {
-    const response = await axios.put(`/memberTel/${User.value.id}`, { tel: state.newTel });
-    console.log("responseの中身",response);
+    const response = await axios.put(`/memberTel/${User.value.id}`, {
+      tel: state.newTel,
+    });
+    console.log("responseの中身", response);
 
     User.value.tel = state.newTel;
-    state.newTel = '';
+    state.newTel = "";
     changelogin();
   } catch (error) {
     console.error(error);
@@ -117,7 +137,6 @@ const updateTel = async () => {
 //   }
 // };
 
-
 const reserves = ref("");
 let sessionID = "";
 
@@ -125,11 +144,12 @@ const changelogin = () => {
   axios
     .post("http://localhost:8000/api/login", {
       username: User.value.email,
-      password: User.value.password
+      password: User.value.password,
     })
     .then((response) => {
       axios.defaults.withCredentials = true; // クッキーを送信する
-      axios.defaults.headers.common["Authorization"] = response.data.sessioCn_id;
+      axios.defaults.headers.common["Authorization"] =
+        response.data.sessioCn_id;
 
       console.log("response.dataの中身", response.data);
       reserves.value = response.data.user.reserves;
@@ -152,24 +172,9 @@ const changelogin = () => {
 </script>
 
 <style>
-.login_wrapper {
-  width: 900px;
-  font-size: 100%;
-  margin: 0 auto;
-  border: 1px solid #a0a0a0;
-  padding: 0 20px;
+.mypageItem {
+  margin-top: 20px;
 }
-
-.login_title {
-  background-color: rgb(0, 83, 92);
-  color: white;
-  font-size: 115%;
-  padding: 10px 18px 8px;
-  width: 900px;
-  margin: auto;
-  border: 3px solid rgb(0, 83, 92);
-}
-
 .LOGIN {
   font-size: 143%;
   font-weight: bold;
