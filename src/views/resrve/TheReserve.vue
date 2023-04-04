@@ -1,5 +1,6 @@
 <template>
   <ReserveHeader />
+
   <div class="login_title">予約フォーム｜HAMAJIMA LAND</div>
   <div class="login_wrapper">
     <div class="login_package">
@@ -52,33 +53,45 @@ import VacancySearch from "@/components/reserve/VacancySearch.vue";
 const sessionStore = useSessionStore();
 
 const User = ref(null);
-onMounted(async () => {
-  await sessionStore.piniabetu();
-  console.log("userData!!!!", sessionStore.userData.user.id);
-  User.value = sessionStore.userData.user;
-});
+const errorMessage = ref("");
 
 const form = reactive({
   reservePeople: "",
   date: "",
 });
 const addReserve = async () => {
+  if (!form.reservePeople) {
+    errorMessage.value = "予約人数を選択してください";
+    return;
+  }
   const { reservePeople, date } = form;
-  const memberId = User.value.id;
+  const memberId = User.value?.id; //memberIdがnullの場合はundefinedを代入
   const roomId = 1;
-  console.log("会員ID!", User.value.id);
-  try {
-    const reserve = await axios.post("/reserve", {
-      memberId: memberId,
-      reservePeople: parseInt(reservePeople),
-      date: new Date(date + "T10:00:00Z"),
-      roomId: roomId,
-    });
-    console.log(reserve.data);
-  } catch (error) {
-    console.error(error);
+  console.log("会員ID!", User.value?.id);
+  if (!memberId) {
+    alert("ログインしてください");
+    return;
+  }
+  if (User.value) {
+    try {
+      const reserve = await axios.post("/reserve", {
+        memberId: memberId,
+        reservePeople: parseInt(reservePeople),
+        date: new Date(date + "T10:00:00Z"),
+        roomId: roomId,
+      });
+      console.log(reserve.data);
+    } catch (error) {
+      console.error(error);
+    }
   }
 };
+
+onMounted(async () => {
+  await sessionStore.piniabetu();
+  console.log("userData!!!!", sessionStore.userData.user.id);
+  User.value = sessionStore.userData.user;
+});
 
 const route = useRoute();
 onMounted(() => {
