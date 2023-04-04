@@ -13,7 +13,7 @@
     </div>
     <div class="fresh_info">
       <div class="fresh_img">
-        <img :src="imageURL" alt="image" />
+        <img :src="imageURL" alt="image" class="TOP_image"/>
         <div class="news-banner">
           <div class="news-banner__content">
             <p>HAVE A GREAT HOLIDAY</p>
@@ -57,9 +57,19 @@ onMounted(async () => {
   margin-top: 5%;
   width: 100%;
   height: 0;
-  padding-bottom: 56.25%; /* 16:9のアスペクト比を保つための値 */
+  padding-bottom: 84.375%; /* 16:9のアスペクト比を保つための値 */
 }
-.fresh_img img {
+
+.TOP_image{
+  position: relative;
+  margin-top: 5%;
+  width: 100%;
+  /* height: 0; */
+  padding-bottom: 84.375%; /* 16:9のアスペクト比を保つための値 */
+}
+
+
+.fresh_img {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -70,6 +80,8 @@ onMounted(async () => {
 .fresh_info {
   position: relative;
   margin-top: 5%;
+  height: 100%; /* 追加 */
+  width: 100%; /* 追加 */
 }
 
 .news-banner {
@@ -88,6 +100,7 @@ onMounted(async () => {
   animation: animate-banner 50s linear infinite;
   font-size: 150px;
   font-weight: 900;
+  margin-top: 500px;
 }
 
 .news-banner__content > * {
