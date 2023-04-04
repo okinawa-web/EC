@@ -16,14 +16,26 @@
 .link {
   display: block;
   align-items: center;
-  width: 53%;
-  font-size: 150%;
+  flex-wrap: wrap;
+  width: 60%;
+  font-size: 25px;
   margin-right: 0;
-  margin-left: 3%;
+  margin-left: 5%;
   margin-top: 3%;
 }
 /* リンク間の空間 */
 .mgr-10 {
   margin: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .link {
+    display: block;
+    margin-top: 20px;
+    font-size: 10px;
+    width: 130%;
+    margin-right: 0;
+    margin-left: 0%;
+  }
 }
 </style>

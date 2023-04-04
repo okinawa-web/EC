@@ -48,13 +48,9 @@
   justify-content: space-between;
   align-items: center;
   /* padding: 0 50px; */
-  margin: 0 50px;
+  margin: 0 3%;
   background: #fff;
   float: left;
-}
-
-.logo {
-  font-size: 24px;
 }
 
 /* ハンバーガーメニューに関するCSS */
@@ -140,5 +136,26 @@
 /* アイコンがクリックされたらメニューを表示 */
 #drawer_input:checked ~ .nav_content {
   left: 0; /* メニューを画面に入れる */
+}
+
+@media (max-width: 768px) {
+  /* ハンバーガーメニューのアイコン */
+  .drawer_open span,
+  .drawer_open span:before,
+  .drawer_open span:after {
+    display: block;
+    height: 2px;
+    width: 25px;
+  }
+
+  /* 三本線の一番上の棒の位置調整 */
+  .drawer_open span:before {
+    bottom: 8px;
+  }
+
+  /* 三本線の一番下の棒の位置調整 */
+  .drawer_open span:after {
+    top: 8px;
+  }
 }
 </style>

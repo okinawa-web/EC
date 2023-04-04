@@ -19,9 +19,10 @@ import HeaderMenu from "@/components/header/Menu.vue";
   display: flex;
   background-color: white;
   width: 100%;
+  height: 20%;
   /*固定*/
   position: fixed;
   top: 0%;
-  z-index: 1; /* 追加 */
+  z-index: 1;
 }
 </style>

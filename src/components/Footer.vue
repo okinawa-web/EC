@@ -4,15 +4,14 @@
     <div class="footer_text">
       <p class="footer_logo" v-if="imageLoaded">
         <!--画像の読み込みが完了するまで非表示-->
-        <router-link to="/" class="zero">
+        <router-link to="/" class="footer_zero">
           <img :src="imageURL" alt="logo" class="logo" :key="imageURL" />
         </router-link>
       </p>
       <div class="footer_info">
         <p>~HAMAJIMA~</p>
         <p>〒000-0000 <br />沖縄県浜島2207</p>
-        <p>予約専用ダイヤル</p>
-        <h3>Tel:0000-000-000</h3>
+        <p>Tel:0000-000-000</p>
         <p>受付時間 10:00~18:00</p>
       </div>
     </div>
@@ -43,28 +42,53 @@ onMounted(async () => {
 
 <style>
 #footer {
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   margin-top: 5%;
 }
 
-.footer_logo {
-  margin-right: auto;
-  width: 30%;
-  /* position: absolute; */
-}
-
 .footer_text {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.footer_logo {
+  width: 30%;
+  max-width: 100%;
+  height: auto;
 }
 
 .footer_info {
   font-size: 16px;
 }
 
-.copyright {
+.footer_zero {
+  display: inline-block;
+}
+
+#footer .copyright {
   text-align: center;
 }
+
+/* @media screen and (min-width: 768px) {
+  .footer_text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer_logo {
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  .footer_info {
+    margin-left: 0;
+    margin-right: auto;
+  }
+} */
 </style>

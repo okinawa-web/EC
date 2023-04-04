@@ -49,13 +49,13 @@ onMounted(async () => {
 <style>
 .all {
   color: darkgray;
-  margin: 10% auto;
+  margin: 15% auto;
 }
 
 .pagetitle {
   font-size: 450%;
   width: 90%;
-  margin: 50px auto auto auto;
+  margin: 5% auto auto auto;
 }
 
 .subTitle {
@@ -67,7 +67,7 @@ onMounted(async () => {
 .toplink {
   font-size: 150%;
   width: 90%;
-  margin: 80px auto auto auto;
+  margin: 5% auto auto auto;
   text-align: right;
 }
 
@@ -83,5 +83,25 @@ onMounted(async () => {
   /* ↓↓↓画像によって切り取り箇所調整↓↓↓ */
   /* object-fit: none; */
   object-position: 0% 70%;
+}
+@media (max-width: 768px) {
+  .all {
+    color: darkgray;
+    margin: 35% auto;
+  }
+  .pagetitle {
+    font-size: 350%;
+    width: 90%;
+    margin: 5% auto auto auto;
+  }
+  .subTitle {
+    font-size: 130%;
+  }
+  .toplink {
+    font-size: 130%;
+  }
+  .topPhoto {
+    height: 200px;
+  }
 }
 </style>

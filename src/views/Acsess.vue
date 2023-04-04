@@ -1,10 +1,9 @@
 <template>
   <Header />
-  <!-- <img src="/src/assets/map.jpg" alt=""> -->
   <PageTop :pagetitle="page" :subTitle="sub" :imageId="imageId" />
   <div class="acsses">
     <p class="start">浜島空港</p>
-    <p class="center"> ----お車で20分 🚕💨----> </p>
+    <p class="center">----お車で20分🚕💨----></p>
     <p class="goal">HAMAJIMA LAND</p>
   </div>
   <Footer />
@@ -44,18 +43,26 @@ const sub = ref("アクセス");
   color: black;
   font-size: 30px;
   text-align: center;
+  justify-content: space-between;
 }
 .start,
 .goal {
   background-color: rgb(246, 210, 143);
   width: 20%;
 }
-.start,
-.center,
-.goal {
-  margin: 3%;
-}
-.start{
+.start {
   margin-left: 10%;
+}
+.goal {
+  margin-right: 10%;
+}
+
+@media (max-width: 768px) {
+  .acsses {
+    display: flex;
+    color: black;
+    font-size: 15px;
+    text-align: center;
+  }
 }
 </style>
