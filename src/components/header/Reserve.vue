@@ -14,9 +14,14 @@
   background: #ef7306;
 }
 .reserve_text {
-  /* background-color: #ef7306; */
-  width: 50%;
+  background-color: #ef7306;
   font-size: 300%;
   text-decoration-line: none;
+}
+
+@media (max-width: 768px) {
+  .reserve_text {
+    font-size: 100%;
+  }
 }
 </style>

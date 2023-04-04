@@ -54,17 +54,22 @@ const sub = ref("アクティビティ");
 <style>
 .text {
   color: darkgray;
-  text-align: center;
-  padding: 6%;
+  text-align: center; 
   font-size: 20px;
 }
-/* .message {
-  font-size: 16px;
-} */
 .detail {
   font-size: 16px;
 }
 .comp {
   margin: 7%;
+}
+
+@media (max-width: 768px) {
+  .text {
+    font-size: 17px;
+  }
+  .detail {
+    font-size: 13px;
+  }
 }
 </style>

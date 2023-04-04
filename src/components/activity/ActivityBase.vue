@@ -97,4 +97,19 @@ async function getImageURLs() {
   height: auto;
   margin: 1%;
 }
+
+@media (max-width: 768px) {
+  .activity {
+    padding-top: 10px;
+  }
+  .activity_title_english {
+    font-size: 15px;
+  }
+  .activity_title {
+    font-size: 22px;
+  }
+  .explanation {
+    font-size: 14px;
+  }
+}
 </style>
