@@ -1,7 +1,7 @@
 <template>
   <div class="calendar-container">
-    <h1>空室状況</h1>
-    <FullCalendar :options="calendarOptions" />
+    <h1 class="FreeRoom">空室状況</h1>
+    <FullCalendar :options="calendarOptions" class="calendar" />
   </div>
 </template>
 
@@ -60,5 +60,14 @@ calendarOptions.value.dateClick = handleDateClick;
 .calendar-container {
   max-width: 800px;
   margin: 0 auto;
+}
+
+.FreeRoom {
+  font-size: 20px;
+  margin-top: 36px;
+}
+
+.calendar {
+  font-size: 12px;
 }
 </style>

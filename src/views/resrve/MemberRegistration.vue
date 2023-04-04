@@ -46,7 +46,7 @@ onMounted(() => {
     <div class="login_title">新規会員登録｜HAMAJIMA LAND</div>
     <div class="login_wrapper">
       <div class="login_package">
-        <div class="login_box">
+        <div>
           <h2>新規会員登録</h2>
           <p>
             ご登録完了後、ご入力いただいたメールアドレスに、ご登録確認メールをお送りします。

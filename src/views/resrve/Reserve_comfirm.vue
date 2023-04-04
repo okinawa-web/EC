@@ -44,13 +44,13 @@ onMounted(async () => {
     </div>
   </div>
 </template>
-
 <style>
 .reservespace {
-  margin: 60px 0;
+  margin: 60px auto;
+  width: 85%;
 }
 .login_wrapper {
-  width: 900px;
+  max-width: 80%;
   font-size: 100%;
   margin: 0 auto;
   border: 1px solid #a0a0a0;
@@ -62,7 +62,7 @@ onMounted(async () => {
   color: white;
   font-size: 115%;
   padding: 10px 18px 8px;
-  width: 900px;
+  width: 80%;
   margin: auto;
   border: 3px solid rgb(0, 83, 92);
 }
@@ -77,7 +77,7 @@ onMounted(async () => {
 }
 
 .logon_form {
-  width: 70%;
+  max-width: 70%;
 }
 
 .form {
@@ -88,7 +88,7 @@ onMounted(async () => {
 }
 
 .login_input {
-  width: 50px;
+  max-width: 50px;
 }
 .forgot_password {
   text-align: center;
@@ -99,7 +99,7 @@ onMounted(async () => {
 }
 
 .ul_button {
-  width: 90%;
+  max-width: 90%;
   text-align: center;
 }
 

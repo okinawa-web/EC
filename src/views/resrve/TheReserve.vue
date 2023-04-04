@@ -1,25 +1,42 @@
 <template>
   <ReserveHeader />
+
+  <div class="login_title">予約フォーム｜HAMAJIMA LAND</div>
+  <div class="login_wrapper">
+    <div class="login_package">
+      <div >
+        <h2>予約フォーム</h2>
+        <p>予約人数を選択し予約ボタンを押してください。</p>
+        <ul>
+          <li class="reservespace">
+            <div class="reserveForm">
+              <!-- prevent＝ボタン押した後も画面更新しない -->
+              <form @submit.prevent="addReserve">
+                <label>予約人数：</label>
+                <select name="reserveNumber" v-model="form.reservePeople">
+                  <option value="" selected>選択してください</option>
+                  <option value="1">1人</option>
+                  <option value="2">2人</option>
+                  <option value="3">3人</option>
+                  <option value="4">4人</option>
+                  <option value="5">5人</option>
+                </select>
+                <div>
+                  <span>予約日：　</span>
+                  <input type="date" v-model="form.date" />
+                  <button type="submit">予約</button>
+                </div>
+              </form>
+
+            </div>
+            <VacancySearch />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <div class="reserveBox">
-    <div>
-      <h1>予約フォーム</h1>
-    </div>
-    <div>
-      <!-- prevent＝ボタン押した後も画面更新しない -->
-      <form @submit.prevent="addReserve">
-        <label>予約人数</label>
-        <select name="reserveNumber" v-model="form.reservePeople">
-          <option value="1">1人</option>
-          <option value="2">2人</option>
-          <option value="3">3人</option>
-          <option value="4">4人</option>
-          <option value="5">5人</option>
-        </select>
-        <input type="date" v-model="form.date" />
-        <button type="submit">予約</button>
-      </form>
-      <div v-if="errorMessage" style="color: red">{{ errorMessage }}</div>
-    </div>
+    <div></div>
   </div>
   <Footer />
 </template>
@@ -31,6 +48,7 @@ import axios from "axios";
 import { useSessionStore } from "@/stores/session.js";
 import { useRoute } from "vue-router";
 import Footer from "@/components/Footer.vue";
+import VacancySearch from "@/components/reserve/VacancySearch.vue";
 
 const sessionStore = useSessionStore();
 
@@ -87,4 +105,14 @@ onMounted(() => {
   margin: auto;
   margin-bottom: 20%;
 }
+
+.reserveForm {
+  font-size: 16px;
+  width: 800px;
+  margin: auto;
+}
+
+select[name="reserveNumber"] {
+    font-size: 16px; /* 例として24pxに設定 */
+  }
 </style>

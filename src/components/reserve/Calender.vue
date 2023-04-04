@@ -1,29 +1,21 @@
 <template>
   <ReserveHeader />
-  <div class="package_bottom">
-    <div class="package_bottom_innner">
-      <p>
-        <select v-model="numberOfPeople">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option></select
-        >名様でご予約の場合、
-      </p>
-      <p class="">大人１名さまあたりの料金（消費税込）</p>
-      <p class="">（１泊１室） {{ price.toLocaleString() }}円です。</p>
-    </div>
-    <table class="plan_table">
+  <div class="login_title">空室状況｜HAMAJIMA LAND</div>
+  <div class="login_wrapper">
+    <div class="login_package">
+      <div>
+        <div class="reservespace">
+  <div class="package_bottom"> 
+       <table class="plan_table">
       <tr>
-        <th class="plan" colspan="2">プラン</th>
+        <th class="plan" colspan="2">宿泊プラン</th>
         <th class="day"></th>
       </tr>
       <tr>
         <!-- <td>
           <img src="@/assets/drinkIcon.png" alt="ドリンク" class="room_image" />
         </td> -->
-        <td>
+        <td class="planDetails">
           【1日1組限定】Villa Rikyu スタンダードプラン｜宮古島満喫！
           ご宿泊中無料でご利用いただけるカーサービス付！
         </td>
@@ -35,6 +27,20 @@
         </td>
       </tr>
     </table>
+
+    <div class="package_bottom_innner">
+      <p>
+       　 <select v-model="numberOfPeople">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option></select
+        >名様でご予約の場合、
+      </p>
+      <p class="">　大人１名さまあたりの料金（消費税込）</p>
+      <p class="">　（１泊１室） <span class="price">{{ price.toLocaleString() }}円 </span>です。</p>
+    </div>
 
     <VacancySearch />
     <div class="attention">
@@ -50,6 +56,12 @@
       </p>
     </div>
   </div>
+
+      </div>
+    </div>
+    </div>
+  </div>
+
 </template>
 
 <script setup>
@@ -66,6 +78,10 @@ const price = computed(() => {
 </script>
 
 <style>
+.price {
+  font-weight: bold ;
+  color: #000368;
+}
 .package_bottom {
   padding: 15px 20px;
   width: 90%;
@@ -79,9 +95,12 @@ const price = computed(() => {
   margin: 0 auto;
   margin-bottom: 5%;
 }
-
 .plan {
   text-align: center;
+  font-size: 24px;
+}
+.planDetails {
+  font-size: 20px;;
 }
 
 .day {
@@ -96,10 +115,11 @@ const price = computed(() => {
 .calender_button {
   font-size: 86%;
   margin: auto;
+  margin-left: 20px;
   background-color: #000368;
   color: white;
   border-radius: 3px;
-  padding: 5px 10px;
+  padding: 13px 15px;
   text-align: center;
   line-height: 1.2;
   display: block;
