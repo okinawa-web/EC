@@ -1,5 +1,5 @@
 <template>
-  <AboutRikyuParts2
+  <AboutRikyuParts
     :aboutTitle="parts"
     :subTitle="sub"
     :messages="msg"
@@ -11,7 +11,7 @@
 
 <script setup>
 import { ref, watch } from "vue";
-import AboutRikyuParts2 from "@/components/aboutrikyu/AboutRikyuParts2.vue";
+import AboutRikyuParts from "@/components/aboutrikyu/AboutRikyuParts.vue";
 import BasicButton from "@/components/button/BasicButton.vue";
 // import { useImageStore } from "@/stores/image.js";
 

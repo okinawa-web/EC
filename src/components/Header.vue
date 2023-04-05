@@ -25,4 +25,10 @@ import HeaderMenu from "@/components/header/Menu.vue";
   top: 0%;
   z-index: 1;
 }
+
+@media (max-width: 768px) {
+  #head {
+    height: 20%;
+  }
+}
 </style>

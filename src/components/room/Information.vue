@@ -69,4 +69,17 @@ h {
 .attention {
   line-height: 5%;
 }
+
+@media (max-width: 768px) {
+  .info {
+    font-size: 25px;
+  }
+  .mini {
+    font-size: 15px;
+  }
+  .attention {
+    margin-top: 8%;
+    line-height: 100%;
+  }
+}
 </style>

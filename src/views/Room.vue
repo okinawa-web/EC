@@ -12,23 +12,7 @@
       <p>リゾート感あふれる空間で、のんびりとお過ごしいただけます。</p>
       <Reserve class="reserve_btn" />
     </div>
-
-    <div class="items">
-      <div class="item">
-        <div class="terrace">
-          <p>Terrace</p>
-          <img src="@/assets/terasu.jpg" alt="" class="item_image" />
-        </div>
-        <div class="living">
-          <p>Living</p>
-          <img src="@/assets/room1.jpg" alt="" class="item_image" />
-        </div>
-        <!-- <div class="bath">
-          <p>Toilet</p>
-          <img src="@/assets/toilet.jpg" alt="" class="item_image" />
-        </div> -->
-      </div>
-    </div>
+    <RoomimagesVue />
     <Info />
   </div>
   <Footer />
@@ -40,6 +24,7 @@ import { useImageStore } from "@/stores/image.js";
 import Header from "@/components/Header.vue";
 import Pagetop from "@/components/PageTop.vue";
 import Reserve from "@/components/header/Reserve.vue";
+import RoomimagesVue from "@/components/room/RoomImages.vue";
 import Info from "@/components/room/Information.vue";
 import Footer from "@/components/Footer.vue";
 
@@ -93,5 +78,12 @@ watch(
 }
 .living {
   text-align: right;
+}
+
+@media (max-width: 768px) {
+  .terrace,
+  .living {
+    font-size: 40px;
+  }
 }
 </style>
