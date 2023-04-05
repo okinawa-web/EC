@@ -34,7 +34,7 @@ onMounted(async () => {
 
 @media (max-width: 768px) {
   .logo-image img {
-    width: 90%;
+    width: 60%;
     height: auto;
   }
   /* .logo-image {

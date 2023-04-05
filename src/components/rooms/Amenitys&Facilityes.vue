@@ -111,4 +111,47 @@ onMounted(async () => {
 .rooms_amenimage {
   width: 50%;
 }
+
+/* @media (max-width: 768px) {
+  .rooms_amenimage {
+    width: 30%;
+    height: 30%;
+  }
+  .basic {
+    display: block;
+    line-height: 28px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 10px;
+    width: 350px;
+  }
+
+  .basic_btn {
+    width: 50%;
+    height: 465px;
+    margin: 0;
+  }
+} */
+@media (max-width: 768px) {
+  .basic {
+    font-size: 16px;
+    width: 90%;
+    margin: 0 auto;
+    line-height: 22px;
+  }
+  .basic_btn {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+  .button {
+    width: 100%;
+    height: 300px;
+  }
+  .rooms_amenimage {
+    width: 50%;
+    /* height: 20%; */
+  }
+}
 </style>

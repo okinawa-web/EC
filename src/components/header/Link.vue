@@ -16,7 +16,7 @@
 .link {
   display: block;
   align-items: center;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   width: 60%;
   font-size: 25px;
   margin-right: 0;
@@ -33,7 +33,7 @@
     display: block;
     margin-top: 20px;
     font-size: 10px;
-    width: 130%;
+    width: 100%;
     margin-right: 0;
     margin-left: 0%;
   }
