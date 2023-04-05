@@ -42,6 +42,8 @@ onMounted(async () => {
 <style>
 .top_fresh {
   color: darkgray;
+  margin-bottom: 1150px;
+
 }
 .fresh {
   font-size: 25px;
@@ -66,6 +68,17 @@ onMounted(async () => {
   width: 100%;
   /* height: 0; */
   padding-bottom: 84.375%; /* 16:9のアスペクト比を保つための値 */
+  margin-top: 700px;
+  /* margin-bottom: 500px; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-38%, -75%);
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  /* height: 0; */
+  padding-bottom: 100px;
 }
 
 
@@ -80,8 +93,8 @@ onMounted(async () => {
 .fresh_info {
   position: relative;
   margin-top: 5%;
-  height: 100%; /* 追加 */
-  width: 100%; /* 追加 */
+  height: 80%; /* 追加 */
+  width: 80%; /* 追加 */
 }
 
 .news-banner {
@@ -100,7 +113,7 @@ onMounted(async () => {
   animation: animate-banner 50s linear infinite;
   font-size: 150px;
   font-weight: 900;
-  margin-top: 500px;
+  margin-top: 600px;
 }
 
 .news-banner__content > * {
