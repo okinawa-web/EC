@@ -1,10 +1,14 @@
 <template>
-  <header id="head">
-    <HeaderLogo />
-    <HeaderLink />
-    <HeaderReserve />
-    <HeaderMenu />
-  </header>
+  <div class="header">
+    <header class="head">
+      <div class="container">
+        <HeaderLogo />
+        <HeaderLink />
+        <HeaderReserve />
+        <HeaderMenu class="menu"/>
+      </div>
+    </header>
+  </div>
 </template>
 
 <script setup>
@@ -13,21 +17,36 @@ import HeaderLink from "@/components/header/Link.vue";
 import HeaderReserve from "@/components/header/Reserve.vue";
 import HeaderMenu from "@/components/header/Menu.vue";
 </script>
-
 <style>
-#head {
-  display: flex;
-  background-color: white;
+.header {
   width: 100%;
-  height: 20%;
-  /*固定*/
+}
+.head {
   position: fixed;
-  top: 0%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(255, 255, 255);
+  height: 20%;
+  z-index: 1;
+
+}
+
+.container {
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  width: 80%;
+  height: 100%;
+  position: relative;
+  margin: 0 auto;
+  justify-content: flex-end; /* 右寄せにする */
+  align-items: center; /* 垂直方向に中央に配置する */
   z-index: 1;
 }
 
+
 @media (max-width: 768px) {
-  #head {
+  .head {
     height: 20%;
   }
 }

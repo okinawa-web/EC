@@ -49,7 +49,7 @@
   align-items: center;
   /* padding: 0 50px; */
   margin: 0 3%;
-  background: #fff;
+  background: rgb(255, 255, 255);
   float: left;
 }
 
@@ -63,12 +63,13 @@
 .drawer_open {
   display: flex;
   height: 90px;
-  width: 30px;
-  justify-content: center;
+  width: 10px;
+  justify-content: right;
   align-items: center;
   position: relative;
   z-index: 100; /*重なり順を一番上にする */
   cursor: pointer;
+
 }
 
 /* ハンバーガーメニューのアイコン */
@@ -80,9 +81,12 @@
   height: 3px;
   width: 30px;
   border-radius: 10px;
-  background: #333;
+  background: darkgray;
   transition: 0.5s;
   position: absolute;
+    display: grid;
+  justify-content: end;
+  
 }
 
 /* 三本線の一番上の棒の位置調整 */
@@ -126,13 +130,21 @@
   z-index: 99;
   background: #fff;
   transition: 1s;
+  /* left: calc(100% - 300px); */
 }
 
 /* メニューリスト点を消す */
 .nav_list {
-  list-style: none;
 }
 
+.nav_item {
+  margin:50px;
+}
+
+.nav {
+  display: grid;
+  justify-content: end;
+}
 /* アイコンがクリックされたらメニューを表示 */
 #drawer_input:checked ~ .nav_content {
   left: 0; /* メニューを画面に入れる */
