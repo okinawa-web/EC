@@ -10,25 +10,26 @@
 
       <!-- MENU -->
       <nav class="nav_content">
+        <div class="navline"></div>
         <ul class="nav_list">
-          <li class="nav_item"><router-link to="/">TOP</router-link></li>
+          <li class="nav_item"><router-link to="/" class="menulink">TOP</router-link></li>
           <li class="nav_item">
-            <router-link to="/reserve/reserve">ご予約</router-link>
+            <router-link to="/reserve/reserve" class="menulink">ご予約</router-link>
           </li>
           <li class="nav_item">
-            <router-link to="/aboutRikyu">HAMAJIMAについて</router-link>
+            <router-link to="/aboutRikyu" class="menulink">HAMAJIMAについて</router-link>
           </li>
           <li class="nav_item">
-            <router-link to="/rooms">お部屋</router-link>
+            <router-link to="/rooms" class="menulink">お部屋</router-link>
           </li>
           <li class="nav_item">
-            <router-link to="/facility">-客室設備・アメニティ</router-link>
+            <router-link to="/facility" class="menulink">-客室設備・アメニティ</router-link>
           </li>
           <li class="nav_item">
-            <router-link to="/activity">アクティビティ</router-link>
+            <router-link to="/activity" class="menulink">アクティビティ</router-link>
           </li>
           <li class="nav_item">
-            <router-link to="/acsess">アクセス</router-link>
+            <router-link to="/acsess" class="menulink">アクセス</router-link>
           </li>
           <!-- <li class="nav_item">
             <router-link to="/question">よくあるご質問</router-link>
@@ -122,23 +123,41 @@
 
 /* メニューのデザイン*/
 .nav_content {
-  width: 100%;
+  width: 40%;
   height: 100%;
   position: fixed;
   top: 0;
   left: 100%; /* メニューを画面の外に飛ばす */
+  margin-left: 60%;
   z-index: 99;
   background: #fff;
   transition: 1s;
   /* left: calc(100% - 300px); */
+  display: flex;
+  justify-content: space-between;
 }
 
-/* メニューリスト点を消す */
+.navline {
+  width: 10px;
+  height: 100%;
+  background-color: rgb(0, 170, 170);
+}
 .nav_list {
+  width: 95%;
+}
+/* メニューリスト点を消す */
+.menulink {
+  text-decoration: none;
+  color: darkgray;
+  font-size: 20px;
 }
 
+.menulink:hover {
+  color:rgb(0, 150, 150);
+}
 .nav_item {
   margin:50px;
+
 }
 
 .nav {

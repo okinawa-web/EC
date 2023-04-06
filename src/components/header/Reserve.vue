@@ -21,7 +21,7 @@
   color: darkgray;
 }
 .reserve_text:hover {
-  color: rgb(0, 114, 114);
+  color: rgb(0, 150, 150);
 }
 
 @media (max-width: 768px) {

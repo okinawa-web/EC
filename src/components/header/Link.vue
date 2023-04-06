@@ -31,7 +31,7 @@
 }
 .link_a:hover {
   text-decoration: none;
-  color:rgb(0, 114, 114);
+  color:rgb(0, 150, 150);
 }
 /* リンク間の空間 */
 .mgr-10 {

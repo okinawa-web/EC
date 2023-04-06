@@ -3,15 +3,17 @@
   <div class="roomAll">
     <div>
       <h1 class="villaTitle">Private Villa</h1>
-      <p class="villaSubTitle">1日3組様限定のオールプライベートヴィラ</p>
+      <p class="villaSubTitle">1日1組様限定のオールプライベートヴィラ</p>
 
       <!-- <div class="roomBox"> -->
       <div class="roomDescription">
         <div class="roomSubDescription">
           <p>オーシャンビューの開放的なお部屋</p>
-          <p>３棟のヴィラはオーシャンビューのオールプライベートな空間。</p>
+          <p>
+            限定1棟のヴィラはオーシャンビューのオールプライベートな空間。
+          </p>
           <p>セミオープンスタイルの広いリビングの向こうには、</p>
-          <p>自分たちだけのテラスと宮古ブルーが広がります。</p>
+          <p>自分たちだけのテラスで一面に広がる宮古ブルーの海を存分に楽しむことができます。</p>
           <div class="button-wrapper">
             <BasicButton :linkName="linkTitle" :link="destination" />
           </div>
@@ -52,7 +54,7 @@ onMounted(async () => {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 300px;
+  margin-top: 1350px;
 }
 
 .roomDescription {

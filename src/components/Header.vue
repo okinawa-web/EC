@@ -1,5 +1,6 @@
 <template>
   <div class="header">
+    <div class="decoline"></div>
     <header class="head">
       <div class="container">
         <HeaderLogo />
@@ -21,15 +22,24 @@ import HeaderMenu from "@/components/header/Menu.vue";
 .header {
   width: 100%;
 }
+
+.decoline {
+  height: 20px;
+  width: 100%;
+  background-color:rgb(0, 150, 150);
+  z-index: 2;
+  position: fixed;
+  top: 0;
+}
 .head {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   background-color: rgb(255, 255, 255);
-  height: 20%;
+  height: 17%;
   z-index: 1;
-
+margin-top: 10px;
 }
 
 .container {

@@ -1,3 +1,21 @@
+<script setup>
+import { onMounted, ref } from "vue";
+import { useImageStore } from "@/stores/image.js";
+
+const imageStore = useImageStore();
+const imageURL = ref("");
+const imageLoaded = ref(false);
+
+onMounted(async () => {
+  try {
+    await imageStore.loadImage("2"); //imageId指定
+    imageURL.value = imageStore.imageURL;
+    imageLoaded.value = true; //画像の読み込みが完了するとtrueになる
+  } catch (error) {
+    console.error(error);
+  }
+});
+</script>
 <template>
   <footer id="footer">
     <!-- <p class="side_img"> -->
@@ -18,42 +36,32 @@
 
     <div class="copyright">©︎2023~ ALL RIGTHS RESERVED HAMAJIMA.</div>
     <!-- </p> -->
+    <div class="footerline"></div>
   </footer>
 </template>
 
-<script setup>
-import { onMounted, ref } from "vue";
-import { useImageStore } from "@/stores/image.js";
-
-const imageStore = useImageStore();
-const imageURL = ref("");
-const imageLoaded = ref(false);
-
-onMounted(async () => {
-  try {
-    await imageStore.loadImage("2"); //imageId指定
-    imageURL.value = imageStore.imageURL;
-    imageLoaded.value = true; //画像の読み込みが完了するとtrueになる
-  } catch (error) {
-    console.error(error);
-  }
-});
-</script>
-
 <style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   margin-top: 5%;
+  margin: 0;
 }
 
 .footer_text {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 80%;
+  height: 280px;
+  margin-top:50px;
 }
 
 .footer_logo {
@@ -75,12 +83,20 @@ onMounted(async () => {
   text-align: center;
 }
 
+.footerline {
+  height: 60px;
+  width: 100%;
+  background-color:rgb(0, 150, 150);
+  z-index: 2;
+  /* position: fixed; */
+  top: 0;
+}
 @media (max-width: 768px) {
   .footer_text {
     width: 80%;
   }
   .footer_info {
-    font-size: 12px;
+    font-sze: 12px;
   }
   .footer_logo {
     width: 10%;
