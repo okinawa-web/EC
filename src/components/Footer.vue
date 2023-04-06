@@ -1,24 +1,3 @@
-<template>
-  <footer id="footer">
-    <div class="footer_text">
-      <p class="footer_logo" v-if="imageLoaded">
-        <!--画像の読み込みが完了するまで非表示-->
-        <router-link to="/" class="footer_zero">
-          <img :src="imageURL" alt="logo" class="llogo" :key="imageURL" />
-        </router-link>
-      </p>
-      <div class="footer_info">
-        <p>~HAMAJIMA~</p>
-        <p>〒000-0000 <br />沖縄県浜島2207</p>
-        <p>Tel:0000-000-000</p>
-        <p>受付時間 10:00~18:00</p>
-      </div>
-    </div>
-
-    <div class="copyright">©︎2023~ ALL RIGTHS RESERVED HAMAJIMA.</div>
-  </footer>
-</template>
-
 <script setup>
 import { onMounted, ref } from "vue";
 import { useImageStore } from "@/stores/image.js";
@@ -37,21 +16,51 @@ onMounted(async () => {
   }
 });
 </script>
+<template>
+  <footer id="footer">
+    <div class="footer_text">
+      <p class="footer_logo" v-if="imageLoaded">
+        <!--画像の読み込みが完了するまで非表示-->
+        <router-link to="/" class="footer_zero">
+          <img :src="imageURL" alt="logo" class="llogo" :key="imageURL" />
+        </router-link>
+      </p>
+      <div class="footer_info">
+        <p>~HAMAJIMA~</p>
+        <p>〒000-0000 <br />沖縄県浜島2207</p>
+        <p>Tel:0000-000-000</p>
+        <p>受付時間 10:00~18:00</p>
+      </div>
+    </div>
+
+    <div class="copyright">©︎2023~ ALL RIGTHS RESERVED HAMAJIMA.</div>
+    <!-- </p> -->
+    <div class="footerline"></div>
+  </footer>
+</template>
 
 <style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   margin-top: 5%;
+  margin: 0;
 }
 
 .footer_text {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 80%;
+  height: 280px;
+  margin-top:50px;
 }
 
 .footer_logo {
@@ -73,12 +82,20 @@ onMounted(async () => {
   text-align: center;
 }
 
+.footerline {
+  height: 60px;
+  width: 100%;
+  background-color:rgb(0, 150, 150);
+  z-index: 2;
+  /* position: fixed; */
+  top: 0;
+}
 @media (max-width: 768px) {
   .footer_text {
     width: 80%;
   }
   .footer_info {
-    font-size: 12px;
+    font-sze: 12px;
   }
   .footer_logo {
     width: 10%;

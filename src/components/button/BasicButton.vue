@@ -5,17 +5,19 @@
       class="basic_btn_style"
       style="text-decoration: none"
     >
+    <router-link :to="`/${props.link}`" class="basic_btn_style" style="text-decoration: none">
       ➡︎ {{ props.linkName }}
     </router-link>
   </div>
 </template>
 
 <script setup>
-import { defineProps } from "vue";
+import { defineProps } from 'vue'
+
 const props = defineProps({
   link: String,
-  linkName: String,
-});
+  linkName: String
+})
 </script>
 
 <style>
@@ -33,10 +35,12 @@ const props = defineProps({
   transition: all 0.3s ease-out;
   width: 300px;
 }
+
 .button_style:hover {
   background-position: -100% 0;
   color: #fff;
 }
+
 .basic_btn_style {
   color: #fff;
   text-decoration: none;

@@ -73,7 +73,7 @@ console.log("loginSuccessの結果", loginSuccess.value);
 
 <style>
 .HAMAJIMA {
-  width: 90%;
+  width: 80%;
   margin: auto;
   text-align: right;
 }
@@ -82,11 +82,12 @@ console.log("loginSuccessの結果", loginSuccess.value);
   justify-content: center;
   align-items: center;
   height: 80px;
+
 }
 .reserve_header {
   background-color: rgb(65, 65, 65);
   color: white;
-  width: 80%;
+  width: 100%;
 }
 
 .header_div {
@@ -108,7 +109,7 @@ console.log("loginSuccessの結果", loginSuccess.value);
   align-items: center;
   margin-block-start: 0;
   margin-block-end: 0;
-  margin: 5px;
+  padding: 5px;
 }
 
 .reserve_color {
@@ -122,8 +123,4 @@ console.log("loginSuccessの結果", loginSuccess.value);
   text-align: center;
 }
 
-.reserve_link_login {
-  margin: 10px 20px;
-  text-align: center;
-}
 </style>

@@ -62,7 +62,7 @@ onMounted(async () => {
   background: #fff;
   font-size: 20px;
   width: 900px;
-  /* margin: 0 auto; */
+  margin: 0 auto;
 }
 
 .basic_btn {
@@ -71,8 +71,7 @@ onMounted(async () => {
   height: 465px;
   color: darkgray;
   z-index: 10;
-  margin: 0 auto;
-  text-align: center;
+  /* margin: 0 auto; */
   display: flex;
   flex-direction: column;
   justify-content: center;
