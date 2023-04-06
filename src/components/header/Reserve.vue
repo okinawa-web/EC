@@ -9,15 +9,19 @@
 <style>
 .reserve {
   width: 10%;
-  margin: auto;
+  /* margin: auto; */
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
-.reserve:hover {
-  background: #ef7306;
-}
+
 .reserve_text {
-  background-color: #ef7306;
+  /* background-color: #ef7306; */
   font-size: 300%;
   text-decoration-line: none;
+  color: darkgray;
+}
+.reserve_text:hover {
+  color: rgb(0, 150, 150);
 }
 
 @media (max-width: 768px) {

@@ -223,7 +223,7 @@ const changelogin = () => {
 }
 
 .login_button {
-  background-color: rgb(0, 114, 114);
+  background-color: rgb(0, 150, 150);
   color: white;
   margin-left: 15px;
 }
