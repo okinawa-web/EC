@@ -46,7 +46,6 @@ onMounted(async () => {
     await store.loadImage(42);
     imageURL3.value = store.imageURL;
     imageLoaded3.value = true;
-
   } catch (error) {
     console.log(`画像取得失敗:${error}`);
   }
@@ -69,7 +68,9 @@ onMounted(async () => {
   text-align: center;
   list-style: none;
 }
-
+.box_ul {
+  padding: 0%;
+}
 .free_li {
   display: inline-block;
   padding: 60px;
@@ -77,6 +78,7 @@ onMounted(async () => {
   height: 200px;
   border: 1px solid darkgray;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .serviceP {
@@ -84,5 +86,26 @@ onMounted(async () => {
 }
 body {
   color: darkgray;
+}
+
+@media (max-width: 768px) {
+  .freeBox {
+    width: auto;
+    height: auto;
+    margin: 0 30px;
+  }
+  .freeIcon {
+    width: 40px;
+    margin-bottom: 10px;
+  }
+  .free_li {
+    padding: 30px;
+    width: 23.5%;
+    height: 150px;
+    margin-top: 0;
+  }
+  .serviceP {
+    font-size: 15px;
+  }
 }
 </style>

@@ -87,7 +87,7 @@ onMounted(async () => {
 @media (max-width: 768px) {
   .all {
     color: darkgray;
-    margin: 35% auto;
+    /* margin: 35% auto; */
   }
   .pagetitle {
     font-size: 350%;

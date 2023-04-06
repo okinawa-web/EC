@@ -16,7 +16,7 @@
     <div class="img-frame">
       <div v-if="imageURLs.length > 0">
         <div v-for="url in imageURLs" :key="url">
-          <img :src="url" alt="about_image" />
+          <img :src="url" alt="about_image" class="frameimage" />
         </div>
       </div>
     </div>
@@ -108,25 +108,51 @@ async function getImageURLs() {
   width: 70%;
   margin-left: 20%;
   margin-top: 8%;
-  /* text-align: center; */
 }
 .img-frame {
   flex: 1;
   margin-top: 3%;
-}
-.about-image {
-  margin: 0 10px;
-  box-sizing: border-box; /* ボーダーを含めたサイズ指定 */
+  max-width: 100%;
 }
 
 .about-image img {
-  width: 22%;
-  height: 230px;
+  /* width: 22%;
+  height: 230px; */
+  width: 100%;
+  height: auto;
   object-fit: cover; /* 画像を縦横比を維持したまま指定したサイズに収める */
 }
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .about {
+    flex-direction: column;
+    margin-bottom: 0;
+    width: 100%;
+  }
+  .about-title {
+    font-size: 35px;
+  }
+  .title_hyphen {
+    font-size: 18px;
+  }
+  .about_messages {
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+  .subcoment {
+    font-size: 14px;
+  }
+  .clear_box {
+    margin-top: 5%;
+  }
+  .img-frame {
+    margin: auto;
+  }
   .about-image img {
     width: 100%;
-    height: auto;
-  }} */
+  }
+  .frameimage {
+    width: 90%;
+    margin-left: 5%;
+  }
+}
 </style>

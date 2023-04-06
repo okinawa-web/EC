@@ -47,4 +47,13 @@ const sub = ref("お部屋");
 .point {
   font-size: 25px;
 }
+
+@media (max-width: 768px) {
+  .point {
+    font-size: 0.85rem;
+  }
+  .room_text {
+    font-size: 0.65rem;
+  }
+}
 </style>

@@ -180,4 +180,13 @@ li {
 .rooms_table table {
   margin: 0 auto;
 }
+
+@media (max-width: 768px) {
+  .wrap_txt {
+    font-size: 15px;
+  }
+  .detail {
+    font-size: 13px;
+  }
+}
 </style>

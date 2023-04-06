@@ -9,6 +9,7 @@
 <style>
 .reserve {
   width: 10%;
+  margin: auto;
 }
 .reserve:hover {
   background: #ef7306;

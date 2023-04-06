@@ -5,7 +5,7 @@
       <p class="footer_logo" v-if="imageLoaded">
         <!--画像の読み込みが完了するまで非表示-->
         <router-link to="/" class="footer_zero">
-          <img :src="imageURL" alt="logo" class="logo" :key="imageURL" />
+          <img :src="imageURL" alt="logo" class="llogo" :key="imageURL" />
         </router-link>
       </p>
       <div class="footer_info">
@@ -60,6 +60,7 @@ onMounted(async () => {
   width: 30%;
   max-width: 100%;
   height: auto;
+  max-height: 100%;
 }
 
 .footer_info {
@@ -74,21 +75,22 @@ onMounted(async () => {
   text-align: center;
 }
 
-/* @media screen and (min-width: 768px) {
+@media (max-width: 768px) {
   .footer_text {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 80%;
   }
-
-  .footer_logo {
-    margin-right: 0;
-    margin-left: auto;
-  }
-
   .footer_info {
-    margin-left: 0;
-    margin-right: auto;
+    font-size: 12px;
   }
-} */
+  .footer_logo {
+    width: 10%;
+    height: auto;
+  }
+  .llogo {
+    width: 250%;
+  }
+  #footer .copyright {
+    font-size: 12px;
+  }
+}
 </style>

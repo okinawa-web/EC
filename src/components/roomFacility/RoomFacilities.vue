@@ -50,4 +50,11 @@ const imageIds = ref(["19", "20", "21", "23", "24", "25", "26", "27"]);
   height: 230px;
   /* object-fit: cover;  */ /* 画像を縦横比を維持したまま指定したサイズに収める */
 }
+
+@media (max-width: 768px) {
+  .amenitieItem img {
+    width: 15%;
+    height: 130px;
+  }
+}
 </style>
