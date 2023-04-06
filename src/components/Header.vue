@@ -6,7 +6,7 @@
         <HeaderLogo />
         <HeaderLink />
         <HeaderReserve />
-        <HeaderMenu class="menu"/>
+        <HeaderMenu class="menu" />
       </div>
     </header>
   </div>
@@ -21,12 +21,13 @@ import HeaderMenu from "@/components/header/Menu.vue";
 <style>
 .header {
   width: 100%;
+  display: flex;
 }
 
 .decoline {
   height: 20px;
   width: 100%;
-  background-color:rgb(0, 150, 150);
+  background-color: rgb(0, 150, 150);
   z-index: 2;
   position: fixed;
   top: 0;
@@ -39,7 +40,7 @@ import HeaderMenu from "@/components/header/Menu.vue";
   background-color: rgb(255, 255, 255);
   height: 17%;
   z-index: 1;
-margin-top: 10px;
+  margin-top: 10px;
 }
 
 .container {
@@ -54,10 +55,26 @@ margin-top: 10px;
   z-index: 1;
 }
 
-
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   #head {
     height: 13%;
+  }
+  .container {
+    margin-left: 1%;
+    display: block;
+  }
+} */
+@media screen and (max-width: 768px) {
+  .head {
+    justify-content: space-between;
+  }
+  .container {
+    margin-left: 1%;
+    /* display: block; */
+    flex-basis: 200%;
+  }
+  .header .container > * {
+    width: 33%;
   }
 }
 </style>

@@ -5,19 +5,18 @@
       class="basic_btn_style"
       style="text-decoration: none"
     >
-    <router-link :to="`/${props.link}`" class="basic_btn_style" style="text-decoration: none">
       ➡︎ {{ props.linkName }}
     </router-link>
   </div>
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps } from "vue";
 
 const props = defineProps({
   link: String,
-  linkName: String
-})
+  linkName: String,
+});
 </script>
 
 <style>
