@@ -112,7 +112,7 @@ onMounted(async () => {
 }
 
 .news-banner__content {
-  color: darkgray;
+  color: rgb(238, 238, 141);
   line-height: 0px;
   white-space: nowrap;
   animation: animate-banner 50s linear infinite;

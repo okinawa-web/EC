@@ -21,6 +21,9 @@ import { RouterLink, RouterView } from "vue-router";
   width: 100%;
 }
 
+body {
+   font-family: 'Noto Serif JP', serif;
+}
 /* Leafletのマーカー画像が正常に表示されるようにするためのスタイル */
 .leaflet-marker-icon,
 .leaflet-marker-shadow {
