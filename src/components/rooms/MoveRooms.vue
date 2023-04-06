@@ -95,7 +95,10 @@
       </router-link>
     </div>
   </div>
-  <router-link :to="{ name: 'Room', query: { id: 101 } }">
+  <router-link
+    :to="{ name: 'Room', query: { id: 101 } }"
+    class="routerlink_line"
+  >
     <div class="wrap_txt">
       <p class="title">
         <em>Room 101</em>
@@ -179,6 +182,9 @@ li {
 }
 .rooms_table table {
   margin: 0 auto;
+}
+.routerlink_line {
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {

@@ -124,4 +124,10 @@ const router = createRouter({
   ],
 });
 
+//ページ遷移時のスクロール位置をトップにする
+router.beforeEach((to, from, next) => {
+  window.scrollTo(0, 0)
+  next()
+})
+
 export default router;

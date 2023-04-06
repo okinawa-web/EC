@@ -56,8 +56,8 @@ margin-top: 10px;
 
 
 @media (max-width: 768px) {
-  .head {
-    height: 20%;
+  #head {
+    height: 13%;
   }
 }
 </style>

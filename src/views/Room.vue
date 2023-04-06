@@ -67,11 +67,7 @@ watch(
 }
 .room_coments {
   text-align: center;
-}
-.reserve_btn {
-  /* text-align: center; */
-  margin-left: 40%;
-  margin-bottom: 10%;
+  font-size: 20px;
 }
 .item_image {
   width: 50%;
@@ -84,6 +80,9 @@ watch(
   .terrace,
   .living {
     font-size: 40px;
+  }
+  .room_coments {
+    font-size: 14px;
   }
 }
 </style>

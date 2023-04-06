@@ -1,19 +1,18 @@
 <template>
-  <AboutRikyuParts2
+  <AboutRikyuParts
     :aboutTitle="parts"
     :subTitle="sub"
     :messages="msg"
     :comments="cmnt"
     :imageIds="imageIds"
   />
-  <!-- <BasicButton :link="site" :linkName="siteName" class="link_btn" /> -->
+  <BasicButton :link="site" :linkName="siteName" class="link_btn" />
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
-import AboutRikyuParts2 from "@/components/aboutrikyu/AboutRikyuParts.vue";
+import { ref } from "vue";
+import AboutRikyuParts from "@/components/aboutrikyu/AboutRikyuParts.vue";
 import BasicButton from "@/components/button/BasicButton.vue";
-// import { useImageStore } from "@/stores/image.js";
 
 //ページタイトル
 const parts = ref("Private Villa");
@@ -37,13 +36,12 @@ const imageIds = ref(["17"]);
 const site = ref("rooms");
 
 //リンク先の名前
-const siteName = ref("Room");
+const siteName = ref("Rooms");
 </script>
 
 <style>
 .link_btn {
-  position: absolute;
-  left: 3%;
-  top: 85%;
+  margin-left: 5%;
+  width: 20%;
 }
 </style>

@@ -3,8 +3,10 @@
   <PageTop :pagetitle="page" :imageId="imageId" :subTitle="sub" />
   <div class="room_text">
     <p class="point">プライベートな休日や長期のご滞在にも最適な空間</p>
-    <p>当館には３つのお部屋を設けており、</p>
-    <p>全てのお部屋にプールや本格的なキッチンをご用意しております。</p>
+    <p>当館のお部屋は癒しとくつろぎをテーマに、</p>
+    <p>
+      オーシャンビューのテラスやプール、本格的なキッチンなどをご用意しております。
+    </p>
   </div>
   <Rooms />
   <Amenity />

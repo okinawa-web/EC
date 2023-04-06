@@ -8,6 +8,12 @@
 
 <style>
 .reserve {
+  display: inline-block;
+  /* width: 10%; */
+  /* margin: auto; */
+}
+.reserve:hover {
+  background: #ef7306;
   width: 10%;
   /* margin: auto; */
   margin-top: 30px;

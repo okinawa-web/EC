@@ -55,10 +55,10 @@ const sub = ref("アクティビティ");
 .text {
   color: darkgray;
   text-align: center; 
-  font-size: 20px;
+  font-size: 23px;
 }
 .detail {
-  font-size: 16px;
+  font-size: 18px;
 }
 .comp {
   margin: 7%;

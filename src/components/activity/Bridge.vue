@@ -8,7 +8,7 @@
     :imageIds="imageIds"
   />
   <br />
-  <ArrowButton :Link="link" :Name="linkName" />
+  <ArrowButton :Link="link" :Name="linkName" target="_blank" />
 </template>
 
 <script setup>

@@ -1,5 +1,10 @@
 <template>
   <div class="button_style">
+    <router-link
+      :to="`/${props.link}`"
+      class="basic_btn_style"
+      style="text-decoration: none"
+    >
     <router-link :to="`/${props.link}`" class="basic_btn_style" style="text-decoration: none">
       ➡︎ {{ props.linkName }}
     </router-link>
@@ -19,8 +24,9 @@ const props = defineProps({
 .button_style {
   display: inline-block;
   /* margin: 10px; */
+  margin-left: 5%; /*追加*/
   padding: 10px 20px;
-  background: linear-gradient(to right, darkgray 50%, rgb(0, 114, 114)50%);
+  background: linear-gradient(to right, darkgray 50%, rgb(0, 114, 114) 50%);
   background-size: 200% 100%;
   color: #fff;
   font-size: 16px;

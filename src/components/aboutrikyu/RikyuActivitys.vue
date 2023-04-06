@@ -6,14 +6,13 @@
     :comments="cmnt"
     :imageIds="imageIds"
   />
-  <!-- <BasicButton :link="site" :linkName="siteName" class="link_btn" /> -->
+  <BasicButton :link="site" :linkName="siteName" class="link_btn" />
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import AboutRikyuParts from "@/components/aboutrikyu/AboutRikyuParts.vue";
 import BasicButton from "@/components/button/BasicButton.vue";
-// import { useImageStore } from "@/stores/image.js";
 
 //ページタイトル
 const parts = ref("Activities");
@@ -39,11 +38,3 @@ const site = ref("activity");
 //リンク先の名前
 const siteName = ref("Activity");
 </script>
-
-<style>
-.link_btn {
-  position: absolute;
-  left: 3%;
-  top: 85%;
-}
-</style>
