@@ -41,8 +41,8 @@ onMounted(async () => {
 
 <style>
 .top_fresh {
-  color: darkgray;
-  margin-bottom: 1150px;
+  color: #a9a9a9;
+  margin-bottom: 1250px;
 
 }
 .fresh {
@@ -50,6 +50,7 @@ onMounted(async () => {
   line-height: 100%;
   text-align: center;
   margin-top: 15%;
+  margin-bottom: 200px;
 }
 .fresh_mini {
   font-size: 16px;
@@ -68,7 +69,7 @@ onMounted(async () => {
   width: 100%;
   /* height: 0; */
   padding-bottom: 84.375%; /* 16:9のアスペクト比を保つための値 */
-  margin-top: 700px;
+  margin-top: 900px;
   /* margin-bottom: 500px; */
   position: absolute;
   top: 50%;
@@ -78,7 +79,7 @@ onMounted(async () => {
   max-width: 100%;
   max-height: 100%;
   /* height: 0; */
-  padding-bottom: 100px;
+  padding-bottom: 500px;
 }
 
 

@@ -1,58 +1,42 @@
 <template>
-  <div class="basic_button">
-    <div class="basic">
-      <router-link :to="`/${props.link}`" class="basic_btn">
-        ➡︎ {{ props.linkName }}
-      </router-link>
-    </div>
+  <div class="button_style">
+    <router-link :to="`/${props.link}`" class="basic_btn_style" style="text-decoration: none">
+      ➡︎ {{ props.linkName }}
+    </router-link>
   </div>
 </template>
 
 <script setup>
+import { defineProps } from 'vue'
+
 const props = defineProps({
   link: String,
-  linkName: String,
-});
+  linkName: String
+})
 </script>
 
 <style>
-.basic {
-  display: block;
-  position: relative;
-  width: 250px;
-  height: 48px;
-  line-height: 48px;
-  display: flex;
+.button_style {
+  display: inline-block;
+  /* margin: 10px; */
+  padding: 10px 20px;
+  background: linear-gradient(to right, darkgray 50%, rgb(0, 114, 114)50%);
+  background-size: 200% 100%;
+  color: #fff;
+  font-size: 16px;
   text-align: center;
-  background: #fff;
-  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  width: 300px;
 }
 
-.basic_btn {
-  display: block;
-  width: 100%;
-  /* height: 100%; */
-  color: darkgray;
-  z-index: 10;
-}
-
-.basic_btn:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 0;
-  display: block;
-  background: darkgray;
-  z-index: -1;
-  transition: 0.5s;
-}
-
-.basic_btn:hover {
+.button_style:hover {
+  background-position: -100% 0;
   color: #fff;
 }
 
-.basic_btn:hover:before {
-  width: 100%;
+.basic_btn_style {
+  color: #fff;
+  text-decoration: none;
 }
 </style>
