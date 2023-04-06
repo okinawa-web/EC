@@ -32,7 +32,7 @@
 
 @media (max-width: 768px) {
   .reserve_text {
-    font-size: 100%;
+    font-size: 250%;
   }
 }
 </style>

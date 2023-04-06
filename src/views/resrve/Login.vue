@@ -1,6 +1,6 @@
 <template>
-  <button @click="betu">認証トークンチェックbetu</button>
-  <button @click="check2">認証トークンチェックcheck2</button>
+  <!-- <button @click="betu">認証トークンチェックbetu</button>
+  <button @click="check2">認証トークンチェックcheck2</button> -->
   <div>{{ MemberInformation }}</div>
   <div>
     <form @submit.prevent="login">
@@ -23,7 +23,7 @@
   </div>
   <div>{{ username }}</div>
   <div>
-    <h2>予約履歴</h2>
+    <!-- <h2>予約履歴</h2> -->
     <!-- <ul v-if="state.reserves !== null && state.reserves.length > 0">
       <li v-for="reserve in reserves" :key="reserve.id">
         {{ reserve.date }}
@@ -31,7 +31,7 @@
     </ul>
     <p v-else>予約はありません</p> -->
   </div>
-  <a href="/TheReserve">予約ページへ</a>
+  <!-- <a href="/TheReserve">予約ページへ</a> -->
 </template>
 
 <script setup>
