@@ -8,8 +8,9 @@
 
 <style>
 .reserve {
-  width: 10%;
-  margin: auto;
+  display: inline-block;
+  /* width: 10%; */
+  /* margin: auto; */
 }
 .reserve:hover {
   background: #ef7306;

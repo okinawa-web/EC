@@ -50,6 +50,7 @@ onMounted(async () => {
   height: 600px;
   align-items: center;
   z-index: 0;
+  /* margin-top: 4%; */
 }
 
 .basic {
@@ -109,7 +110,11 @@ onMounted(async () => {
 }
 
 .rooms_amenimage {
-  width: 50%;
+  width: 45%;
+  height: 45%;
+  /* filter: blur(5px); */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
 }
 
 /* @media (max-width: 768px) {
@@ -135,7 +140,7 @@ onMounted(async () => {
 } */
 @media (max-width: 768px) {
   .basic {
-    font-size: 16px;
+    font-size: 15px;
     width: 90%;
     margin: 0 auto;
     line-height: 22px;
@@ -148,10 +153,15 @@ onMounted(async () => {
   .button {
     width: 100%;
     height: 300px;
+    margin-top: 5%;
   }
   .rooms_amenimage {
     width: 50%;
     /* height: 20%; */
+  }
+  .afDescription{
+    font-size: 12px;
+    margin: 0;
   }
 }
 </style>

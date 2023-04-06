@@ -1,6 +1,5 @@
 <template>
   <footer id="footer">
-    <!-- <p class="side_img"> -->
     <div class="footer_text">
       <p class="footer_logo" v-if="imageLoaded">
         <!--画像の読み込みが完了するまで非表示-->
@@ -17,7 +16,6 @@
     </div>
 
     <div class="copyright">©︎2023~ ALL RIGTHS RESERVED HAMAJIMA.</div>
-    <!-- </p> -->
   </footer>
 </template>
 

@@ -12,9 +12,6 @@
 </template>
 
 <script setup>
-// import { ref, watch } from "vue";
-// import AboutRikyuParts from "@/components/aboutrikyu/AboutRikyuParts.vue";
-// import { useImageStore } from "@/stores/image.js";
 import { ref } from "vue";
 import AboutRikyuParts from "@/components/aboutrikyu/AboutRikyuParts.vue";
 

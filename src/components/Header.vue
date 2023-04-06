@@ -28,7 +28,7 @@ import HeaderMenu from "@/components/header/Menu.vue";
 
 @media (max-width: 768px) {
   #head {
-    height: 20%;
+    height: 13%;
   }
 }
 </style>

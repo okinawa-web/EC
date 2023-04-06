@@ -13,7 +13,7 @@
         <ul class="nav_list">
           <li class="nav_item"><router-link to="/">TOP</router-link></li>
           <li class="nav_item">
-            <router-link to="/reserve/reserve">ご予約</router-link>
+            <router-link to="/calender" target="_blank">ご予約</router-link>
           </li>
           <li class="nav_item">
             <router-link to="/aboutRikyu">HAMAJIMAについて</router-link>
