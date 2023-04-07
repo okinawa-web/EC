@@ -299,7 +299,7 @@ app.get("/image", async (req, res) => {
 });
 
 //会員情報名前変更
-app.put('/memberName/:id', async (req, res) => {
+app.put("/memberName/:id", async (req, res) => {
   const memberId = Number(req.params.id);
   const { name } = req.body;
 
@@ -315,7 +315,7 @@ app.put('/memberName/:id', async (req, res) => {
   }
 });
 //会員情報住所変更
-app.put('/memberAddress/:id', async (req, res) => {
+app.put("/memberAddress/:id", async (req, res) => {
   const memberId = Number(req.params.id);
   const { address } = req.body;
 
@@ -327,11 +327,11 @@ app.put('/memberAddress/:id', async (req, res) => {
     res.json(updatedMember);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: '更新に失敗しました' });
+    res.status(500).json({ message: "更新に失敗しました" });
   }
 });
 //会員情報電話番号変更
-app.put('/memberTell/:id', async (req, res) => {
+app.put("/memberTell/:id", async (req, res) => {
   const memberId = Number(req.params.id);
   const { address } = req.body;
 
@@ -343,7 +343,7 @@ app.put('/memberTell/:id', async (req, res) => {
     res.json(updatedMember);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: '更新に失敗しました' });
+    res.status(500).json({ message: "更新に失敗しました" });
   }
 });
 
