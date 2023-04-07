@@ -3,74 +3,46 @@ import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
-  <header>
+  <!-- <header>
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/test">テスト</RouterLink>
       </nav>
     </div>
-  </header>
-
+  </header> -->
   <RouterView />
 </template>
 
-<!-- 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-nav {
+<style>
+/* 地図を表示するdiv要素に対するスタイル */
+#map {
+  height: 100vh;
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+body {
+   font-family: 'Noto Serif JP', serif;
+}
+/* Leafletのマーカー画像が正常に表示されるようにするためのスタイル */
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+  position: absolute;
+  width: 25px;
+  height: 41px;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.leaflet-marker-icon {
+  background-image: url("../img/leaflet/marker-icon.png");
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.leaflet-marker-icon2x {
+  background-image: url("../img/leaflet/marker-icon-2x.png");
+  background-size: 25px 41px;
 }
 
-nav a:first-of-type {
-  border: 0;
+.leaflet-marker-shadow {
+  background-image: url("../img/leaflet/marker-shadow.png");
+  background-size: 41px 41px;
 }
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style> -->
+</style>

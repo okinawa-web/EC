@@ -1,22 +1,38 @@
 <template>
   <p class="reserve">
-    <router-link to="/reserve/reserve" target="_blank">ご予約 </router-link>
+    <router-link to="/calender" target="_blank" class="reserve_text">
+      ご予約</router-link
+    >
   </p>
 </template>
 
 <style>
 .reserve {
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  background: #7d8384;
-  width: 6%;
-  padding: 12px 20px;
-  transition: width 500ms ease;
-  float: left;
-  text-align: center;
+  display: inline-block;
+  /* width: 10%; */
+  /* margin: auto; */
 }
 .reserve:hover {
   background: #ef7306;
+  width: 10%;
+  /* margin: auto; */
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.reserve_text {
+  /* background-color: #ef7306; */
+  font-size: 300%;
+  text-decoration-line: none;
+  color: darkgray;
+}
+.reserve_text:hover {
+  color: rgb(0, 150, 150);
+}
+
+@media (max-width: 768px) {
+  .reserve_text {
+    font-size: 250%;
+  }
 }
 </style>

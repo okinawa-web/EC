@@ -1,68 +1,111 @@
+<script setup>
+import { onMounted, ref } from "vue";
+import { useImageStore } from "@/stores/image.js";
+
+const imageStore = useImageStore();
+const imageURL = ref("");
+const imageLoaded = ref(false);
+
+onMounted(async () => {
+  try {
+    await imageStore.loadImage("2"); //imageId指定
+    imageURL.value = imageStore.imageURL;
+    imageLoaded.value = true; //画像の読み込みが完了するとtrueになる
+  } catch (error) {
+    console.error(error);
+  }
+});
+</script>
 <template>
   <footer id="footer">
-    <div class="con_footer">
-      <p class="box_img">
-        <img
-          src="@/assets/HAMAJIMAlogo.jpg"
-          alt="umi"
-          height="500"
-          width="1300"
-        />
+    <div class="footer_text">
+      <p class="footer_logo" v-if="imageLoaded">
+        <!--画像の読み込みが完了するまで非表示-->
+        <router-link to="/" class="footer_zero">
+          <img :src="imageURL" alt="logo" class="llogo" :key="imageURL" />
+        </router-link>
       </p>
-      <p class="side_img">
-        <img
-          src="@/assets/umigame.jpg"
-          alt="umigame"
-          height="350"
-          width="600"
-        />
-      </p>
-      <div class="footer_text">
-        <p class="logo">
-          <a href="#"></a>
-          <img
-            src="@/assets/logo.png"
-            alt="logo"
-            class="logo"
-            height="300"
-            width="300"
-          />
-        </p>
-
-        <div class="footer_info">
-          <p>~HAMAJIMA~</p>
-          <p>〒000-0000 <br />沖縄県浜島2207</p>
-          <p>予約専用ダイヤル</p>
-          <h3>Tel:0000-000-000</h3>
-          <p>受付時間 10:00~18:00</p>
-        </div>
+      <div class="footer_info">
+        <p>~HAMAJIMA~</p>
+        <p>〒000-0000 <br />沖縄県浜島2207</p>
+        <p>Tel:0000-000-000</p>
+        <p>受付時間 10:00~18:00</p>
       </div>
-      <p id="copyright">©︎2023~ ALL RIGTHS RESERVED HAMAJIMA.</p>
     </div>
+
+    <div class="copyright">©︎2023~ ALL RIGTHS RESERVED HAMAJIMA.</div>
+    <!-- </p> -->
+    <div class="footerline"></div>
   </footer>
 </template>
 
 <style>
-.box_img {
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
+  margin-top: 5%;
+  margin: 0;
 }
 
-.side_img {
-  position: absolute;
-  bottom: -300px;
-  left: 10px;
+.footer_text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  height: 280px;
+  margin-top:50px;
 }
 
-.logo img {
-  position: absolute;
-  bottom: 30px;
-  left: 40%;
+.footer_logo {
+  width: 30%;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
 }
 
 .footer_info {
-  text-align: right;
+  font-size: 16px;
 }
-#copyright {
+
+.footer_zero {
+  display: inline-block;
+}
+
+#footer .copyright {
   text-align: center;
+}
+
+.footerline {
+  height: 60px;
+  width: 100%;
+  background-color:rgb(0, 150, 150);
+  z-index: 2;
+  /* position: fixed; */
+  top: 0;
+}
+@media (max-width: 768px) {
+  .footer_text {
+    width: 80%;
+  }
+  .footer_info {
+    font-sze: 12px;
+  }
+  .footer_logo {
+    width: 10%;
+    height: auto;
+  }
+  .llogo {
+    width: 250%;
+  }
+  #footer .copyright {
+    font-size: 12px;
+  }
 }
 </style>

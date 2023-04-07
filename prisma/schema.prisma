@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Member {
+  id           Int       @id @default(autoincrement())
+  name         String
+  address      String
+  tel          String
+  registerDate DateTime?
+  email        String    @unique
+  password     String
+  reserves     Reserve[]
+}
+
+model Reserve {
+  id            Int      @id @default(autoincrement())
+  memberId      Int
+  member        Member   @relation(fields: [memberId], references: [id])
+  reservePeople Int
+  date          DateTime @unique
+  roomId        Int //各部屋のID
+  room          Room     @relation(fields: [roomId], references: [id])
+}
+
+model Room {
+  id       Int       @id @default(autoincrement())
+  roomName String
+  price    Int
+  people   Int
+  detail   String
+  reserves Reserve[] //RoomとReserveの関連付
+}
+
+model Image {
+  id     Int    @id @default(autoincrement())
+  pageId Int
+  path   String
+}
+
+// vue3compositionAPI, Express, Prisma, MySQL
